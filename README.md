@@ -44,3 +44,13 @@ void Input:getColor()
   ...
 }
 ```
+* Functions and Methods should start with a verb
+```cpp
+string SelectColor();
+void DrawRectangle(Point p1, Point p2);
+```
+* Functions that return a bool should start with Is
+```cpp
+bool IsEven(int);
+bool IsValidAge(int age);
+```
