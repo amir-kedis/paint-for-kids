@@ -1,7 +1,6 @@
 #include "GUI\Input.h"
 #include "GUI\Output.h"
 
-// THis comment is for testing delete after
 
 //This is a test code to test the Input and Output classes
 
