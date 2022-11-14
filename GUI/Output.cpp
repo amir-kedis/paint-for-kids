@@ -159,9 +159,62 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 
 	
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	
+
 }
 
+void Output::DrawCircle(Point P1, Point P2, GfxInfo CircleGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = CircleGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (CircleGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(CircleGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+	
+	int radius = sqrt((P2.x - P1.x) * (P2.x - P1.x) + (P2.y - P1.y) * (P2.y - P1.y)); //Get the radius of the circle
+
+	if (P1.y <= UI.ToolBarHeight || P1.y >= (UI.height - UI.StatusBarHeight)) //Make sure that the point isn't in tool bar or status bar
+	{
+		return;
+	}
+
+	if (radius > (P1.y - UI.ToolBarHeight) && radius > (UI.height - UI.StatusBarHeight - P1.y)) 
+	{
+		P1.y = UI.height / 2;
+		radius = (UI.height - UI.StatusBarHeight - UI.ToolBarHeight) / 2;
+	}
+	if (radius > (P1.y - UI.ToolBarHeight))
+	{
+		P1.y += (radius - (P1.y - UI.ToolBarHeight));
+		if (radius > (UI.height - UI.StatusBarHeight - P1.y))
+		{
+			P1.y = UI.height / 2;
+			radius = (UI.height - UI.StatusBarHeight - UI.ToolBarHeight) / 2;
+		}
+
+	}
+	else if (radius > (UI.height - UI.StatusBarHeight - P1.y))
+	{
+		P1.y -= (radius - (UI.height - UI.StatusBarHeight - P1.y));
+		if (radius > (P1.y - UI.ToolBarHeight))
+		{
+			P1.y = UI.height / 2;
+			radius = (UI.height - UI.StatusBarHeight - UI.ToolBarHeight) / 2;
+		}
+	}
+
+	pWind->DrawCircle(P1.x, P1.y, radius, style);
+
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
 Output::~Output()
