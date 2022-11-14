@@ -1,6 +1,6 @@
 #include "Output.h"
-
-
+#include <cmath>
+#define PI 3.14159
 Output::Output()
 {
 	//Initialize user interface parameters
@@ -161,6 +161,45 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
 	
 }
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::DrawHexagon(Point P1, GfxInfo HexGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = HexGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (HexGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(HexGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	const int numberOfVertices = 6;
+	const int radius = 10;
+	int* xCoordinates = new int[numberOfVertices]; //Array of x coordinates of hexagon vertices
+	int* yCoordinates = new int[numberOfVertices]; //Array of y coordinates of hexagon vertices
+
+	double theta = 0;
+	for (int i = 0; i < numberOfVertices; i++)
+	{
+		xCoordinates[i] = P1.x + (radius * cos(theta));
+		yCoordinates[i] = P1.y + (radius * sin(theta));
+		theta += PI / 3.0;
+	}
+
+	pWind->DrawPolygon(xCoordinates, yCoordinates, numberOfVertices, style);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
