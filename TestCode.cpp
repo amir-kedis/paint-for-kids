@@ -113,11 +113,28 @@ int main()
 	gfxInfo.isFilled = false;	//Figure is NOT filled
 	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false);
 
-	// 2.3.2 - Drawing highlighted non-filled rectangle
+	// 2.3.2 - Drawing highlighted non-filled Triangle
 	pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
 
+	// 2.3.3 - Drawing a filled Triangle
+	pOut->PrintMessage("Drawing a Triangle ==> filled,  Click three points");
+	pIn->GetPointClicked(P1.x, P1.y);
+	pIn->GetPointClicked(P2.x, P2.y);
+	pIn->GetPointClicked(P3.x, P3.y);
+
+	gfxInfo.BorderWdth = 6;
+	gfxInfo.DrawClr = BLUE;	//any color for border
+	gfxInfo.FillClr = GREEN;//any color for filling
+	gfxInfo.isFilled = true;//Figure is filled
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false);
+
+
+	// 2.3.4 - Drawing a highlighted filled Triangle
+	pOut->PrintMessage("Drawing a Triangle ==> Highlighted filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
 
 	// End triangle test
 
