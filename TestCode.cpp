@@ -113,7 +113,11 @@ int main()
 	gfxInfo.isFilled = false;	//Figure is NOT filled
 	pOut->DrawTriangle(P1, P2, P3, gfxInfo, false);
 
-	
+	// 2.3.2 - Drawing highlighted non-filled rectangle
+	pOut->PrintMessage("Drawing a Triangle ==> Highlighted non-filled, Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawTriangle(P1, P2, P3, gfxInfo, true);
+
 
 	// End triangle test
 
