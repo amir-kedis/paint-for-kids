@@ -88,7 +88,23 @@ int main()
 	pOut->PrintMessage("Drawing a Square, normal and Highlighted, Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Square, Normal and Highlighted
+
+	// 2.2.1 - Drawing a normal filled square
+	pOut->PrintMessage("Drawing a Square ==> filled,  Click one point");
+	pIn->GetPointClicked(P1.x, P1.y);
+
+	gfxInfo.BorderWdth = 10;
+	gfxInfo.DrawClr = BLACK;
+	gfxInfo.FillClr = BLUE;
+	gfxInfo.isFilled = true;
+	pOut->DrawSquare(P1, gfxInfo, false);
+
+
+	// 2.2.2 - Drawing a highlighted square
+	pOut->PrintMessage("Drawing a Square ==> Highlighted , Click to Highlight");
+	pIn->GetPointClicked(x, y);	//Wait for any click
+	pOut->DrawSquare(P1, gfxInfo, true);
+
 
 	pOut->PrintMessage("Drawing a Square Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
@@ -110,7 +126,38 @@ int main()
 	pOut->PrintMessage("Drawing a Hexagon, filled/non-filled and Highlighted filled/non-filled,  Click to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
-	///TODO: Add code to draw Hexagon in all possible states
+	{
+		// 2.4.1 - Drawing non-filled hexagon
+		pOut->PrintMessage("Drawing a Hexagon ==> non-filled,  Click one point");
+		pIn->GetPointClicked(P1.x, P1.y);
+
+		gfxInfo.BorderWdth = 20;
+		gfxInfo.DrawClr = BLACK;	
+		gfxInfo.isFilled = false;
+		pOut->DrawHexagon(P1, gfxInfo, false);
+
+		// 2.4.2 - Drawing highlighted non-filled hexagon
+		pOut->PrintMessage("Drawing a Hexagon ==> Highlighted non-filled, Click to Highlight");
+		pIn->GetPointClicked(x, y);
+		pOut->DrawHexagon(P1, gfxInfo, true);
+
+
+		// 2.4.3 - Drawing a filled hexagon
+		pOut->PrintMessage("Drawing a Hexagon ==> filled,  Click one point");
+		pIn->GetPointClicked(P1.x, P1.y);
+
+		gfxInfo.BorderWdth = 6;
+		gfxInfo.DrawClr = BLACK;
+		gfxInfo.FillClr = GREEN;
+		gfxInfo.isFilled = true;
+		pOut->DrawHexagon(P1, gfxInfo, false);
+
+
+		// 2.4.4 - Drawing a highlighted filled hexagon
+		pOut->PrintMessage("Drawing a Hexagon ==> Highlighted filled, Click to Highlight");
+		pIn->GetPointClicked(x, y);
+		pOut->DrawHexagon(P1, gfxInfo, true);
+	}
 
 	pOut->PrintMessage("Drawing a Hexagon Test ==> OK,  Click anywhere to continue");
 	pIn->GetPointClicked(x,y);	//Wait for any click

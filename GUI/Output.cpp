@@ -188,7 +188,7 @@ void Output::DrawHexagon(Point P1, GfxInfo HexGfxInfo, bool selected) const
 		style = FRAME;
 
 	const int numberOfVertices = 6;
-	const int radius = 10;
+	const int radius = 80;
 	int* xCoordinates = new int[numberOfVertices]; //Array of x coordinates of hexagon vertices
 	int* yCoordinates = new int[numberOfVertices]; //Array of y coordinates of hexagon vertices
 
@@ -224,7 +224,7 @@ void Output::DrawSquare(Point P1, GfxInfo SquareGfxInfo, bool selected) const
 		style = FRAME;
 
 	const int numberOfVertices = 4;
-	const int sideLength = 10;
+	const int sideLength = 100;
 	int* xCoordinates = new int[numberOfVertices]; //Array of x coordinates of square vertices
 	int* yCoordinates = new int[numberOfVertices]; //Array of y coordinates of square vertices
 
@@ -233,9 +233,9 @@ void Output::DrawSquare(Point P1, GfxInfo SquareGfxInfo, bool selected) const
 	xCoordinates[1] = P1.x + sideLength / 2;
 	yCoordinates[1] = P1.y - sideLength / 2;
 	xCoordinates[2] = P1.x - sideLength / 2;
-	yCoordinates[2] = P1.y + sideLength / 2;
+	yCoordinates[2] = P1.y - sideLength / 2;
 	xCoordinates[3] = P1.x - sideLength / 2;
-	yCoordinates[3] = P1.y - sideLength / 2;
+	yCoordinates[3] = P1.y + sideLength / 2;
 
 	pWind->DrawPolygon(xCoordinates, yCoordinates, numberOfVertices, style);
 
