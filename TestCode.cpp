@@ -37,7 +37,7 @@ int main()
 	pIn->GetPointClicked(x,y);	//Wait for any click
 
 	GfxInfo gfxInfo;//to be used with draw function of the class Ouput
-	Point P1, P2;
+	Point P1, P2, P3;
 
 	/// 2.1- Rectangle Test ///
 	/// =================== 
