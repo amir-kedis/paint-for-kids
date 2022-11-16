@@ -162,6 +162,28 @@ void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) co
 	
 }
 
+void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
+	else
+		DrawingClr = RectGfxInfo.DrawClr;
+
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (RectGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(RectGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
+}
+
 void Output::DrawCircle(Point P1, Point P2, GfxInfo CircleGfxInfo, bool selected) const
 {
 	color DrawingClr;
