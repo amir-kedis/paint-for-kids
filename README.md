@@ -2,7 +2,10 @@
 A application to let kids draw and play with shapes.
 Made as a Project for Programming techniqes course in CMP first year cairo University Egypt.
 
+---
+
 ## Conventions and Team guide lines.
+---
 ### Naming:
 * Minimize the use of abbreviations
 * Do not abbreviate by deleting letters within a word. As a rule of thumb, an abbreviation is probably OK if it's listed in Wikipedia.
@@ -53,4 +56,24 @@ void DrawRectangle(Point p1, Point p2);
 ```cpp
 bool IsEven(int);
 bool IsValidAge(int age);
+```
+---
+### Comments:
+* use `//` syntax
+* every non-obvious class or struct declaration should have an accompanying comment that describes what it is for and how it should be used.
+* before every function declaration should be implementation  comment structured like this
+```cpp
+/// <summary>
+/// 
+/// </summary>
+/// <param name=""></param>
+/// <param name=""></param>
+/// <param name=""></param>
+/// <param name=""></param>
+/// <returns></returns>
+```
+*To Toggle this comment on, Go to line before declration and press <kbd>Ctrl</kbd> + <kbd>/</kbd>*
+* TODO comments should be used like this
+```cpp
+/// TODO: (To Do Item)
 ```
