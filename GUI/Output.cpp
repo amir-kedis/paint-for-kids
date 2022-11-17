@@ -31,7 +31,7 @@ Output::Output()
 	//Change the title
 	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
 
-	CreateColorsToolBar();
+	CreateDrawToolBar();
 	CreateStatusBar();
 }
 
