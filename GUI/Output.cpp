@@ -157,7 +157,26 @@ void Output::CreateShapesToolBar() const
 
 void Output::CreateColorsToolBar() const
 {
-	///TODO: write code to create Shapes mode menu
+	UI.InterfaceMode = MODE_COLORS;
+
+	//Clears the toolbar before drawing the Icons
+	CreateToolBarBox();    
+
+	//gets icons paths from images folder
+	string ColorsMenuItemImages[COLORS_ITM_COUNT];
+	ColorsMenuItemImages[ITM_BLACK] = "images\\MenuItems\\black.jpg";
+	ColorsMenuItemImages[ITM_YELLOW] = "images\\MenuItems\\yellow.jpg";
+	ColorsMenuItemImages[ITM_ORANGE] = "images\\MenuItems\\black.jpg";
+	ColorsMenuItemImages[ITM_RED] = "images\\MenuItems\\red.jpg";
+	ColorsMenuItemImages[ITM_GREEN] = "images\\MenuItems\\green.jpg";
+	ColorsMenuItemImages[ITM_BLUE] = "images\\MenuItems\\blue.jpg";
+
+	for (int i = 0; i < COLORS_ITM_COUNT; i++)
+		pWind->DrawImage(ColorsMenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+
+	pWind->SetPen(color(245, 66, 174), 1); // line under tool bar color and thickness
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
