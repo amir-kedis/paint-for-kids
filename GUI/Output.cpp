@@ -189,10 +189,10 @@ void Output::DrawHexagon(Point P1, GfxInfo HexGfxInfo, bool selected) const
 
 	const int numberOfVertices = 6;
 	const int radius = 80;
-	int* xCoordinates = new int[numberOfVertices]; //Array of x coordinates of hexagon vertices
-	int* yCoordinates = new int[numberOfVertices]; //Array of y coordinates of hexagon vertices
+	int xCoordinates[numberOfVertices]; //Array of x coordinates of hexagon vertices
+	int yCoordinates[numberOfVertices]; //Array of y coordinates of hexagon vertices
 
-	double theta = 0;
+	double theta = PI/6.0;
 	for (int i = 0; i < numberOfVertices; i++)  //Loop to get all coordinates by resolution
 	{
 		xCoordinates[i] = round(P1.x + (radius * cos(theta)));
@@ -225,8 +225,8 @@ void Output::DrawSquare(Point P1, GfxInfo SquareGfxInfo, bool selected) const
 
 	const int numberOfVertices = 4;
 	const int sideLength = 100;
-	int* xCoordinates = new int[numberOfVertices]; //Array of x coordinates of square vertices
-	int* yCoordinates = new int[numberOfVertices]; //Array of y coordinates of square vertices
+	int xCoordinates[numberOfVertices]; //Array of x coordinates of square vertices
+	int yCoordinates[numberOfVertices]; //Array of y coordinates of square vertices
 
 	xCoordinates[0] = P1.x + sideLength / 2;
 	yCoordinates[0] = P1.y + sideLength / 2;
