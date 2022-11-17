@@ -18,10 +18,10 @@ Output::Output()
 
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
-	UI.MsgColor = RED;		//Messages color
-	UI.BkGrndColor = LIGHTGOLDENRODYELLOW;	//Background color
+	UI.MsgColor = color(26, 26, 26);		//Messages color
+	UI.BkGrndColor = color(255, 239, 227);	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
-	UI.StatusBarColor = TURQUOISE;
+	UI.StatusBarColor = color(251, 192, 147); // status Bar color
 	UI.PenWidth = 3;	//width of the figures frames
 
 
@@ -92,7 +92,7 @@ void Output::CreateDrawToolBar() const
 
 
 	//Draw a line under the toolbar
-	pWind->SetPen(RED, 3);
+	pWind->SetPen(color(245, 66, 174), 1); // line under tool bar color and thickness
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
