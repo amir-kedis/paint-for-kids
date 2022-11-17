@@ -78,6 +78,7 @@ void Output::CreateDrawToolBar() const
 {
 	UI.InterfaceMode = MODE_DRAW;
 
+
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
 
@@ -85,7 +86,6 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\rectangle.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\exit.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list
