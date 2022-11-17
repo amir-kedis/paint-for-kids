@@ -171,10 +171,11 @@ void Output::CreateColorsToolBar() const
 	ColorsMenuItemImages[ITM_GREEN] = "images\\MenuItems\\green.jpg";
 	ColorsMenuItemImages[ITM_BLUE] = "images\\MenuItems\\blue.jpg";
 
+	//Draw Colors Icons one at a time
 	for (int i = 0; i < COLORS_ITM_COUNT; i++)
 		pWind->DrawImage(ColorsMenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
-
+	//Draw a line under the toolbar
 	pWind->SetPen(color(245, 66, 174), 1); // line under tool bar color and thickness
 	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
