@@ -31,7 +31,7 @@ Output::Output()
 	//Change the title
 	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
 
-	CreateDrawToolBar();
+	CreateColorsToolBar();
 	CreateStatusBar();
 }
 
@@ -166,7 +166,7 @@ void Output::CreateColorsToolBar() const
 	string ColorsMenuItemImages[COLORS_ITM_COUNT];
 	ColorsMenuItemImages[ITM_BLACK] = "images\\MenuItems\\black.jpg";
 	ColorsMenuItemImages[ITM_YELLOW] = "images\\MenuItems\\yellow.jpg";
-	ColorsMenuItemImages[ITM_ORANGE] = "images\\MenuItems\\black.jpg";
+	ColorsMenuItemImages[ITM_ORANGE] = "images\\MenuItems\\orange.jpg";
 	ColorsMenuItemImages[ITM_RED] = "images\\MenuItems\\red.jpg";
 	ColorsMenuItemImages[ITM_GREEN] = "images\\MenuItems\\green.jpg";
 	ColorsMenuItemImages[ITM_BLUE] = "images\\MenuItems\\blue.jpg";
