@@ -111,6 +111,12 @@ void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
+	string PlayMenuItemImages[PLAY_ITM_COUNT];
+	PlayMenuItemImages[ITM_PICK_BY_SHAPES] = "images\\MenuItems\\pick-shapes.jpg";
+	PlayMenuItemImages[ITM_PICK_BY_COLORS] = "images\\MenuItems\\pick-color.jpg";
+	PlayMenuItemImages[ITM_PICK_BY_BOTH] = "images\\MenuItems\\pick-both.jpg";
+	PlayMenuItemImages[ITM_DRAW_MODE] = "images\\MenuItems\\draw-mode.jpg";
+	PlayMenuItemImages[ITM_PLAY_EXIT] = "images\\MenuItems\\exit.jpg";
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
