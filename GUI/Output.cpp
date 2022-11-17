@@ -1,21 +1,21 @@
 #include "Output.h"
-
-
+#include <cmath>
+#define PI 3.14159
 Output::Output()
 {
 	//Initialize user interface parameters
 	UI.InterfaceMode = MODE_DRAW;
-	
+
 	UI.width = 1250;
 	UI.height = 650;
 	UI.wx = 5;
-	UI.wy =5;
+	UI.wy = 5;
 
-	
+
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
 	UI.MenuItemWidth = 80;
-	
+
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
 	UI.MsgColor = RED;		//Messages color
@@ -24,12 +24,12 @@ Output::Output()
 	UI.StatusBarColor = TURQUOISE;
 	UI.PenWidth = 3;	//width of the figures frames
 
-	
+
 	//Create the output window
 	pWind = CreateWind(UI.width, UI.height, UI.wx, UI.wy);
 	//Change the title
 	pWind->ChangeTitle("Paint for Kids - Programming Techniques Project");
-	
+
 	CreateDrawToolBar();
 	CreateStatusBar();
 }
@@ -46,11 +46,11 @@ Input* Output::CreateInput() const
 //======================================================================================//
 
 window* Output::CreateWind(int w, int h, int x, int y) const
-{ 
+{
 	window* pW = new window(w, h, x, y);
 	pW->SetBrush(UI.BkGrndColor);
 	pW->SetPen(UI.BkGrndColor, 1);
-	pW->DrawRectangle(0, UI.ToolBarHeight, w, h);	
+	pW->DrawRectangle(0, UI.ToolBarHeight, w, h);
 	return pW;
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ void Output::CreateDrawToolBar() const
 
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
-	
+
 	//First prepare List of images for each menu item
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
@@ -86,14 +86,14 @@ void Output::CreateDrawToolBar() const
 	//TODO: Prepare images for each menu item and add it to the list
 
 	//Draw menu item one image at a time
-	for(int i=0; i<DRAW_ITM_COUNT; i++)
-		pWind->DrawImage(MenuItemImages[i], i*UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+	for (int i = 0; i < DRAW_ITM_COUNT; i++)
+		pWind->DrawImage(MenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
 
 
 
 	//Draw a line under the toolbar
 	pWind->SetPen(RED, 3);
-	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);	
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -110,30 +110,36 @@ void Output::ClearDrawArea() const
 	pWind->SetPen(UI.BkGrndColor, 1);
 	pWind->SetBrush(UI.BkGrndColor);
 	pWind->DrawRectangle(0, UI.ToolBarHeight, UI.width, UI.height - UI.StatusBarHeight);
-	
+
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::PrintMessage(string msg) const	//Prints a message on status bar
 {
 	ClearStatusBar();	//First clear the status bar
-	
+
 	pWind->SetPen(UI.MsgColor, 50);
-	pWind->SetFont(20, BOLD , BY_NAME, "Arial");   
-	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight/1.5), msg);
+	pWind->SetFont(20, BOLD, BY_NAME, "Arial");
+	pWind->DrawString(10, UI.height - (int)(UI.StatusBarHeight / 1.5), msg);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color Output::getCrntDrawColor() const	//get current drawing color
-{	return UI.DrawColor;	}
+{
+	return UI.DrawColor;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 
 color Output::getCrntFillColor() const	//get current filling color
-{	return UI.FillColor;	}
+{
+	return UI.FillColor;
+}
 //////////////////////////////////////////////////////////////////////////////////////////
-	
+
 int Output::getCrntPenWidth() const		//get current pen width
-{	return UI.PenWidth;	}
+{
+	return UI.PenWidth;
+}
 
 //======================================================================================//
 //								Figures Drawing Functions								//
@@ -142,24 +148,97 @@ int Output::getCrntPenWidth() const		//get current pen width
 void Output::DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected) const
 {
 	color DrawingClr;
-	if(selected)	
+	if (selected)
 		DrawingClr = UI.HighlightColor; //Figure should be drawn highlighted
-	else			
+	else
 		DrawingClr = RectGfxInfo.DrawClr;
-	
-	pWind->SetPen(DrawingClr,1);
+
+	pWind->SetPen(DrawingClr, 1);
 	drawstyle style;
-	if (RectGfxInfo.isFilled)	
+	if (RectGfxInfo.isFilled)
 	{
-		style = FILLED;		
+		style = FILLED;
 		pWind->SetBrush(RectGfxInfo.FillClr);
 	}
-	else	
+	else
 		style = FRAME;
 
-	
+
 	pWind->DrawRectangle(P1.x, P1.y, P2.x, P2.y, style);
-	
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::DrawHexagon(Point P1, GfxInfo HexGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = HexGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (HexGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(HexGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	const int numberOfVertices = 6;
+	const int radius = 80;
+	int xCoordinates[numberOfVertices]; //Array of x coordinates of hexagon vertices
+	int yCoordinates[numberOfVertices]; //Array of y coordinates of hexagon vertices
+
+	double theta = PI/6.0;
+	for (int i = 0; i < numberOfVertices; i++)  //Loop to get all coordinates by resolution
+	{
+		xCoordinates[i] = round(P1.x + (radius * cos(theta)));
+		yCoordinates[i] = round(P1.y + (radius * sin(theta)));
+		theta += PI / 3.0;
+	}
+
+	pWind->DrawPolygon(xCoordinates, yCoordinates, numberOfVertices, style);
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::DrawSquare(Point P1, GfxInfo SquareGfxInfo, bool selected) const
+{
+	color DrawingClr;
+	if (selected)
+		DrawingClr = UI.HighlightColor;
+	else
+		DrawingClr = SquareGfxInfo.DrawClr;
+
+	pWind->SetPen(DrawingClr, 1);
+	drawstyle style;
+	if (SquareGfxInfo.isFilled)
+	{
+		style = FILLED;
+		pWind->SetBrush(SquareGfxInfo.FillClr);
+	}
+	else
+		style = FRAME;
+
+	const int numberOfVertices = 4;
+	const int sideLength = 100;
+	int xCoordinates[numberOfVertices]; //Array of x coordinates of square vertices
+	int yCoordinates[numberOfVertices]; //Array of y coordinates of square vertices
+
+	xCoordinates[0] = P1.x + sideLength / 2;
+	yCoordinates[0] = P1.y + sideLength / 2;
+	xCoordinates[1] = P1.x + sideLength / 2;
+	yCoordinates[1] = P1.y - sideLength / 2;
+	xCoordinates[2] = P1.x - sideLength / 2;
+	yCoordinates[2] = P1.y - sideLength / 2;
+	xCoordinates[3] = P1.x - sideLength / 2;
+	yCoordinates[3] = P1.y + sideLength / 2;
+
+	pWind->DrawPolygon(xCoordinates, yCoordinates, numberOfVertices, style);
+
 }
 
 void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const
