@@ -72,7 +72,10 @@ void Output::ClearStatusBar() const
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateToolBarBox() const
 {
-	///TODO: Create white box for toolbars to be above.
+	// clear ToolBar
+	pWind->SetPen(UI.ToolBarColor, 1);  // set pen to white
+	pWind->SetBrush(UI.StatusBarColor); // set fill color to white
+	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight); // draw Rectangle over tool bar
 }
 //////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar() const
