@@ -69,6 +69,11 @@ void Output::ClearStatusBar() const
 	pWind->DrawRectangle(0, UI.height - UI.StatusBarHeight, UI.width, UI.height);
 }
 //////////////////////////////////////////////////////////////////////////////////////////
+void Output::CreateToolBarBox() const
+{
+	///TODO: Create white box for toolbars to be above.
+}
+//////////////////////////////////////////////////////////////////////////////////////////
 void Output::CreateDrawToolBar() const
 {
 	UI.InterfaceMode = MODE_DRAW;
@@ -103,6 +108,21 @@ void Output::CreatePlayToolBar() const
 	UI.InterfaceMode = MODE_PLAY;
 	///TODO: write code to create Play mode menu
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::CreateShapesToolBar() const
+{
+	///TODO: write code to create Shapes mode menu
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+void Output::CreateColorsToolBar() const
+{
+	///TODO: write code to create Shapes mode menu
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::ClearDrawArea() const
