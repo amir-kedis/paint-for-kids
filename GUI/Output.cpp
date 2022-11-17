@@ -240,6 +240,7 @@ void Output::DrawSquare(Point P1, GfxInfo SquareGfxInfo, bool selected) const
 	pWind->DrawPolygon(xCoordinates, yCoordinates, numberOfVertices, style);
 
 }
+//////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, bool selected) const
 {
@@ -262,6 +263,7 @@ void Output::DrawTriangle(Point P1, Point P2, Point P3, GfxInfo RectGfxInfo, boo
 
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
+//////////////////////////////////////////////////////////////////////////////////////////
 
 void Output::DrawCircle(Point P1, Point P2, GfxInfo CircleGfxInfo, bool selected) const
 {
