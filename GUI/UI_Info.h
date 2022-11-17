@@ -19,9 +19,21 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 {
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	ITM_RECT,		//Recangle item in menu
-	
-	///TODO: Add more items names here
+	ITM_ADD_FIGURE,		  //Add Figure item in menu
+	ITM_SELECT_ONE,       //Select item in menu
+	ITM_DRAWING_COLOR,    //Drawing color item in menu
+	ITM_FILL_COLOR,       //Filling color item in menu
+	ITM_DELETE_FIGURE,    //Delete Figure item in menu
+	ITM_MOVE_FIGURE,      //Move Figure item in menu
+	ITM_UNDO,             //Undo operation item in menu
+	ITM_REDO,             //Redo the undone operation item in menu
+	ITM_CLEAR_ALL,        //Clear All Actions item in menu
+	ITM_START_RECORDING,  //Start Recording item in menu
+	ITM_STOP_RECORDING,   //Stop Recording item in menu
+	ITM_PLAY_RECORDING,   //Play Recording item in menu
+	ITM_SAVE,             //Save Graph item in menu
+	ITM_LOAD,             //Load Saved Graph item in menu
+	ITM_SWITCH,           //Switch to Play Mode item in menu
 
 	ITM_EXIT,		//Exit item
 	

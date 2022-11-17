@@ -82,6 +82,7 @@ void Output::CreateDrawToolBar() const
 {
 	UI.InterfaceMode = MODE_DRAW;
 
+	CreateToolBarBox();
 	//You can draw the tool bar icons in any way you want.
 	//Below is one possible way
 
@@ -89,7 +90,21 @@ void Output::CreateDrawToolBar() const
 	//To control the order of these images in the menu, 
 	//reoder them in UI_Info.h ==> enum DrawMenuItem
 	string MenuItemImages[DRAW_ITM_COUNT];
-	MenuItemImages[ITM_RECT] = "images\\MenuItems\\rectangle.jpg";
+	MenuItemImages[ITM_ADD_FIGURE] = "images\\MenuItems\\pick-both.jpg";
+	MenuItemImages[ITM_SELECT_ONE] = "images\\MenuItems\\select.jpg";
+	MenuItemImages[ITM_DRAWING_COLOR] = "images\\MenuItems\\color-mode.jpg";
+	MenuItemImages[ITM_FILL_COLOR] = "images\\MenuItems\\fill.jpg";
+	MenuItemImages[ITM_DELETE_FIGURE] = "images\\MenuItems\\delete.jpg";
+	MenuItemImages[ITM_MOVE_FIGURE] = "images\\MenuItems\\move.jpg";
+	MenuItemImages[ITM_UNDO] = "images\\MenuItems\\undo.jpg";
+	MenuItemImages[ITM_REDO] = "images\\MenuItems\\redo.jpg";
+	MenuItemImages[ITM_CLEAR_ALL] = "images\\MenuItems\\clear-all.jpg";
+	MenuItemImages[ITM_START_RECORDING] = "images\\MenuItems\\record.jpg";
+	MenuItemImages[ITM_STOP_RECORDING] = "images\\MenuItems\\stop.jpg";
+	MenuItemImages[ITM_PLAY_RECORDING] = "images\\MenuItems\\play.jpg";
+	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\save.jpg";
+	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\load.jpg";
+	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\game-mode.jpg";
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\exit.jpg";
 
 	//TODO: Prepare images for each menu item and add it to the list
