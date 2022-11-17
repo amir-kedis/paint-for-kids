@@ -110,7 +110,25 @@ void Output::CreateDrawToolBar() const
 void Output::CreatePlayToolBar() const
 {
 	UI.InterfaceMode = MODE_PLAY;
-	///TODO: write code to create Play mode menu
+
+	// Clears the toolbar before drawing the ICONS
+	CreateToolBarBox();
+
+	// gets icons paths from images folder
+	string PlayMenuItemImages[PLAY_ITM_COUNT];
+	PlayMenuItemImages[ITM_PICK_BY_SHAPES] = "images\\MenuItems\\pick-shape.jpg";
+	PlayMenuItemImages[ITM_PICK_BY_COLORS] = "images\\MenuItems\\pick-color.jpg";
+	PlayMenuItemImages[ITM_PICK_BY_BOTH] = "images\\MenuItems\\pick-both.jpg";
+	PlayMenuItemImages[ITM_DRAW_MODE] = "images\\MenuItems\\draw-mode.jpg";
+	PlayMenuItemImages[ITM_PLAY_EXIT] = "images\\MenuItems\\exit.jpg";
+
+	// DRAW play menu icons one image at a time
+	for (int i = 0; i < PLAY_ITM_COUNT; i++)
+		pWind->DrawImage(PlayMenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+	//Draw a line under the toolbar
+	pWind->SetPen(color(245, 66, 174), 1); // line under tool bar color and thickness
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
