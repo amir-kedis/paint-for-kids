@@ -56,9 +56,14 @@ enum ColorsMenuItem //The items of the colors menu
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
 	// 
-	///TODO: Add items names here
+	ITM_BLACK,    //Add Black color icon in menu
+	ITM_YELLOW,	  //Add Yellow color icon in menu	
+	ITM_ORANGE,   //Add Orange color icon in menu
+	ITM_RED,      //Add Red color icon in menu
+	ITM_GREEN,    //Add Green color icon in menu
+	ITM_BLUE,     //Add Blue color icon in menu
 
-	COLORS_ITM_COUNT
+	COLORS_ITM_COUNT    //no. of menu items ==> This should be the last line in this enum
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
