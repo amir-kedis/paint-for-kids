@@ -116,7 +116,7 @@ void Output::CreatePlayToolBar() const
 
 	// gets icons paths from images folder
 	string PlayMenuItemImages[PLAY_ITM_COUNT];
-	PlayMenuItemImages[ITM_PICK_BY_SHAPES] = "images\\MenuItems\\pick-shapes.jpg";
+	PlayMenuItemImages[ITM_PICK_BY_SHAPES] = "images\\MenuItems\\pick-shape.jpg";
 	PlayMenuItemImages[ITM_PICK_BY_COLORS] = "images\\MenuItems\\pick-color.jpg";
 	PlayMenuItemImages[ITM_PICK_BY_BOTH] = "images\\MenuItems\\pick-both.jpg";
 	PlayMenuItemImages[ITM_DRAW_MODE] = "images\\MenuItems\\draw-mode.jpg";
