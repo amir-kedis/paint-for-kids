@@ -21,12 +21,32 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	//If you want to change the menu items order, change the order here
 	ITM_RECT,		//Recangle item in menu
 	
-	//TODO: Add more items names here
+	///TODO: Add more items names here
 
 	ITM_EXIT,		//Exit item
 	
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
 	
+};
+
+enum ShapesMenuItem //The items of the Shapes menu
+{
+	//Note: Items are **(ordered)** here as they appear in menu
+	//If you want to change the menu items order, change the order here
+	// 
+	///TODO: Add items names here
+
+	SHAPES_ITM_COUNT
+};
+
+enum ColorsMenuItem //The items of the colors menu
+{
+	//Note: Items are **(ordered)** here as they appear in menu
+	//If you want to change the menu items order, change the order here
+	// 
+	///TODO: Add items names here
+
+	COLORS_ITM_COUNT
 };
 
 enum PlayMenuItem //The items of the Play menu (you should add more items)
