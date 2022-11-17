@@ -22,6 +22,7 @@ Output::Output()
 	UI.BkGrndColor = color(255, 239, 227);	//Background color
 	UI.HighlightColor = MAGENTA;	//This color should NOT be used to draw figures. use if for highlight only
 	UI.StatusBarColor = color(251, 192, 147); // status Bar color
+	UI.ToolBarColor = WHITE; // status Bar color
 	UI.PenWidth = 3;	//width of the figures frames
 
 

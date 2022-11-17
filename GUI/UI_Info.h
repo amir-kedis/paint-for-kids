@@ -83,6 +83,7 @@ struct UI_Info	//User Interface Info.
 	color MsgColor;			//Messages color
 	color BkGrndColor;		//Background color
 	color StatusBarColor;	//Status bar color
+	color ToolBarColor;     //ToolBar color
 	int PenWidth;			//width of the pen that draws shapes
 
 	/// Add more members if needed
