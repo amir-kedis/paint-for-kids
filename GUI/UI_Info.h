@@ -56,7 +56,12 @@ enum ColorsMenuItem //The items of the colors menu
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
 	// 
-	///TODO: Add items names here
+	ITM_BLACK,
+	ITM_YELLOW,
+	ITM_ORANGE,
+	ITM_RED,
+	ITM_GREEN,
+	ITM_BLUE,
 
 	COLORS_ITM_COUNT
 };
