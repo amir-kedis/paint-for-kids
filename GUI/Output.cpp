@@ -74,7 +74,7 @@ void Output::CreateToolBarBox() const
 {
 	// clear ToolBar
 	pWind->SetPen(UI.ToolBarColor, 1);  // set pen to white
-	pWind->SetBrush(UI.StatusBarColor); // set fill color to white
+	pWind->SetBrush(UI.ToolBarColor); // set fill color to white
 	pWind->DrawRectangle(0, 0, UI.width, UI.ToolBarHeight); // draw Rectangle over tool bar
 }
 //////////////////////////////////////////////////////////////////////////////////////////
