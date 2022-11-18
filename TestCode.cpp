@@ -297,7 +297,56 @@ int main()
 			pOut->CreateDrawToolBar();
 			break;
 
-		////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////////
+		// DRAW MODE ACTIONS
+		//////////////////////////////////////////////////////////////////////
+		case SELECT:
+			pOut->PrintMessage("Action: Select Figure , Click anywhere");
+			break;
+
+		case MOVE_FIGURE:
+			pOut->PrintMessage("Action: Move Figure , Click anywhere");
+			break;
+
+		case DELETE_FIGURE:
+			pOut->PrintMessage("Action: Delete Figure , Click anywhere");
+			break;
+
+		case UNDO:
+			pOut->PrintMessage("Action: UNDO last change , Click anywhere");
+			break;
+
+		case REDO:
+			pOut->PrintMessage("Action: REDO last change , Click anywhere");
+			break;
+
+		case CLEAR_ALL:
+			pOut->PrintMessage("Action: Clear All Changes , Click anywhere");
+			break;
+
+		case START_RECORDING:
+			pOut->PrintMessage("Action: Start Recording , Click anywhere");
+			break;
+
+		case PLAY_RECORDING:
+			pOut->PrintMessage("Action: Play Recording , Click anywhere");
+			break;
+
+		case STOP_RECORDING:
+			pOut->PrintMessage("Action: Stop Recording , Click anywhere");
+			break;
+
+		case SAVE:
+			pOut->PrintMessage("Action: Save Graph , Click anywhere");
+			break;
+
+		case LOAD:
+			pOut->PrintMessage("Action: LOAD GRAPH , Click anywhere");
+			break;
+
+		//////////////////////////////////////////////////////////////////////
+		// General Actions
+		//////////////////////////////////////////////////////////////////////
 
 		case STATUS:
 			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
@@ -311,14 +360,14 @@ int main()
 			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
 			break;
 
+		//////////////////////////////////////////////////////////////////////
+		// Switches Actions
+		//////////////////////////////////////////////////////////////////////
+
 		case ADD_FIGURE:
 			pOut->PrintMessage("Action: Switch to Shapes Mode, creating simualtion tool bar");
 			pOut->CreateShapesToolBar();
 			break;
-
-		//////////////////////////////////////////////////////////////////////
-		// Switches Actions
-		//////////////////////////////////////////////////////////////////////
 
 		case CHOOSE_DRAWING_COLOR:
 			pOut->PrintMessage("Action: Switch to COLOR Mode, creating simulation tool bar");
