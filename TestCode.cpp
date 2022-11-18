@@ -262,9 +262,7 @@ int main()
 
 	ActionType ActType;
 
-	///TODO:  
-	//You must add a case for each action (both Draw mode and Play mode actions)
-	//Add cases for the missing actions below
+	// TESTING GetUserAction
 	do
 	{
 		ActType = pIn->GetUserAction();
@@ -285,6 +283,11 @@ int main()
 
 		case EMPTY:
 			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
+			break;
+
+		case ADD_FIGURE:
+			pOut->PrintMessage("Action: Switch to Shapes Mode, creating simualtion tool bar");
+			pOut->CreateShapesToolBar();
 			break;
 
 		case TO_DRAW:
