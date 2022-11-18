@@ -150,7 +150,26 @@ void Output::CreatePlayToolBar() const
 
 void Output::CreateShapesToolBar() const
 {
-	///TODO: write code to create Shapes mode menu
+	UI.InterfaceMode = MODE_SHAPES;
+
+	//Clears the toolbar before drawing the Icons
+	CreateToolBarBox();
+
+	//gets icons paths from images folder
+	string ShapesMenuItemImages[COLORS_ITM_COUNT];
+	ShapesMenuItemImages[ITM_RECT] = "images\\MenuItems\\rectangle.jpg";
+	ShapesMenuItemImages[ITM_SQUARE] = "images\\MenuItems\\square.jpg";
+	ShapesMenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\circle.jpg";
+	ShapesMenuItemImages[ITM_TRI] = "images\\MenuItems\\triangle.jpg";
+	ShapesMenuItemImages[ITM_HEX] = "images\\MenuItems\\hexagon.jpg";
+
+	//Draw Shapes Icons one at a time
+	for (int i = 0; i < SHAPES_ITM_COUNT; i++)
+		pWind->DrawImage(ShapesMenuItemImages[i], i * UI.MenuItemWidth, 0, UI.MenuItemWidth, UI.ToolBarHeight);
+
+	//Draw a line under the toolbar
+	pWind->SetPen(color(245, 66, 174), 1); // line under tool bar color and thickness
+	pWind->DrawLine(0, UI.ToolBarHeight, UI.width, UI.ToolBarHeight);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
