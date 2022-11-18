@@ -247,10 +247,9 @@ int main()
 
 	pOut->PrintMessage("Testing Input ability to read strings");
 
-	///TODO: Add code here to 
-	// 1- Read a string from the user on the status bar
-	// 2- After reading the string clear the status bar
-	// 3- print on the status bar "You Entered" then print the string
+	string inputMessage = pIn->GetSrting(pOut);
+	pOut->ClearStatusBar();
+	pOut->PrintMessage("You Entered " + inputMessage);
 
 	pIn->GetPointClicked(x, y);	//Wait for any click
 	pOut->ClearDrawArea();
