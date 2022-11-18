@@ -156,7 +156,7 @@ void Output::CreateShapesToolBar() const
 	CreateToolBarBox();
 
 	//gets icons paths from images folder
-	string ShapesMenuItemImages[COLORS_ITM_COUNT];
+	string ShapesMenuItemImages[SHAPES_ITM_COUNT];
 	ShapesMenuItemImages[ITM_RECT] = "images\\MenuItems\\rectangle.jpg";
 	ShapesMenuItemImages[ITM_SQUARE] = "images\\MenuItems\\square.jpg";
 	ShapesMenuItemImages[ITM_CIRCLE] = "images\\MenuItems\\circle.jpg";
