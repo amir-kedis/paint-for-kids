@@ -269,8 +269,32 @@ int main()
 
 		switch (ActType)
 		{
+		/////////////////////////////////////////////////////////
+		// SHPAES ACTION open DrawToolBar After to choose colors
+		/////////////////////////////////////////////////////////
 		case DRAW_RECT:
 			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_CIRCLE:
+			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_SQUARE:
+			pOut->PrintMessage("Action: Draw a Square , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_TRI:
+			pOut->PrintMessage("Action: Draw a Triangle , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_HEX:
+			pOut->PrintMessage("Action: Draw a Hexagon , Click anywhere");
+			pOut->CreateDrawToolBar();
 			break;
 
 		case STATUS:
