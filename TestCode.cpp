@@ -301,9 +301,6 @@ int main()
 			break;
 
 
-			///TODO: Add more cases for the other action types
-
-
 		case EXIT:
 			break;
 		}
