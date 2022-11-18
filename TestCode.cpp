@@ -345,6 +345,39 @@ int main()
 			break;
 
 		//////////////////////////////////////////////////////////////////////
+		// COLORS MODE ACTIONS: after each color you get sent to Draw Mode tool bar
+		//////////////////////////////////////////////////////////////////////
+		case COLOUR_BLUE:
+			pOut->PrintMessage("Action: BLUE COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_BLACK:
+			pOut->PrintMessage("Action: BALCK COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_GREEN:
+			pOut->PrintMessage("Action: GREEN COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_ORANGE:
+			pOut->PrintMessage("Action: ORANGE COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_RED:
+			pOut->PrintMessage("Action: RED COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_YELLOW:
+			pOut->PrintMessage("Action: YELLOW COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		//////////////////////////////////////////////////////////////////////
 		// General Actions
 		//////////////////////////////////////////////////////////////////////
 
