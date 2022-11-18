@@ -2,29 +2,29 @@
 #include "Output.h"
 
 
-Input::Input(window* pW) 
+Input::Input(window* pW)
 {
 	pWind = pW; //point to the passed window
 }
 
-void Input::GetPointClicked(int &x, int &y) const
+void Input::GetPointClicked(int& x, int& y) const
 {
 	pWind->WaitMouseClick(x, y);	//Wait for mouse click
 }
 
-string Input::GetSrting(Output *pO) const 
+string Input::GetSrting(Output* pO) const
 {
 	string Label;
 	char Key;
-	while(1)
+	while (1)
 	{
 		pWind->WaitKeyPress(Key);
-		if(Key == 27 )	//ESCAPE key is pressed
+		if (Key == 27)	//ESCAPE key is pressed
 			return "";	//returns nothing as user has cancelled label
-		if(Key == 13 )	//ENTER key is pressed
+		if (Key == 13)	//ENTER key is pressed
 			return Label;
-		if((Key == 8) && (Label.size() >= 1))	//BackSpace is pressed
-			Label.resize(Label.size() -1 );			
+		if ((Key == 8) && (Label.size() >= 1))	//BackSpace is pressed
+			Label.resize(Label.size() - 1);
 		else
 			Label += Key;
 		if (pO)
@@ -34,15 +34,15 @@ string Input::GetSrting(Output *pO) const
 
 //This function reads the position where the user clicks to determine the desired action
 ActionType Input::GetUserAction() const
-{	
-	int x,y;
+{
+	int x, y;
 	pWind->WaitMouseClick(x, y);	//Get the coordinates of the user click
 
-	if(UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
+	if (UI.InterfaceMode == MODE_DRAW)	//GUI in the DRAW mode
 	{
 		//[1] If user clicks on the Toolbar
-		if ( y >= 0 && y < UI.ToolBarHeight)
-		{	
+		if (y >= 0 && y < UI.ToolBarHeight)
+		{
 			//Check whick Menu item was clicked
 			//==> This assumes that menu items are lined up horizontally <==
 			int ClickedItemOrder = (x / UI.MenuItemWidth);
@@ -51,18 +51,32 @@ ActionType Input::GetUserAction() const
 
 			switch (ClickedItemOrder)
 			{
-			case ITM_EXIT: return EXIT;	
-			
+			case ITM_EXIT:			  return EXIT;
+			case ITM_ADD_FIGURE:	  return ADD_FIGURE;
+			case ITM_SELECT_ONE:	  return SELECT;
+			case ITM_DRAWING_COLOR:   return CHOOSE_DRAWING_COLOR;
+			case ITM_FILL_COLOR:      return CHANGE_FILL_COLOR;
+			case ITM_DELETE_FIGURE:   return DELETE_FIGURE;
+			case ITM_MOVE_FIGURE:	  return MOVE_FIGURE;
+			case ITM_UNDO:			  return UNDO;
+			case ITM_REDO:			  return REDO;
+			case ITM_CLEAR_ALL:		  return CLEAR_ALL;
+			case ITM_START_RECORDING: return START_RECORDING;
+			case ITM_STOP_RECORDING:  return STOP_RECORDING;
+			case ITM_PLAY_RECORDING:  return PLAY_RECORDING;
+			case ITM_SAVE:			  return SAVE;
+			case ITM_LOAD:			  return LOAD;
+			case ITM_SWITCH:		  return TO_PLAY;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}
 
 		//[2] User clicks on the drawing area
-		if ( y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
+		if (y >= UI.ToolBarHeight && y < UI.height - UI.StatusBarHeight)
 		{
-			return DRAWING_AREA;	
+			return DRAWING_AREA;
 		}
-		
+
 		//[3] User clicks on the status bar
 		return STATUS;
 	}
@@ -72,11 +86,11 @@ ActionType Input::GetUserAction() const
 		//perform checks similar to Draw mode checks above
 		//and return the correspoding action
 		return TO_PLAY;	//just for now. This should be updated
-	}	
+	}
 
 }
 /////////////////////////////////
-	
+
 Input::~Input()
 {
 }
