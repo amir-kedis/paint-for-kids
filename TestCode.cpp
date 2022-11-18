@@ -297,6 +297,8 @@ int main()
 			pOut->CreateDrawToolBar();
 			break;
 
+		////////////////////////////////////////////////////////////
+
 		case STATUS:
 			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
 			break;
@@ -314,6 +316,20 @@ int main()
 			pOut->CreateShapesToolBar();
 			break;
 
+		//////////////////////////////////////////////////////////////////////
+		// Switches Actions
+		//////////////////////////////////////////////////////////////////////
+
+		case CHOOSE_DRAWING_COLOR:
+			pOut->PrintMessage("Action: Switch to COLOR Mode, creating simulation tool bar");
+			pOut->CreateColorsToolBar();
+			break;
+
+		case CHANGE_FILL_COLOR:
+			pOut->PrintMessage("Action: Switch to FILL COLOR Mode, creating simulation tool bar");
+			pOut->CreateColorsToolBar();
+			break;
+
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
 			pOut->CreateDrawToolBar();
@@ -323,6 +339,8 @@ int main()
 			pOut->PrintMessage("Action: Switch to Play Mode, creating Design tool bar");
 			pOut->CreatePlayToolBar();
 			break;
+
+		//////////////////////////////////////////////////////////////////////
 
 
 		case EXIT:
