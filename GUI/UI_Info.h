@@ -46,7 +46,11 @@ enum ShapesMenuItem //The items of the Shapes menu
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
 	// 
-	///TODO: Add items names here
+	ITM_RECT,				//Draw Rectangle item in menu
+	ITM_SQUARE,				//Draw Square item in menu
+	ITM_CIRCLE,				//Draw Circle item in menu
+	ITM_TRI,				//Draw Triangle item in menu
+	ITM_HEX,				//Draw Hexagon item in menu
 
 	SHAPES_ITM_COUNT
 };
