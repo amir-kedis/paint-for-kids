@@ -262,18 +262,139 @@ int main()
 
 	ActionType ActType;
 
-	///TODO:  
-	//You must add a case for each action (both Draw mode and Play mode actions)
-	//Add cases for the missing actions below
+	// TESTING GetUserAction
 	do
 	{
 		ActType = pIn->GetUserAction();
 
 		switch (ActType)
 		{
+		/////////////////////////////////////////////////////////
+		// SHPAES ACTION open DrawToolBar After to choose colors
+		/////////////////////////////////////////////////////////
 		case DRAW_RECT:
 			pOut->PrintMessage("Action: Draw a Rectangle , Click anywhere");
+			pOut->CreateDrawToolBar();
 			break;
+
+		case DRAW_CIRCLE:
+			pOut->PrintMessage("Action: Draw a Circle , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_SQUARE:
+			pOut->PrintMessage("Action: Draw a Square , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_TRI:
+			pOut->PrintMessage("Action: Draw a Triangle , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_HEX:
+			pOut->PrintMessage("Action: Draw a Hexagon , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		//////////////////////////////////////////////////////////////////////
+		// DRAW MODE ACTIONS
+		//////////////////////////////////////////////////////////////////////
+		case SELECT:
+			pOut->PrintMessage("Action: Select Figure , Click anywhere");
+			break;
+
+		case MOVE_FIGURE:
+			pOut->PrintMessage("Action: Move Figure , Click anywhere");
+			break;
+
+		case DELETE_FIGURE:
+			pOut->PrintMessage("Action: Delete Figure , Click anywhere");
+			break;
+
+		case UNDO:
+			pOut->PrintMessage("Action: UNDO last change , Click anywhere");
+			break;
+
+		case REDO:
+			pOut->PrintMessage("Action: REDO last change , Click anywhere");
+			break;
+
+		case CLEAR_ALL:
+			pOut->PrintMessage("Action: Clear All Changes , Click anywhere");
+			break;
+
+		case START_RECORDING:
+			pOut->PrintMessage("Action: Start Recording , Click anywhere");
+			break;
+
+		case PLAY_RECORDING:
+			pOut->PrintMessage("Action: Play Recording , Click anywhere");
+			break;
+
+		case STOP_RECORDING:
+			pOut->PrintMessage("Action: Stop Recording , Click anywhere");
+			break;
+
+		case SAVE:
+			pOut->PrintMessage("Action: Save Graph , Click anywhere");
+			break;
+
+		case LOAD:
+			pOut->PrintMessage("Action: LOAD GRAPH , Click anywhere");
+			break;
+
+		//////////////////////////////////////////////////////////////////////
+		// COLORS MODE ACTIONS: after each color you get sent to Draw Mode tool bar
+		//////////////////////////////////////////////////////////////////////
+		case COLOUR_BLUE:
+			pOut->PrintMessage("Action: BLUE COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_BLACK:
+			pOut->PrintMessage("Action: BALCK COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_GREEN:
+			pOut->PrintMessage("Action: GREEN COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_ORANGE:
+			pOut->PrintMessage("Action: ORANGE COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_RED:
+			pOut->PrintMessage("Action: RED COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		case COLOUR_YELLOW:
+			pOut->PrintMessage("Action: YELLOW COLOR , Click anywhere");
+			pOut->CreateDrawToolBar();
+			break;
+
+		//////////////////////////////////////////////////////////////////////
+		// PLAY MODE ACTIONS
+		//////////////////////////////////////////////////////////////////////
+		case PICK_BY_SHAPES:
+			pOut->PrintMessage("Action: PICK BY SHAPES , Click anywhere");
+			break;
+
+		case PICK_BY_COLORS:
+			pOut->PrintMessage("Action: PICK BY COLORS , Click anywhere");
+			break;
+
+		case PICK_BY_BOTH:
+			pOut->PrintMessage("Action: PICK BY BOTH SHAPES AND COLORS , Click anywhere");
+			break;
+
+		//////////////////////////////////////////////////////////////////////
+		// General Actions
+		//////////////////////////////////////////////////////////////////////
 
 		case STATUS:
 			pOut->PrintMessage("Action: a click on the Status Bar, Click anywhere");
@@ -287,6 +408,25 @@ int main()
 			pOut->PrintMessage("Action: a click on empty area in the Design Tool Bar, Click anywhere");
 			break;
 
+		//////////////////////////////////////////////////////////////////////
+		// Switches Actions
+		//////////////////////////////////////////////////////////////////////
+
+		case ADD_FIGURE:
+			pOut->PrintMessage("Action: Switch to Shapes Mode, creating simualtion tool bar");
+			pOut->CreateShapesToolBar();
+			break;
+
+		case CHOOSE_DRAWING_COLOR:
+			pOut->PrintMessage("Action: Switch to COLOR Mode, creating simulation tool bar");
+			pOut->CreateColorsToolBar();
+			break;
+
+		case CHANGE_FILL_COLOR:
+			pOut->PrintMessage("Action: Switch to FILL COLOR Mode, creating simulation tool bar");
+			pOut->CreateColorsToolBar();
+			break;
+
 		case TO_DRAW:
 			pOut->PrintMessage("Action: Switch to Draw Mode, creating simualtion tool bar");
 			pOut->CreateDrawToolBar();
@@ -297,9 +437,7 @@ int main()
 			pOut->CreatePlayToolBar();
 			break;
 
-
-			///TODO: Add more cases for the other action types
-
+		//////////////////////////////////////////////////////////////////////
 
 		case EXIT:
 			break;
