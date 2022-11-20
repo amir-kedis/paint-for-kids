@@ -14,7 +14,7 @@ Output::Output()
 
 	UI.StatusBarHeight = 50;
 	UI.ToolBarHeight = 50;
-	UI.MenuItemWidth = 50;
+	UI.MenuItemWidth = 65;
 
 	UI.DrawColor = BLUE;	//Drawing color
 	UI.FillColor = GREEN;	//Filling color
@@ -179,7 +179,7 @@ void Output::CreateColorsToolBar() const
 	UI.InterfaceMode = MODE_COLORS;
 
 	//Clears the toolbar before drawing the Icons
-	CreateToolBarBox();    
+	CreateToolBarBox();
 
 	//gets icons paths from images folder
 	string ColorsMenuItemImages[COLORS_ITM_COUNT];
@@ -288,7 +288,7 @@ void Output::DrawHexagon(Point P1, GfxInfo HexGfxInfo, bool selected) const
 	int xCoordinates[numberOfVertices]; //Array of x coordinates of hexagon vertices
 	int yCoordinates[numberOfVertices]; //Array of y coordinates of hexagon vertices
 
-	double theta = PI/6.0;
+	double theta = PI / 6.0;
 	for (int i = 0; i < numberOfVertices; i++)  //Loop to get all coordinates by resolution
 	{
 		xCoordinates[i] = round(P1.x + (radius * cos(theta)));
