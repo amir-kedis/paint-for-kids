@@ -1,0 +1,5 @@
+"team number", 7
+الاسم			id		sec	BN	Email
+اكرم هانى كرم سلام	,9220158	,1	,15	,Akram.sallam03@eng-st.cu.edu.eg 
+امير انور بخيت عوض	,9220166	,1	,16	,Amir.Awd03@eng-st.cu.edu.eg
+احمد حامد جابر 	,9220027	,1	,4	,Ahmed.Hamed03@eng-st.cu.edu.eg
