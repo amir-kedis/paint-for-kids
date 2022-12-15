@@ -35,12 +35,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	switch (ActType)
 	{
 		case ADD_FIGURE:
-			pAct = new AddFigureAction(this);
+			pAct = new AddFigureAction(this);   //Create a new Object from AddFigureAction class
 			break;
 	
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
-			pOut->CreateDrawToolBar();
+			pOut->CreateDrawToolBar();      //Return to the Draw Tool Bar after choosing Rectangle icon
 			break;
 
 		case EXIT:
