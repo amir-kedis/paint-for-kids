@@ -2,7 +2,7 @@
 #include "Actions\AddRectAction.h"
 #include "Actions\AddFigureAction.h"
 #include "Actions\AddHexAction.h"
-
+#include "Actions\AddTriangleAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -42,6 +42,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
 			pOut->CreateDrawToolBar();      //Return to the Draw Tool Bar after choosing Rectangle icon
+			break;
+		
+		case DRAW_TRI:
+			pAct = new AddTriangleAction(this);
+			pOut->CreateDrawToolBar();
 			break;
 
 		case DRAW_HEX:
