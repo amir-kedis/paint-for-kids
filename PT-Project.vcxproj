@@ -170,6 +170,7 @@
     <ClCompile Include="Figures\CHexagon.cpp" />
     <ClCompile Include="Figures\CRectangle.cpp" />
     <ClCompile Include="Actions\AddRectAction.cpp" />
+    <ClCompile Include="Figures\CTriangle.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="ApplicationManager.cpp" />
@@ -203,6 +204,7 @@
     <ClInclude Include="Figures\CRectangle.h" />
     <ClInclude Include="Actions\Action.h" />
     <ClInclude Include="Actions\AddRectAction.h" />
+    <ClInclude Include="Figures\CTriangle.h" />
     <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="GUI\UI_Info.h" />
