@@ -1,5 +1,6 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
+#include "Actions\AddFigureAction.h"
 
 
 //Constructor
@@ -29,12 +30,17 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType) 
 {
 	Action* pAct = NULL;
-	
+
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+		case ADD_FIGURE:
+			pAct = new AddFigureAction(this);
+			break;
+	
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
+			pOut->CreateDrawToolBar();
 			break;
 
 		case EXIT:
