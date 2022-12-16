@@ -131,6 +131,7 @@
     <ClCompile Include="Actions\AddCircleAction.cpp" />
     <ClCompile Include="Actions\AddFigureAction.cpp" />
     <ClCompile Include="Actions\AddHexAction.cpp" />
+    <ClCompile Include="Actions\AddSquareAction.cpp" />
     <ClCompile Include="Actions\AddTriangleAction.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Actions\AddCircleAction.h" />
     <ClInclude Include="Actions\AddFigureAction.h" />
     <ClInclude Include="Actions\AddHexAction.h" />
+    <ClInclude Include="Actions\AddSquareAction.h" />
     <ClInclude Include="Actions\AddTriangleAction.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
