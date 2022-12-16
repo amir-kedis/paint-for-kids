@@ -268,9 +268,8 @@
     <ClInclude Include="Actions\AddTriangleAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-ter>Figures Classes</Filter>
-    <ClInclude Include="Actions\AddSquareAction.h">
-      <Filter>Action Classes</Filter>
+    <ClInclude Include="Figures\CSquare.h">
+      <Filter>Figures Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
