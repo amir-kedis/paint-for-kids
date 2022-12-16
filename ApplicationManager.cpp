@@ -5,6 +5,7 @@
 #include "Actions\AddTriangleAction.h"
 #include "Actions\AddSquareAction.h"
 #include "Actions\AddCircleAction.h"
+#include "Actions\SaveAction.h"
 
 
 //Constructor
@@ -66,6 +67,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pAct = new AddHexAction(this);
 			pOut->CreateDrawToolBar();
 			break;
+
+		case SAVE:
+			pAct = new SaveAction(this);
+			pOut->CreateDrawToolBar();
+			break;
+
 
 		case EXIT:
 			///create ExitAction here

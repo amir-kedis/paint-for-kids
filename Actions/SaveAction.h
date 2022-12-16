@@ -1,7 +1,7 @@
 #pragma once
 #include "Action.h"
-class SaveAction :
-    public Action
+class SaveAction : public Action
 {
+
 };
 
