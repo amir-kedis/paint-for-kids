@@ -1,6 +1,8 @@
 #include "ApplicationManager.h"
 #include "Actions\AddRectAction.h"
-
+#include "Actions\AddFigureAction.h"
+#include "Actions\AddHexAction.h"
+#include "Actions\AddTriangleAction.h"
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -29,12 +31,27 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType) 
 {
 	Action* pAct = NULL;
-	
+
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
+		case ADD_FIGURE:
+			pAct = new AddFigureAction(this);   //Create a new Object from AddFigureAction class
+			break;
+	
 		case DRAW_RECT:
 			pAct = new AddRectAction(this);
+			pOut->CreateDrawToolBar();      //Return to the Draw Tool Bar after choosing Rectangle icon
+			break;
+		
+		case DRAW_TRI:
+			pAct = new AddTriangleAction(this);
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_HEX:
+			pAct = new AddHexAction(this);
+			pOut->CreateDrawToolBar();
 			break;
 
 		case EXIT:
