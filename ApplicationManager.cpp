@@ -93,9 +93,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Save all figures to a file
-void ApplicationManager::SaveAll()
+void ApplicationManager::SaveAll(ofstream &OutFile)
 {
-
+	for (int i = 0; i < FigCount; i++)
+		FigList[i]->Save(OutFile);
 }
 
 //==================================================================================//
