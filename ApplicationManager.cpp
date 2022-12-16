@@ -3,6 +3,9 @@
 #include "Actions\AddFigureAction.h"
 #include "Actions\AddHexAction.h"
 #include "Actions\AddTriangleAction.h"
+#include "Actions\AddSquareAction.h"
+#include "Actions\AddCircleAction.h"
+
 
 //Constructor
 ApplicationManager::ApplicationManager()
@@ -44,6 +47,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pOut->CreateDrawToolBar();      //Return to the Draw Tool Bar after choosing Rectangle icon
 			break;
 		
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			pOut->CreateDrawToolBar();
+			break;
+
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			pOut->CreateDrawToolBar();
+			break;
+
 		case DRAW_TRI:
 			pAct = new AddTriangleAction(this);
 			pOut->CreateDrawToolBar();
