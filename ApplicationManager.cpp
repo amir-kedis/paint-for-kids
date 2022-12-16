@@ -70,7 +70,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case SAVE:
 			pAct = new SaveAction(this);
-			pOut->CreateDrawToolBar();
 			break;
 
 
@@ -91,6 +90,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////
+//Save all figures to a file
+void ApplicationManager::SaveAll()
+{
+
+}
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
