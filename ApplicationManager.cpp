@@ -96,6 +96,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 //Save all figures to a file
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
+	OutFile << CFigure::ColorToString(pOut->getCrntDrawColor()) << '\t'
+		<< CFigure::ColorToString(pOut->getCrntFillColor()) << '\n' << FigCount << '\n';
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Save(OutFile, i+1);
 }

@@ -27,7 +27,7 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr;
 }
 
-string CFigure::ColorToString(color Color) const
+string CFigure::ColorToString(color Color)
 {
 	if (Color == BLACK)
 		return "BLACK";
