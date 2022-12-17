@@ -5,9 +5,7 @@
 #include <fstream>
 
 SaveAction::SaveAction(ApplicationManager* pApp) : Action(pApp)
-{
-	pManager = pApp;
-}
+{}
 
 void SaveAction::ReadActionParameters()
 {
@@ -37,7 +35,7 @@ void SaveAction::Execute()
 		return;
 	}
 
-	pManager->SaveAll();
+	pManager->SaveAll(OutputFile);
 
 	OutputFile.close();
 }

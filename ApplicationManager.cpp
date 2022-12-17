@@ -96,7 +96,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
 	for (int i = 0; i < FigCount; i++)
-		FigList[i]->Save(OutFile);
+		FigList[i]->Save(OutFile, i+1);
 }
 
 //==================================================================================//
