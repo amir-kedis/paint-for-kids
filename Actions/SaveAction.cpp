@@ -27,7 +27,8 @@ void SaveAction::Execute()
 	ReadActionParameters();
 
 	//Create and Open file
-	ofstream OutputFile(FileName);
+	ofstream OutputFile;
+	OutputFile.open(FileName, ios::out);
 	if (!OutputFile.is_open())
 	{
 		Output* pOut = pManager->GetOutput();

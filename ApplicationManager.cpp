@@ -70,6 +70,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 		case SAVE:
 			pAct = new SaveAction(this);
+			pOut->CreateDrawToolBar();
 			break;
 
 

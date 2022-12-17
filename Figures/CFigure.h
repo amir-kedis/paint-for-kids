@@ -31,8 +31,8 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-	string ColorToString(color)const;
-	virtual void Save(ofstream &OutFile, int ID) = 0;	//Save the figure parameters to the file
+	string ColorToString(color) const;
+	virtual void Save(ofstream &OutFile, int ID) const = 0;	//Save the figure parameters to the file
 	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
