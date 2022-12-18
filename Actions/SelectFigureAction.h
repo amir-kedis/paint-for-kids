@@ -7,9 +7,8 @@ class SelectFigureAction :
 	public Action
 {
 	Point SelectPoint;
-	GfxInfo* SelectedFigureInformation;
 public:
-	SelectFigureAction(ApplicationManager* pApp, GfxInfo* SelectedFigureGfx);
+	SelectFigureAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
 	virtual void Execute();
 };

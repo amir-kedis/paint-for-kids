@@ -1,10 +1,10 @@
 #include "SelectFigureAction.h"
 
-SelectFigureAction::SelectFigureAction(ApplicationManager* pApp, GfxInfo* SelectedFigureGfx)
+SelectFigureAction::SelectFigureAction(ApplicationManager* pApp)
 	:Action(pApp)
 {
 	// initailize class figure info with info provided by user
-	SelectedFigureInformation = SelectedFigureGfx;
+	//SelectedFigureInformation = SelectedFigureGfx;
 	SelectPoint = Point();
 }
 
@@ -24,6 +24,9 @@ void SelectFigureAction::ReadActionParameters()
 		pOut->PrintMessage("Please Choose A valid Point: (Click on The Drawing Area)");
 		pIn->GetPointClicked(SelectPoint.x, SelectPoint.y);
 	}
+
+	// clear the statusbar after correctly having a point
+	pOut->ClearStatusBar();
 }
 
 void SelectFigureAction::Execute()
