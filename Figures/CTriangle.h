@@ -12,6 +12,8 @@ private:
 public:
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
+	double CalcArea(Point V1, Point V2, Point V3) const;
+	virtual bool IsInFigure(Point CheckPoint) const;
 };
 
 #endif
