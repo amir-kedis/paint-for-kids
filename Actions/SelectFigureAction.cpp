@@ -17,8 +17,20 @@ void SelectFigureAction::ReadActionParameters()
 	// Get Point From User
 	pOut->PrintMessage("Please Select a Figure");
 	pIn->GetPointClicked(SelectPoint.x, SelectPoint.y);
+
+	// Validate that the point is in The drawing area
+	while (SelectPoint.y < UI.StatusBarHeight || SelectPoint.y >(UI.height - UI.StatusBarHeight))
+	{
+		pOut->PrintMessage("Please Choose A valid Point: (Click on The Drawing Area)");
+		pIn->GetPointClicked(SelectPoint.x, SelectPoint.y);
+	}
 }
 
 void SelectFigureAction::Execute()
 {
+	// get Point From User
+	ReadActionParameters();
+
+
+
 }
