@@ -125,6 +125,10 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	// if didn't find point return NULL
 	return NULL;
 }
+void ApplicationManager::SetSelectedFig(CFigure* selcetFig)
+{
+	SelectedFig = selcetFig;
+}
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
