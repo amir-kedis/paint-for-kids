@@ -108,6 +108,21 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	//Add your code here to search for a figure given a point x,y	
 	//Remember that ApplicationManager only calls functions do NOT implement it.
 
+	Point CheckPoint;
+	CheckPoint.x = x;
+	CheckPoint.y = y;
+
+	/// Decided to loop from the end to get the latest shaped in the list
+	for (size_t i = FigCount - 1; i >= 0; i--)
+	{
+		// if point is in fig return fig and exit
+		if (FigList[i]->IsInFigure(CheckPoint))
+		{
+			return FigList[i];
+		}
+	}
+
+	// if didn't find point return NULL
 	return NULL;
 }
 //==================================================================================//
