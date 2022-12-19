@@ -124,7 +124,7 @@ void ApplicationManager::SetSelectedFig(CFigure* selcetFig)
 {
 	SelectedFig = selcetFig;
 }
-CFigure* ApplicationManager::() const
+CFigure* ApplicationManager::GetSelectedFig() const
 {
 	return SelectedFig;
 }
