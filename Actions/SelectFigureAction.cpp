@@ -44,6 +44,7 @@ void SelectFigureAction::Execute()
 		return;
 	}
 
+	// If The Figure was Selected Unselect it and if it wasn't reverse
 	if (!ClickedFigure->IsSelected())
 	{
 		ClickedFigure->SetSelected(true);

@@ -103,19 +103,12 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 ////////////////////////////////////////////////////////////////////////////////////
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
-	//If a figure is found return a pointer to it.
-	//if this point (x,y) does not belong to any figure return NULL
-
-
-	//Add your code here to search for a figure given a point x,y	
-	//Remember that ApplicationManager only calls functions do NOT implement it.
-
 	Point CheckPoint;
 	CheckPoint.x = x;
 	CheckPoint.y = y;
 
 	/// Decided to loop from the end to get the latest shaped in the list
-	for (int i = 0; i < FigCount; i++)
+	for (int i = FigCount - 1; i >= 0; i--)
 	{
 		// if point is in fig return fig and exit
 		if (FigList[i]->IsInFigure(CheckPoint))
@@ -130,6 +123,16 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 void ApplicationManager::SetSelectedFig(CFigure* selcetFig)
 {
 	SelectedFig = selcetFig;
+}
+void ApplicationManager::UnselectAll(CFigure* CurrntFigure)
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i] != CurrntFigure)
+		{
+			FigList[i]->SetSelected(false);
+		}
+	}
 }
 //==================================================================================//
 //							Interface Management Functions							//
