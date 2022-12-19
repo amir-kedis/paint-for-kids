@@ -35,7 +35,7 @@ void SelectFigureAction::Execute()
 	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 
-	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.x);
+	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.y);
 
 	// If Clicked in No Figure
 	if (ClickedFigure == NULL)
