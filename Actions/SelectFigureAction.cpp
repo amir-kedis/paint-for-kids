@@ -55,4 +55,5 @@ void SelectFigureAction::Execute()
 		ClickedFigure->SetSelected(false);
 		pManager->SetSelectedFig(NULL);
 	}
+	pManager->UnselectAll(ClickedFigure);
 }
