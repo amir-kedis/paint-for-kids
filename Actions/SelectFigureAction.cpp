@@ -4,7 +4,6 @@ SelectFigureAction::SelectFigureAction(ApplicationManager* pApp)
 	:Action(pApp)
 {
 	// initailize class figure info with info provided by user
-	//SelectedFigureInformation = SelectedFigureGfx;
 	SelectPoint = Point();
 }
 
