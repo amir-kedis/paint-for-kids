@@ -18,13 +18,13 @@ private:
 	CFigure* SelectedFig; //Pointer to the selected figure
 
 	//Pointers to Input and Output classes
-	Input *pIn;
-	Output *pOut;
+	Input* pIn;
+	Output* pOut;
 
-public:	
-	ApplicationManager(); 
+public:
+	ApplicationManager();
 	~ApplicationManager();
-	
+
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
@@ -33,11 +33,14 @@ public:
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
-	CFigure *GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
-		
+	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
+	void SetSelectedFig(CFigure* selcetFig);
+	CFigure* GetSelectedFig() const;
+	void UnselectAll(CFigure* CurrntFigure);
+
 	// -- Interface Management Functions
-	Input *GetInput() const; //Return pointer to the input
-	Output *GetOutput() const; //Return pointer to the output
+	Input* GetInput() const; //Return pointer to the input
+	Output* GetOutput() const; //Return pointer to the output
 	void UpdateInterface() const;	//Redraws all the drawing window	
 };
 

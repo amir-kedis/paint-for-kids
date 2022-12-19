@@ -12,17 +12,21 @@ protected:
 	int ID;		//Each figure has an ID
 	bool Selected;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
-	
+
 	/// Add more parameters if needed.
 
 public:
 	CFigure(GfxInfo FigureGfxInfo);
 
+	/////////////////////////////////////////////
+	//## Select Fuctionality Related Methods
+	/////////////////////////////////////////////
 	void SetSelected(bool s);	//select/unselect the figure
 	bool IsSelected() const;	//check whether fig is selected
+	virtual bool IsInFigure(Point CheckPoint) const = 0;
 
-	virtual void Draw(Output* pOut) const  = 0 ;		//Draw the figure
-	
+	virtual void Draw(Output* pOut) const = 0;		//Draw the figure
+
 	void ChngDrawClr(color Dclr);	//changes the figure's drawing color
 	void ChngFillClr(color Fclr);	//changes the figure's filling color
 

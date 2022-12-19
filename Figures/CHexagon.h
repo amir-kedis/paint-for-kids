@@ -7,10 +7,13 @@ class CHexagon : public CFigure
 {
 private:
 	Point Center;
+	const double radius;
+
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
-	virtual void Draw(Output* pOut) const;
-	virtual void Save(ofstream& OutFile, int ID) const;
+	virtual void Draw(Output *pOut) const;
+	virtual void Save(ofstream &OutFile, int ID) const;
+	virtual bool IsInFigure(Point CheckPoint) const;
 };
 
 #endif
