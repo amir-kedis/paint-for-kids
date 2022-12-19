@@ -19,7 +19,7 @@ bool CSquare::IsInFigure(Point CheckPoint) const
 	// same applies for y
 
 	bool XIsInShape = (CheckPoint.x >= (Center.x - 50) && CheckPoint.x <= (Center.x + 50));
-	bool YIsInShape = (CheckPoint.y >= (Center.y - 50) && CheckPoint.y <= (Center.x + 50));
+	bool YIsInShape = (CheckPoint.y >= (Center.y - 50) && CheckPoint.y <= (Center.y + 50));
 
 	return (XIsInShape && YIsInShape);
 }
