@@ -33,7 +33,25 @@ void SelectFigureAction::Execute()
 {
 	// get Point From User
 	ReadActionParameters();
+	Output* pOut = pManager->GetOutput();
 
+	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.x);
 
+	// If Clicked in No Figure
+	if (ClickedFigure == NULL)
+	{
+		pOut->PrintMessage("No Figure To Be Selected");
+		return;
+	}
 
+	if (!ClickedFigure->IsSelected())
+	{
+		ClickedFigure->SetSelected(true);
+		pManager->SetSelectedFig(ClickedFigure);
+	}
+	else
+	{
+		ClickedFigure->SetSelected(false);
+		pManager->SetSelectedFig(NULL);
+	}
 }

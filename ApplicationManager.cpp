@@ -17,6 +17,8 @@ ApplicationManager::ApplicationManager()
 
 	FigCount = 0;
 
+	SelectedFig = NULL;
+
 	//Create an array of figure pointers and set them to NULL		
 	for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL;
@@ -113,7 +115,7 @@ CFigure* ApplicationManager::GetFigure(int x, int y) const
 	CheckPoint.y = y;
 
 	/// Decided to loop from the end to get the latest shaped in the list
-	for (size_t i = FigCount - 1; i >= 0; i--)
+	for (int i = 0; i < FigCount; i++)
 	{
 		// if point is in fig return fig and exit
 		if (FigList[i]->IsInFigure(CheckPoint))
