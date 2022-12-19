@@ -124,6 +124,10 @@ void ApplicationManager::SetSelectedFig(CFigure* selcetFig)
 {
 	SelectedFig = selcetFig;
 }
+CFigure* ApplicationManager::() const
+{
+	return SelectedFig;
+}
 void ApplicationManager::UnselectAll(CFigure* CurrntFigure)
 {
 	for (int i = 0; i < FigCount; i++)
