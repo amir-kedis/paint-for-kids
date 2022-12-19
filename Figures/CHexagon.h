@@ -10,6 +10,7 @@ private:
 public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
+	virtual void Save(ofstream& OutFile, int ID) const;
 };
 
 #endif

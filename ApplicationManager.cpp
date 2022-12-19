@@ -5,6 +5,7 @@
 #include "Actions\AddTriangleAction.h"
 #include "Actions\AddSquareAction.h"
 #include "Actions\AddCircleAction.h"
+#include "Actions\SaveAction.h"
 
 
 //Constructor
@@ -67,6 +68,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			pOut->CreateDrawToolBar();
 			break;
 
+		case SAVE:
+			pAct = new SaveAction(this);
+			pOut->CreateDrawToolBar();
+			break;
+
+
 		case EXIT:
 			///create ExitAction here
 			
@@ -84,6 +91,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = NULL;
 	}
 }
+
+////////////////////////////////////////////////////////////////////////////////////
+//Save all figures to a file
+void ApplicationManager::SaveAll(ofstream &OutFile)
+{
+	OutFile << CFigure::ColorToString(pOut->getCrntDrawColor()) << '\t'
+		<< CFigure::ColorToString(pOut->getCrntFillColor()) << '\n' << FigCount << '\n';
+	for (int i = 0; i < FigCount; i++)
+		FigList[i]->Save(OutFile, i+1);
+}
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
