@@ -26,6 +26,17 @@ void CSquare::Save(ofstream& OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CSquare::Load(ifstream& InFile)
+{
+	string Color;
+	InFile >> Center.x >> Center.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color != "NO_FILL")
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CSquare::IsInFigure(Point CheckPoint) const
 {
 	// to check of point is in square:

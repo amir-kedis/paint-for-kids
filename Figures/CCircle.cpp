@@ -19,8 +19,8 @@ void CCircle::Draw(Output* pOut) const
 
 void CCircle::Save(ofstream& OutFile, int ID) const
 {
-	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
-		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
+	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t' 
+		<< P.x << '\t' << P.y << '\t' << ColorToString(FigGfxInfo.DrawClr) << '\t';
 	if (FigGfxInfo.isFilled)
 		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
@@ -30,7 +30,7 @@ void CCircle::Save(ofstream& OutFile, int ID) const
 void CCircle::Load(ifstream& InFile)
 {
 	string Color;
-	InFile >> Center.x >> Center.y >> Color;
+	InFile >> Center.x >> Center.y >> P.x >> P.y >> Color;
 	ChngDrawClr(StringToColor(Color));
 	InFile >> Color;
 	if(Color != "NO_FILL")
