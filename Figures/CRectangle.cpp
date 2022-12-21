@@ -27,6 +27,17 @@ void CRectangle::Save(ofstream &OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CRectangle::Load(ifstream& InFile)
+{
+	string Color;
+	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color != "NO_FILL")
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CRectangle::IsInFigure(Point CheckPoint) const
 {
 	// Check if x between corners

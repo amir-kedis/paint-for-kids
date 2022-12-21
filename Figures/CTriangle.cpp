@@ -29,6 +29,18 @@ void CTriangle::Save(ofstream& OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CTriangle::Load(ifstream& InFile)
+{
+	string Color;
+	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y
+		>> Corner3.x >> Corner3.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color != "NO_FILL")
+		ChngFillClr(StringToColor(Color));
+}
+
 double CTriangle::CalcArea(Point V1, Point V2, Point V3) const
 {
 	return abs((V1.x * (V2.y - V3.y) + V2.x * (V3.y - V1.y) + V3.x * (V1.y - V2.y)) / 2.0);
