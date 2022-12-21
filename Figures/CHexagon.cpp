@@ -34,7 +34,9 @@ void CHexagon::Load(ifstream& InFile)
 	InFile >> Center.x >> Center.y >> Color;
 	ChngDrawClr(StringToColor(Color));
 	InFile >> Color;
-	if (Color != "NO_FILL")
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
 		ChngFillClr(StringToColor(Color));
 }
 

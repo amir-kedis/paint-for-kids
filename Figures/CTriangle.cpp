@@ -37,7 +37,9 @@ void CTriangle::Load(ifstream& InFile)
 		>> Corner3.x >> Corner3.y >> Color;
 	ChngDrawClr(StringToColor(Color));
 	InFile >> Color;
-	if (Color != "NO_FILL")
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
 		ChngFillClr(StringToColor(Color));
 }
 

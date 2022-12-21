@@ -34,7 +34,9 @@ void CRectangle::Load(ifstream& InFile)
 	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Color;
 	ChngDrawClr(StringToColor(Color));
 	InFile >> Color;
-	if (Color != "NO_FILL")
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
 		ChngFillClr(StringToColor(Color));
 }
 

@@ -34,7 +34,7 @@ void CCircle::Load(ifstream& InFile)
 	ChngDrawClr(StringToColor(Color));
 	InFile >> Color;
 	if (Color == "NO_FILL")
-		FigGfxInfo.isFilled == false;
+		FigGfxInfo.isFilled = false;
 	else
 		ChngFillClr(StringToColor(Color));
 }
