@@ -35,6 +35,11 @@ void LoadAction::Execute()
 		pOut->PrintMessage("Couldn't open file...");
 		return;
 	}
-
+	string str;
+	InputFile >> str;
+	UI.DrawColor = ApplicationManager::StringToColor(str);
+	InputFile >> str;
+	UI.FillColor = ApplicationManager::StringToColor(str);
+	
 	InputFile.close();
 }

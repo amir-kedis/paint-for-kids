@@ -43,3 +43,19 @@ string CFigure::ColorToString(color Color)
 		return "BLUE";
 }
 
+color CFigure::StringToColor(string str)
+{
+	if (str == "BLACK")
+		return BLACK;
+	if (str == "YELLOW")
+		return YELLOW;
+	if (str == "ORANGE")
+		return ORANGE;
+	if (str == "RED")
+		return RED;
+	if (str == "GREEN")
+		return GREEN;
+	if (str == "BLUE")
+		return BLUE;
+}
+

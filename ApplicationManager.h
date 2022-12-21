@@ -30,6 +30,7 @@ public:
 	ActionType GetUserAction() const;
 	void ExecuteAction(ActionType) ; //Creates an action and executes it
 	void SaveAll(ofstream& OutFile);
+	static color StringToColor(string str);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

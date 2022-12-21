@@ -106,6 +106,23 @@ void ApplicationManager::SaveAll(ofstream &OutFile)
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Save(OutFile, i + 1);
 }
+////////////////////////////////////////////////////////////////////////////////////
+// Convert string into Color class
+color ApplicationManager::StringToColor(string str)
+{
+	if (str == "BLACK")
+		return BLACK;
+	if (str == "YELLOW")
+		return YELLOW;
+	if (str == "ORANGE")
+		return ORANGE;
+	if (str == "RED")
+		return RED;
+	if (str == "GREEN")
+		return GREEN;
+	if (str == "BLUE")
+		return BLUE;
+}
 
 //==================================================================================//
 //						Figures Management Functions								//
