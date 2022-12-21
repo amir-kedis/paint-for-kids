@@ -38,6 +38,13 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr;
 }
 
+void CFigure::Save(ofstream& OutFile, int ID) const
+{
+	OutFile << ColorToString(UI.DrawColor) << '\t'
+		<< ColorToString(UI.FillColor) << '\n'
+		<< ID << '\n';
+}
+
 string CFigure::ColorToString(color Color)
 {
 	if (Color == BLACK)

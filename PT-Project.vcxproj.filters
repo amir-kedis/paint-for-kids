@@ -166,7 +166,6 @@
     <ClCompile Include="Actions\AddSquareAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\AddCircleAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
@@ -179,7 +178,12 @@
     <ClCompile Include="Actions\SelectFigureAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\LoadAction.cpp" />
+    <ClCompile Include="Actions\LoadAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\SaveAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -285,7 +289,6 @@
     <ClInclude Include="Figures\CSquare.h">
       <Filter>Figures Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\AddCircleAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -298,7 +301,12 @@
     <ClInclude Include="Actions\SelectFigureAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="Actions\LoadAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\SaveAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

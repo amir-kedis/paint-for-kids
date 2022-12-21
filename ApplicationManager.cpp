@@ -6,6 +6,7 @@
 #include "Actions\AddSquareAction.h"
 #include "Actions\AddCircleAction.h"
 #include "Actions\SaveAction.h"
+#include "Actions\LoadAction.h"
 #include "Actions/SelectFigureAction.h"
 
 // Constructor
@@ -63,11 +64,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pOut->CreateDrawToolBar();
 		break;
 
-	case SAVE:
-		pAct = new SaveAction(this);
-		pOut->CreateDrawToolBar();
-		break;
-
 	case DRAW_TRI:
 		pAct = new AddTriangleAction(this);
 		pOut->CreateDrawToolBar();
@@ -75,6 +71,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case DRAW_HEX:
 		pAct = new AddHexAction(this);
+		pOut->CreateDrawToolBar();
+		break;
+
+	case SAVE:
+		pAct = new SaveAction(this);
+		pOut->CreateDrawToolBar();
+		break;
+
+	case LOAD:
+		pAct = new LoadAction(this);
 		pOut->CreateDrawToolBar();
 		break;
 
