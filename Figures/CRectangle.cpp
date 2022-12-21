@@ -30,6 +30,7 @@ void CRectangle::Save(ofstream &OutFile, int ID) const
 
 void CRectangle::Load(ifstream& InFile)
 {
+	Selected = false;
 	string Color;
 	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Color;
 	ChngDrawClr(StringToColor(Color));

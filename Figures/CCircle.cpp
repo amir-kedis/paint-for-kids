@@ -29,6 +29,7 @@ void CCircle::Save(ofstream& OutFile, int ID) const
 
 void CCircle::Load(ifstream& InFile)
 {
+	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> P.x >> P.y >> Color;
 	ChngDrawClr(StringToColor(Color));

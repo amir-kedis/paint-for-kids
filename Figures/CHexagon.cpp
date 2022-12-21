@@ -30,6 +30,7 @@ void CHexagon::Save(ofstream &OutFile, int ID) const
 
 void CHexagon::Load(ifstream& InFile)
 {
+	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> Color;
 	ChngDrawClr(StringToColor(Color));
