@@ -1,10 +1,16 @@
 #include "CTriangle.h"
 
-CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	ID = id;
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
+}
+
+CTriangle::CTriangle(int id) :CFigure(id)
+{
+	ID = id;
 }
 
 void CTriangle::Draw(Output* pOut) const

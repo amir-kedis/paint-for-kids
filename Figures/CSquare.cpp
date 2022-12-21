@@ -1,10 +1,15 @@
 #include "CSquare.h"
 
-CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	ID = id;
 	Center = P1;
 }
 
+CSquare::CSquare(int id) :CFigure(id)
+{
+	ID = id;
+}
 
 void CSquare::Draw(Output* pOut) const
 {

@@ -37,9 +37,20 @@ void LoadAction::Execute()
 	}
 	string str;
 	InputFile >> str;
+	// Takes current draw and fill colors
 	UI.DrawColor = ApplicationManager::StringToColor(str);
 	InputFile >> str;
 	UI.FillColor = ApplicationManager::StringToColor(str);
+	int n;
+	// Takes number of figures
+	InputFile >> n;
+	CFigure* NewFig = NULL;
+	for (int i = 0; i < n; i++)
+	{
+		InputFile >> str;
+		if (str == "CIRCLE")
+			NewFig = new CCircle;
+	}
 	
 	InputFile.close();
 }
