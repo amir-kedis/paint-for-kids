@@ -70,6 +70,8 @@ void LoadAction::Execute()
 		NewFig->Load(InputFile);
 
 		pManager->AddFigure(NewFig);
+
+		NewFig->Draw(pManager->GetOutput());
 	}
 	
 	InputFile.close();
