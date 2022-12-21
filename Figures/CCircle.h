@@ -9,9 +9,11 @@ private:
 	Point Center;
 	Point P;    //Any point on the circle
 public:
-	CCircle(Point, Point, GfxInfo FigureGfxInfo);
+	CCircle(Point, Point, GfxInfo FigureGfxInfo, int id);
+	CCircle(int id);
 	virtual void Draw(Output* pOut) const;
 	virtual void Save(ofstream& OutFile, int ID) const;
+	virtual void Load(ifstream& InFile);
 	virtual bool IsInFigure(Point CheckPoint) const;
 };
 

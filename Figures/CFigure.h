@@ -16,7 +16,10 @@ protected:
 	/// Add more parameters if needed.
 
 public:
-	CFigure(GfxInfo FigureGfxInfo);
+	CFigure(GfxInfo FigureGfxInfo, int id);
+	CFigure(int id);
+
+	int Get_ID() const;
 
 	/////////////////////////////////////////////
 	//## Select Fuctionality Related Methods
@@ -36,8 +39,9 @@ public:
 	///Decide the parameters that you should pass to each function	
 
 	static string ColorToString(color);
-	virtual void Save(ofstream &OutFile, int ID) const = 0;	//Save the figure parameters to the file
-	//virtual void Load(ifstream &Infile) = 0;	//Load the figure parameters to the file
+	static color StringToColor(string);
+	virtual void Save(ofstream &OutFile, int ID) const;	//Save the figure parameters to the file
+	virtual void Load(ifstream &InFile) = 0;	//Load the figure parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };

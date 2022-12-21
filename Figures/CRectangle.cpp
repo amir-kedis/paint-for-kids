@@ -1,9 +1,15 @@
 #include "CRectangle.h"
 
-CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
+CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) : CFigure(FigureGfxInfo, id)
 {
+	ID = id;
 	Corner1 = P1;
 	Corner2 = P2;
+}
+
+CRectangle::CRectangle(int id) : CFigure(id)
+{
+	ID = id;
 }
 
 void CRectangle::Draw(Output *pOut) const
@@ -21,6 +27,20 @@ void CRectangle::Save(ofstream &OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CRectangle::Load(ifstream& InFile)
+{
+	Selected = false;
+	string Color;
+	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CRectangle::IsInFigure(Point CheckPoint) const
 {
 	// Check if x between corners

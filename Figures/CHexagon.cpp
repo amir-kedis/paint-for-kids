@@ -1,8 +1,14 @@
 #include "CHexagon.h"
 
-CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo), radius(80)
+CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id), radius(80)
 {
+	ID = id;
 	Center = P;
+}
+
+CHexagon::CHexagon(int id) :CFigure(id), radius(80)
+{
+	ID = id;
 }
 
 
@@ -21,6 +27,20 @@ void CHexagon::Save(ofstream &OutFile, int ID) const
 	else 
 		OutFile << "NO_FILL\n";
 }
+
+void CHexagon::Load(ifstream& InFile)
+{
+	Selected = false;
+	string Color;
+	InFile >> Center.x >> Center.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CHexagon::IsInFigure(Point CheckPoint) const
 {
 	//////////////////////////////////////////////////////////////////////////

@@ -1,10 +1,15 @@
 #include "CSquare.h"
 
-CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	ID = id;
 	Center = P1;
 }
 
+CSquare::CSquare(int id) :CFigure(id)
+{
+	ID = id;
+}
 
 void CSquare::Draw(Output* pOut) const
 {
@@ -21,6 +26,20 @@ void CSquare::Save(ofstream& OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CSquare::Load(ifstream& InFile)
+{
+	Selected = false;
+	string Color;
+	InFile >> Center.x >> Center.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CSquare::IsInFigure(Point CheckPoint) const
 {
 	// to check of point is in square:

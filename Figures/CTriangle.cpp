@@ -1,10 +1,16 @@
 #include "CTriangle.h"
 
-CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
+CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
 {
+	ID = id;
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
+}
+
+CTriangle::CTriangle(int id) :CFigure(id)
+{
+	ID = id;
 }
 
 void CTriangle::Draw(Output* pOut) const
@@ -23,6 +29,21 @@ void CTriangle::Save(ofstream& OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CTriangle::Load(ifstream& InFile)
+{
+	Selected = false;
+	string Color;
+	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y
+		>> Corner3.x >> Corner3.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
+		ChngFillClr(StringToColor(Color));
+}
+
 double CTriangle::CalcArea(Point V1, Point V2, Point V3) const
 {
 	return abs((V1.x * (V2.y - V3.y) + V2.x * (V3.y - V1.y) + V3.x * (V1.y - V2.y)) / 2.0);
