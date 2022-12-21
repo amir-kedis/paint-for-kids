@@ -26,6 +26,17 @@ void CCircle::Save(ofstream& OutFile, int ID) const
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CCircle::Load(ifstream& InFile)
+{
+	string Color;
+	InFile >> Center.x >> Center.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if(Color != "NO_FILL")
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CCircle::IsInFigure(Point CheckPoint) const
 {
 	// radius is distance between center and point in parameter

@@ -27,6 +27,17 @@ void CHexagon::Save(ofstream &OutFile, int ID) const
 	else 
 		OutFile << "NO_FILL\n";
 }
+
+void CHexagon::Load(ifstream& InFile)
+{
+	string Color;
+	InFile >> Center.x >> Center.y >> Color;
+	ChngDrawClr(StringToColor(Color));
+	InFile >> Color;
+	if (Color != "NO_FILL")
+		ChngFillClr(StringToColor(Color));
+}
+
 bool CHexagon::IsInFigure(Point CheckPoint) const
 {
 	//////////////////////////////////////////////////////////////////////////
