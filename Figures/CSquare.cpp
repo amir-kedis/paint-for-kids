@@ -3,7 +3,7 @@
 
 CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	ID = (long)time(NULL);
+	ID = (long)time(NULL) % 1000000;
 	Center = P1;
 }
 

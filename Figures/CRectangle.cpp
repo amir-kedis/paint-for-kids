@@ -3,7 +3,7 @@
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
-	ID = (long)time(NULL);
+	ID = (long)time(NULL) % 1000000;
 	Corner1 = P1;
 	Corner2 = P2;
 }

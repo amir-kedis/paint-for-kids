@@ -3,7 +3,7 @@
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
-	ID = (long)time(NULL);
+	ID = (long)time(NULL) % 1000000;
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
 }
@@ -35,3 +35,5 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr;
 }
 
+void CFigure::Save(ofstream& OutFile) const
+{}

@@ -29,6 +29,8 @@ void SaveAction::Execute()
 	//Create and Open file
 	ofstream OutputFile;
 	OutputFile.open(FileName, ios::out);
+
+	//Check if file is open correctly
 	if (!OutputFile.is_open())
 	{
 		Output* pOut = pManager->GetOutput();
@@ -36,6 +38,7 @@ void SaveAction::Execute()
 		return;
 	}
 
+	//Save all figures
 	pManager->SaveAll(OutputFile);
 
 	OutputFile.close();

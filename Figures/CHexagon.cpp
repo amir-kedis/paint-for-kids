@@ -3,7 +3,7 @@
 
 CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo), radius(80)
 {
-	ID = (long)time(NULL);
+	ID = (long)time(NULL) % 1000000;
 	Center = P;
 }
 

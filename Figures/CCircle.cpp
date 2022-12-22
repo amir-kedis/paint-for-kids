@@ -3,7 +3,7 @@
 
 CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
-	ID = (long)time(NULL);
+	ID = (long)time(NULL) % 1000000;
 	Center = P1;
 	P = P2;
 }
