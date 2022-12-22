@@ -1,4 +1,5 @@
 #include "CTriangle.h"
+#include "../ApplicationManager.h"
 
 CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -24,9 +25,10 @@ void CTriangle::Save(ofstream& OutFile) const
 {
 	OutFile << "TRIANG \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'
 		<< Corner2.x << '\t' << Corner2.y << '\t' << Corner3.x << '\t' << Corner3.y << '\t'
-		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
+		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
 		OutFile << "NO_FILL\n";
 }
@@ -36,12 +38,15 @@ void CTriangle::Load(ifstream& InFile)
 	string Color;
 	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y
 		>> Corner3.x >> Corner3.y >> Color;
-	ChngDrawClr(StringToColor(Color));
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
 	InFile >> Color;
+
 	if (Color == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
-		ChngFillClr(StringToColor(Color));
+		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
 double CTriangle::CalcArea(Point V1, Point V2, Point V3) const

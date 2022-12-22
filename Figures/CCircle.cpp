@@ -1,4 +1,5 @@
 #include "CCircle.h"
+#include "../ApplicationManager.h"
 
 CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
@@ -21,9 +22,10 @@ void CCircle::Draw(Output* pOut) const
 void CCircle::Save(ofstream& OutFile) const
 {
 	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t' 
-		<< P.x << '\t' << P.y << '\t' << ColorToString(FigGfxInfo.DrawClr) << '\t';
+		<< P.x << '\t' << P.y << '\t' << ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
 		OutFile << "NO_FILL\n";
 }
@@ -32,12 +34,15 @@ void CCircle::Load(ifstream& InFile)
 {
 	string Color;
 	InFile >> Center.x >> Center.y >> P.x >> P.y >> Color;
-	ChngDrawClr(StringToColor(Color));
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
 	InFile >> Color;
+
 	if (Color == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
-		ChngFillClr(StringToColor(Color));
+		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
 bool CCircle::IsInFigure(Point CheckPoint) const

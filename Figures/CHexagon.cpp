@@ -1,4 +1,5 @@
 #include "CHexagon.h"
+#include "../ApplicationManager.h"
 
 CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo), radius(80)
 {
@@ -22,9 +23,10 @@ void CHexagon::Draw(Output* pOut) const
 void CHexagon::Save(ofstream &OutFile) const
 {
 	OutFile << "HEXAGON\t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
-		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
+		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile <<  ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else 
 		OutFile << "NO_FILL\n";
 }
@@ -33,12 +35,15 @@ void CHexagon::Load(ifstream& InFile)
 {
 	string Color;
 	InFile >> Center.x >> Center.y >> Color;
-	ChngDrawClr(StringToColor(Color));
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
 	InFile >> Color;
+
 	if (Color == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
-		ChngFillClr(StringToColor(Color));
+		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
 bool CHexagon::IsInFigure(Point CheckPoint) const

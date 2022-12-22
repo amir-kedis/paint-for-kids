@@ -36,8 +36,6 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-	static string ColorToString(color);
-	static color StringToColor(string);
 	virtual void Save(ofstream &OutFile) const;	//Save the figure parameters to the file
 	virtual void Load(ifstream &InFile) = 0;	//Load the figure parameters to the file
 
