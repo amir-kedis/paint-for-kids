@@ -1,8 +1,9 @@
 #include "CFigure.h"
+#include <ctime>
 
-CFigure::CFigure(GfxInfo FigureGfxInfo, int id)
+CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL);
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
 	Selected = false;
 }
@@ -10,11 +11,6 @@ CFigure::CFigure(GfxInfo FigureGfxInfo, int id)
 CFigure::CFigure(int id)
 {
 	ID = id;
-}
-
-int CFigure::Get_ID() const
-{
-	return ID;
 }
 
 void CFigure::SetSelected(bool s)

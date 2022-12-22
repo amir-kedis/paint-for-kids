@@ -9,7 +9,7 @@ private:
 	Point Center;
 	Point P;    //Any point on the circle
 public:
-	CCircle(Point, Point, GfxInfo FigureGfxInfo, int id);
+	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 	CCircle(int id);
 	virtual void Draw(Output* pOut) const;
 	virtual void Save(ofstream& OutFile, int ID) const;

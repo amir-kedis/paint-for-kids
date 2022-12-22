@@ -1,8 +1,8 @@
 #include "CRectangle.h"
 
-CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) : CFigure(FigureGfxInfo, id)
+CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL);
 	Corner1 = P1;
 	Corner2 = P2;
 }

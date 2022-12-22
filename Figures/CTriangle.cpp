@@ -1,8 +1,8 @@
 #include "CTriangle.h"
 
-CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
+CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL);
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;

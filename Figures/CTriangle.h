@@ -10,7 +10,7 @@ private:
 	Point Corner2;
 	Point Corner3;
 public:
-	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo, int id);
+	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	CTriangle(int id);
 	virtual void Draw(Output* pOut) const;
 	virtual void Save(ofstream& OutFile, int ID) const;

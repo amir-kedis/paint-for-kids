@@ -110,7 +110,7 @@ void ApplicationManager::SaveAll(ofstream &OutFile)
 			<< CFigure::ColorToString(pOut->getCrntFillColor()) << '\n'
 			<< FigCount << '\n';
 	for (int i = 0; i < FigCount; i++)
-		FigList[i]->Save(OutFile, i + 1);
+		FigList[i]->Save(OutFile);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 // Convert string into Color class

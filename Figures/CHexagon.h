@@ -10,7 +10,7 @@ private:
 	const double radius;
 
 public:
-	CHexagon(Point, GfxInfo FigureGfxInfo, int id);
+	CHexagon(Point, GfxInfo FigureGfxInfo);
 	CHexagon(int id);
 	virtual void Draw(Output *pOut) const;
 	virtual void Save(ofstream &OutFile, int ID) const;

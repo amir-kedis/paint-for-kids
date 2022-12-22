@@ -16,10 +16,8 @@ protected:
 	/// Add more parameters if needed.
 
 public:
-	CFigure(GfxInfo FigureGfxInfo, int id);
+	CFigure(GfxInfo FigureGfxInfo);
 	CFigure(int id);
-
-	int Get_ID() const;
 
 	/////////////////////////////////////////////
 	//## Select Fuctionality Related Methods

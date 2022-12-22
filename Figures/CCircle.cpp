@@ -1,8 +1,8 @@
 #include "CCircle.h"
 
-CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) : CFigure(FigureGfxInfo, id)
+CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL);
 	Center = P1;
 	P = P2;
 }
