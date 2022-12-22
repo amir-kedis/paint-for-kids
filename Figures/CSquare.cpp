@@ -1,14 +1,16 @@
 #include "CSquare.h"
+#include "../ApplicationManager.h"
 
-CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
+CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL) % 1000000;
 	Center = P1;
 }
 
 CSquare::CSquare(int id) :CFigure(id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CSquare::Draw(Output* pOut) const
@@ -17,27 +19,30 @@ void CSquare::Draw(Output* pOut) const
 	pOut->DrawSquare(Center, FigGfxInfo, Selected);
 }
 
-void CSquare::Save(ofstream& OutFile, int ID) const
+void CSquare::Save(ofstream& OutFile) const
 {
 	OutFile << "SQUARE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
-		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
+		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
 		OutFile << "NO_FILL\n";
 }
 
 void CSquare::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> Color;
-	ChngDrawClr(StringToColor(Color));
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
 	InFile >> Color;
+
 	if (Color == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
-		ChngFillClr(StringToColor(Color));
+		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
 bool CSquare::IsInFigure(Point CheckPoint) const

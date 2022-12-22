@@ -1,8 +1,9 @@
 #include "CTriangle.h"
+#include "../ApplicationManager.h"
 
-CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo, int id) :CFigure(FigureGfxInfo, id)
+CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL) % 1000000;
 	Corner1 = P1;
 	Corner2 = P2;
 	Corner3 = P3;
@@ -11,6 +12,7 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo, int id
 CTriangle::CTriangle(int id) :CFigure(id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CTriangle::Draw(Output* pOut) const
@@ -19,29 +21,32 @@ void CTriangle::Draw(Output* pOut) const
 	pOut->DrawTriangle(Corner1, Corner2, Corner3, FigGfxInfo, Selected);
 }
 
-void CTriangle::Save(ofstream& OutFile, int ID) const
+void CTriangle::Save(ofstream& OutFile) const
 {
 	OutFile << "TRIANG \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'
 		<< Corner2.x << '\t' << Corner2.y << '\t' << Corner3.x << '\t' << Corner3.y << '\t'
-		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
+		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
 		OutFile << "NO_FILL\n";
 }
 
 void CTriangle::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y
 		>> Corner3.x >> Corner3.y >> Color;
-	ChngDrawClr(StringToColor(Color));
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
 	InFile >> Color;
+
 	if (Color == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
-		ChngFillClr(StringToColor(Color));
+		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
 double CTriangle::CalcArea(Point V1, Point V2, Point V3) const

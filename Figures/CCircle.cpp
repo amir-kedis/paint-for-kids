@@ -1,14 +1,16 @@
 #include "CCircle.h"
+#include "../ApplicationManager.h"
 
-CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo, int id) : CFigure(FigureGfxInfo, id)
+CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
-	ID = id;
+	ID = (long)time(NULL) % 1000000;
 	Center = P1;
 	P = P2;
 }
 CCircle::CCircle(int id) : CFigure(id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CCircle::Draw(Output* pOut) const
@@ -17,27 +19,30 @@ void CCircle::Draw(Output* pOut) const
 	pOut->DrawCircle(Center, P, FigGfxInfo, Selected);
 }
 
-void CCircle::Save(ofstream& OutFile, int ID) const
+void CCircle::Save(ofstream& OutFile) const
 {
 	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t' 
-		<< P.x << '\t' << P.y << '\t' << ColorToString(FigGfxInfo.DrawClr) << '\t';
+		<< P.x << '\t' << P.y << '\t' << ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
 		OutFile << "NO_FILL\n";
 }
 
 void CCircle::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> P.x >> P.y >> Color;
-	ChngDrawClr(StringToColor(Color));
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
 	InFile >> Color;
+
 	if (Color == "NO_FILL")
 		FigGfxInfo.isFilled = false;
 	else
-		ChngFillClr(StringToColor(Color));
+		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
 bool CCircle::IsInFigure(Point CheckPoint) const

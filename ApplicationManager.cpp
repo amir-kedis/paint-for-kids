@@ -106,11 +106,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 // Save all figures to a file
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
-	OutFile << CFigure::ColorToString(pOut->getCrntDrawColor()) << '\t'
-			<< CFigure::ColorToString(pOut->getCrntFillColor()) << '\n'
+	OutFile << ColorToString(pOut->getCrntDrawColor()) << '\t'
+			<< ColorToString(pOut->getCrntFillColor()) << '\n'
 			<< FigCount << '\n';
 	for (int i = 0; i < FigCount; i++)
-		FigList[i]->Save(OutFile, i + 1);
+		FigList[i]->Save(OutFile);
 }
 ////////////////////////////////////////////////////////////////////////////////////
 // Convert string into Color class
@@ -128,6 +128,24 @@ color ApplicationManager::StringToColor(string str)
 		return GREEN;
 	if (str == "BLUE")
 		return BLUE;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// Convert Color class into string
+string ApplicationManager::ColorToString(color Color)
+{
+	if (Color == BLACK)
+		return "BLACK";
+	if (Color == YELLOW)
+		return "YELLOW";
+	if (Color == ORANGE)
+		return "ORANGE";
+	if (Color == RED)
+		return "RED";
+	if (Color == GREEN)
+		return "GREEN";
+	if (Color == BLUE)
+		return "BLUE";
 }
 
 //==================================================================================//

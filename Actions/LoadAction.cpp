@@ -44,13 +44,19 @@ void LoadAction::Execute()
 	}
 	string str;
 	InputFile >> str;
+
 	// Takes current draw and fill colors
 	UI.DrawColor = ApplicationManager::StringToColor(str);
 	InputFile >> str;
 	UI.FillColor = ApplicationManager::StringToColor(str);
+
 	int n, id;
+
 	// Takes number of figures
 	InputFile >> n;
+
+	// Create New figure and loop through all figures in the file 
+	// To read its parameters then load it
 	CFigure* NewFig = NULL;
 	for (int i = 0; i < n; i++)
 	{
@@ -70,8 +76,6 @@ void LoadAction::Execute()
 		NewFig->Load(InputFile);
 
 		pManager->AddFigure(NewFig);
-
-		NewFig->Draw(pManager->GetOutput());
 	}
 	
 	InputFile.close();
