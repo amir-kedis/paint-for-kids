@@ -11,6 +11,7 @@ CFigure::CFigure(GfxInfo FigureGfxInfo)
 CFigure::CFigure(int id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CFigure::SetSelected(bool s)
@@ -32,13 +33,6 @@ void CFigure::ChngFillClr(color Fclr)
 {
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr;
-}
-
-void CFigure::Save(ofstream& OutFile, int ID) const
-{
-	OutFile << ColorToString(UI.DrawColor) << '\t'
-		<< ColorToString(UI.FillColor) << '\n'
-		<< ID << '\n';
 }
 
 string CFigure::ColorToString(color Color)

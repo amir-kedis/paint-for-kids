@@ -38,7 +38,7 @@ public:
 
 	static string ColorToString(color);
 	static color StringToColor(string);
-	virtual void Save(ofstream &OutFile, int ID) const;	//Save the figure parameters to the file
+	virtual void Save(ofstream &OutFile) const;	//Save the figure parameters to the file
 	virtual void Load(ifstream &InFile) = 0;	//Load the figure parameters to the file
 
 	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar

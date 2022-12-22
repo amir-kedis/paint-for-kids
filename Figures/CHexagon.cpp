@@ -9,6 +9,7 @@ CHexagon::CHexagon(Point P, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo), radi
 CHexagon::CHexagon(int id) :CFigure(id), radius(80)
 {
 	ID = id;
+	Selected = false;
 }
 
 
@@ -18,7 +19,7 @@ void CHexagon::Draw(Output* pOut) const
 	pOut->DrawHexagon(Center, FigGfxInfo, Selected);
 }
 
-void CHexagon::Save(ofstream &OutFile, int ID) const
+void CHexagon::Save(ofstream &OutFile) const
 {
 	OutFile << "HEXAGON\t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
 		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
@@ -30,7 +31,6 @@ void CHexagon::Save(ofstream &OutFile, int ID) const
 
 void CHexagon::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> Color;
 	ChngDrawClr(StringToColor(Color));

@@ -12,7 +12,7 @@ public:
 	CCircle(Point, Point, GfxInfo FigureGfxInfo);
 	CCircle(int id);
 	virtual void Draw(Output* pOut) const;
-	virtual void Save(ofstream& OutFile, int ID) const;
+	virtual void Save(ofstream& OutFile) const;
 	virtual void Load(ifstream& InFile);
 	virtual bool IsInFigure(Point CheckPoint) const;
 };

@@ -9,6 +9,7 @@ CCircle::CCircle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxI
 CCircle::CCircle(int id) : CFigure(id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CCircle::Draw(Output* pOut) const
@@ -17,7 +18,7 @@ void CCircle::Draw(Output* pOut) const
 	pOut->DrawCircle(Center, P, FigGfxInfo, Selected);
 }
 
-void CCircle::Save(ofstream& OutFile, int ID) const
+void CCircle::Save(ofstream& OutFile) const
 {
 	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t' 
 		<< P.x << '\t' << P.y << '\t' << ColorToString(FigGfxInfo.DrawClr) << '\t';
@@ -29,7 +30,6 @@ void CCircle::Save(ofstream& OutFile, int ID) const
 
 void CCircle::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> P.x >> P.y >> Color;
 	ChngDrawClr(StringToColor(Color));

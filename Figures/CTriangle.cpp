@@ -11,6 +11,7 @@ CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigu
 CTriangle::CTriangle(int id) :CFigure(id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CTriangle::Draw(Output* pOut) const
@@ -19,7 +20,7 @@ void CTriangle::Draw(Output* pOut) const
 	pOut->DrawTriangle(Corner1, Corner2, Corner3, FigGfxInfo, Selected);
 }
 
-void CTriangle::Save(ofstream& OutFile, int ID) const
+void CTriangle::Save(ofstream& OutFile) const
 {
 	OutFile << "TRIANG \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'
 		<< Corner2.x << '\t' << Corner2.y << '\t' << Corner3.x << '\t' << Corner3.y << '\t'
@@ -32,7 +33,6 @@ void CTriangle::Save(ofstream& OutFile, int ID) const
 
 void CTriangle::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y
 		>> Corner3.x >> Corner3.y >> Color;

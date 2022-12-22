@@ -9,6 +9,7 @@ CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 CSquare::CSquare(int id) :CFigure(id)
 {
 	ID = id;
+	Selected = false;
 }
 
 void CSquare::Draw(Output* pOut) const
@@ -17,7 +18,7 @@ void CSquare::Draw(Output* pOut) const
 	pOut->DrawSquare(Center, FigGfxInfo, Selected);
 }
 
-void CSquare::Save(ofstream& OutFile, int ID) const
+void CSquare::Save(ofstream& OutFile) const
 {
 	OutFile << "SQUARE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
 		<< ColorToString(FigGfxInfo.DrawClr) << '\t';
@@ -29,7 +30,6 @@ void CSquare::Save(ofstream& OutFile, int ID) const
 
 void CSquare::Load(ifstream& InFile)
 {
-	Selected = false;
 	string Color;
 	InFile >> Center.x >> Center.y >> Color;
 	ChngDrawClr(StringToColor(Color));
