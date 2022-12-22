@@ -37,6 +37,7 @@ public:
 	void SetSelectedFig(CFigure* selcetFig);
 	CFigure* GetSelectedFig() const;
 	void UnselectAll(CFigure* CurrntFigure);
+	void DeleteFigure(CFigure* SelectedFigure);
 
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input

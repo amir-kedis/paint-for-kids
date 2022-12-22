@@ -7,6 +7,7 @@
 #include "Actions\AddCircleAction.h"
 #include "Actions\SaveAction.h"
 #include "Actions/SelectFigureAction.h"
+#include "Actions\DeleteFigureAction.h"
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -44,6 +45,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SELECT:
 		pAct = new SelectFigureAction(this);
 		break;
+
+	case DELETE_FIGURE:
+		pAct = new DeleteFigureAction(this);
+		break;
+
 	case ADD_FIGURE:
 		pAct = new AddFigureAction(this); // Create a new Object from AddFigureAction class
 		break;
@@ -152,6 +158,24 @@ void ApplicationManager::UnselectAll(CFigure *CurrntFigure)
 		if (FigList[i] != CurrntFigure)
 		{
 			FigList[i]->SetSelected(false);
+		}
+	}
+}
+
+void ApplicationManager::DeleteFigure(CFigure* SelectedFigure)
+{
+	//loop through all figures
+	for (int i = 0; i < FigCount; i++)
+	{
+		//Search for the SelectedFig in FigList array
+		if (SelectedFigure == FigList[i])
+		{
+			//Change the SelectedFig data member to NULL
+			SelectedFig = NULL;
+			
+			FigList[i] = FigList[--FigCount];
+			FigList[FigCount] = NULL;
+			return;
 		}
 	}
 }

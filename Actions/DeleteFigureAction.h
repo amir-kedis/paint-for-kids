@@ -3,8 +3,14 @@
 
 #include "Action.h"
 
-class DeleteFigureAction
+class DeleteFigureAction: public Action
 {
+public:
+	DeleteFigureAction(ApplicationManager* pApp);
+	
+	virtual void ReadActionParameters();
+
+	virtual void Execute();
 };
 
 #endif
