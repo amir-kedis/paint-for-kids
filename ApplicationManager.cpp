@@ -42,7 +42,6 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
-	char DrawOrFill;
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
