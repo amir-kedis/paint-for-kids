@@ -6,6 +6,7 @@
 #include "Actions\AddSquareAction.h"
 #include "Actions\AddCircleAction.h"
 #include "Actions\SaveAction.h"
+#include "Actions\LoadAction.h"
 #include "Actions/SelectFigureAction.h"
 #include "Actions\DeleteFigureAction.h"
 
@@ -69,11 +70,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pOut->CreateDrawToolBar();
 		break;
 
-	case SAVE:
-		pAct = new SaveAction(this);
-		pOut->CreateDrawToolBar();
-		break;
-
 	case DRAW_TRI:
 		pAct = new AddTriangleAction(this);
 		pOut->CreateDrawToolBar();
@@ -81,6 +77,16 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case DRAW_HEX:
 		pAct = new AddHexAction(this);
+		pOut->CreateDrawToolBar();
+		break;
+
+	case SAVE:
+		pAct = new SaveAction(this);
+		pOut->CreateDrawToolBar();
+		break;
+
+	case LOAD:
+		pAct = new LoadAction(this);
 		pOut->CreateDrawToolBar();
 		break;
 
@@ -106,11 +112,46 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 // Save all figures to a file
 void ApplicationManager::SaveAll(ofstream &OutFile)
 {
-	OutFile << CFigure::ColorToString(pOut->getCrntDrawColor()) << '\t'
-			<< CFigure::ColorToString(pOut->getCrntFillColor()) << '\n'
+	OutFile << ColorToString(pOut->getCrntDrawColor()) << '\t'
+			<< ColorToString(pOut->getCrntFillColor()) << '\n'
 			<< FigCount << '\n';
 	for (int i = 0; i < FigCount; i++)
-		FigList[i]->Save(OutFile, i + 1);
+		FigList[i]->Save(OutFile);
+}
+////////////////////////////////////////////////////////////////////////////////////
+// Convert string into Color class
+color ApplicationManager::StringToColor(string str)
+{
+	if (str == "BLACK")
+		return BLACK;
+	if (str == "YELLOW")
+		return YELLOW;
+	if (str == "ORANGE")
+		return ORANGE;
+	if (str == "RED")
+		return RED;
+	if (str == "GREEN")
+		return GREEN;
+	if (str == "BLUE")
+		return BLUE;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// Convert Color class into string
+string ApplicationManager::ColorToString(color Color)
+{
+	if (Color == BLACK)
+		return "BLACK";
+	if (Color == YELLOW)
+		return "YELLOW";
+	if (Color == ORANGE)
+		return "ORANGE";
+	if (Color == RED)
+		return "RED";
+	if (Color == GREEN)
+		return "GREEN";
+	if (Color == BLUE)
+		return "BLUE";
 }
 
 //==================================================================================//

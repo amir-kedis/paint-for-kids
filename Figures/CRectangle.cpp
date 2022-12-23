@@ -1,9 +1,17 @@
 #include "CRectangle.h"
+#include "../ApplicationManager.h"
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo) : CFigure(FigureGfxInfo)
 {
+	ID = (long)time(NULL) % 1000000;
 	Corner1 = P1;
 	Corner2 = P2;
+}
+
+CRectangle::CRectangle(int id) : CFigure(id)
+{
+	ID = id;
+	Selected = false;
 }
 
 void CRectangle::Draw(Output *pOut) const
@@ -12,15 +20,33 @@ void CRectangle::Draw(Output *pOut) const
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
-void CRectangle::Save(ofstream &OutFile, int ID) const
+void CRectangle::Save(ofstream &OutFile) const
 {
 	OutFile << "RECT   \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'
-			<< Corner2.x << '\t' << Corner2.y << '\t' << ColorToString(FigGfxInfo.DrawClr) << '\t';
+			<< Corner2.x << '\t' << Corner2.y << '\t' 
+		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
+
 	if (FigGfxInfo.isFilled)
-		OutFile << ColorToString(FigGfxInfo.FillClr) << '\n';
+		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
 	else
 		OutFile << "NO_FILL\n";
 }
+
+void CRectangle::Load(ifstream& InFile)
+{
+	string Color;
+	InFile >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Color;
+
+	ChngDrawClr(ApplicationManager::StringToColor(Color));
+
+	InFile >> Color;
+
+	if (Color == "NO_FILL")
+		FigGfxInfo.isFilled = false;
+	else
+		ChngFillClr(ApplicationManager::StringToColor(Color));
+}
+
 bool CRectangle::IsInFigure(Point CheckPoint) const
 {
 	// Check if x between corners

@@ -1,8 +1,16 @@
 #include "CFigure.h"
+#include <ctime>
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
 {
+	ID = (long)time(NULL) % 1000000;
 	FigGfxInfo = FigureGfxInfo;	//Default status is non-filled.
+	Selected = false;
+}
+
+CFigure::CFigure(int id)
+{
+	ID = id;
 	Selected = false;
 }
 
@@ -27,19 +35,5 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr;
 }
 
-string CFigure::ColorToString(color Color)
-{
-	if (Color == BLACK)
-		return "BLACK";
-	if (Color == YELLOW)
-		return "YELLOW";
-	if (Color == ORANGE)
-		return "ORANGE";
-	if (Color == RED)
-		return "RED";
-	if (Color == GREEN)
-		return "GREEN";
-	if (Color == BLUE)
-		return "BLUE";
-}
-
+void CFigure::Save(ofstream& OutFile) const
+{}
