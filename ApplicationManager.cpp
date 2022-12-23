@@ -110,7 +110,32 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case COLOUR_BLACK:
-		pAct = new BlackColorAction(this);
+		pAct = new ChangeColorAction(this, DrawOrFill, BLACK);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_BLUE:
+		pAct = new ChangeColorAction(this, DrawOrFill, BLUE);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_RED:
+		pAct = new ChangeColorAction(this, DrawOrFill, RED);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_GREEN:
+		pAct = new ChangeColorAction(this, DrawOrFill, GREEN);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_ORANGE:
+		pAct = new ChangeColorAction(this, DrawOrFill, ORANGE);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_YELLOW:
+		pAct = new ChangeColorAction(this, DrawOrFill, YELLOW);
 		UI.InterfaceMode = MODE_DRAW;
 		break;
 
