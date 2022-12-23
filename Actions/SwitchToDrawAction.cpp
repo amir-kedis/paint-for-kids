@@ -18,6 +18,7 @@ void SwitchToDrawAction::Execute()
 
 
 	// load Draw Mode List From Saved File
-
+	LoadAction loadFile(pManager);
+	loadFile.LoadDrawModeList();
 
 }
