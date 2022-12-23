@@ -21,7 +21,7 @@ void CCircle::Draw(Output* pOut) const
 
 void CCircle::Save(ofstream& OutFile) const
 {
-	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t' 
+	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
 		<< P.x << '\t' << P.y << '\t' << ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
 
 	if (FigGfxInfo.isFilled)
@@ -55,4 +55,25 @@ bool CCircle::IsInFigure(Point CheckPoint) const
 
 	// Point is in circle if dist from it to center is less than the raduis
 	return CheckRaduis <= radiusOfCircle;
+}
+
+void CCircle::PrintInfo(Output* pOut)
+{
+	string Info = "Circle \t";
+	Info += "id: " + to_string(ID);
+	Info += " center: (" + to_string(Center.x) + ", " + to_string(Center.y) + ") ";
+	Info += " " + ApplicationManager::ColorToString(FigGfxInfo.DrawClr) + ' ';
+
+
+	if (FigGfxInfo.isFilled)
+	{
+		Info += ApplicationManager::ColorToString(FigGfxInfo.FillClr) + ' ';
+	}
+	else
+	{
+		Info += "NO_FILL ";
+
+	}
+
+	pOut->PrintMessage(Info);
 }

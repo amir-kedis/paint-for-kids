@@ -20,14 +20,14 @@ void CHexagon::Draw(Output* pOut) const
 	pOut->DrawHexagon(Center, FigGfxInfo, Selected);
 }
 
-void CHexagon::Save(ofstream &OutFile) const
+void CHexagon::Save(ofstream& OutFile) const
 {
 	OutFile << "HEXAGON\t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
 		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
 
 	if (FigGfxInfo.isFilled)
 		OutFile << ApplicationManager::ColorToString(FigGfxInfo.FillClr) << '\n';
-	else 
+	else
 		OutFile << "NO_FILL\n";
 }
 
@@ -75,4 +75,25 @@ bool CHexagon::IsInFigure(Point CheckPoint) const
 	double checkCorner = 2 * VertDist * HoriDist - VertDist * TransformedCheckPoint.x - HoriDist * TransformedCheckPoint.y;
 
 	return (checkCorner >= 0);
+}
+
+void CHexagon::PrintInfo(Output* pOut)
+{
+	string Info = "Hexagon \t";
+	Info += "id: " + to_string(ID);
+	Info += " center: (" + to_string(Center.x) + ", " + to_string(Center.y) + ") ";
+	Info += " " + ApplicationManager::ColorToString(FigGfxInfo.DrawClr) + ' ';
+
+
+	if (FigGfxInfo.isFilled)
+	{
+		Info += ApplicationManager::ColorToString(FigGfxInfo.FillClr) + ' ';
+	}
+	else
+	{
+		Info += "NO_FILL ";
+
+	}
+
+	pOut->PrintMessage(Info);
 }

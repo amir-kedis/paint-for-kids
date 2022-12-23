@@ -4,6 +4,7 @@
 #include "..\defs.h"
 #include "..\GUI\Output.h"
 #include <fstream>
+#include <string>
 
 //Base class for all figures
 class CFigure
@@ -36,10 +37,10 @@ public:
 
 	///Decide the parameters that you should pass to each function	
 
-	virtual void Save(ofstream &OutFile) const;	//Save the figure parameters to the file
-	virtual void Load(ifstream &InFile) = 0;	//Load the figure parameters to the file
+	virtual void Save(ofstream& OutFile) const;	//Save the figure parameters to the file
+	virtual void Load(ifstream& InFile) = 0;	//Load the figure parameters to the file
 
-	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
+	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };
 
 #endif
