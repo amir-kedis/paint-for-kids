@@ -8,7 +8,11 @@ public:
 	SaveAction(ApplicationManager*);
 
 	virtual void ReadActionParameters();
-
 	virtual void Execute();
+
+	/////////////////////////////////////////////
+	/// Switching Between Modes Related Function
+	/////////////////////////////////////////////
+	void SaveDrawModeList();
 };
 

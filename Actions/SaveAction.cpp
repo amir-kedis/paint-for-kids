@@ -43,3 +43,26 @@ void SaveAction::Execute()
 
 	OutputFile.close();
 }
+
+void SaveAction::SaveDrawModeList()
+{
+
+	string SaveDrawFileName = "DrawModeFigList";
+
+	//Create and Open file
+	ofstream OutputFile;
+	OutputFile.open(SaveDrawFileName, ios::out);
+
+	//Check if file is open correctly
+	if (!OutputFile.is_open())
+	{
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMessage("Couldn't Save Draw Mode List");
+		return;
+	}
+
+	//Save all figures
+	pManager->SaveAll(OutputFile);
+
+	OutputFile.close();
+}
