@@ -1,6 +1,7 @@
 #pragma once
 #include "Action.h"
 #include "../ApplicationManager.h"
+#include "SaveAction.h"
 class SwitchToPlayAction :
 	public Action
 {
