@@ -135,6 +135,7 @@
     <ClCompile Include="Actions\AddTriangleAction.cpp" />
     <ClCompile Include="Actions\DeleteFigureAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
+    <ClCompile Include="Actions\MoveFigureAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
     <ClCompile Include="Actions\SelectFigureAction.cpp" />
     <ClCompile Include="Actions\SwitchToPlayAction.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Actions\AddTriangleAction.h" />
     <ClInclude Include="Actions\DeleteFigureAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="Actions\MoveFigureAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />
     <ClInclude Include="Actions\SelectFigureAction.h" />
     <ClInclude Include="Actions\SwitchToPlayAction.h" />
