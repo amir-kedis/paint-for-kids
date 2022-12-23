@@ -38,7 +38,7 @@ ActionType ApplicationManager::GetUserAction() const
 // Creates an action and executes it
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
-	Action *pAct = NULL;
+	Action* pAct = NULL;
 
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
@@ -57,37 +57,38 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
-		pOut->CreateDrawToolBar(); // Return to the Draw Tool Bar after choosing Rectangle icon
+		//pOut->CreateDrawToolBar(); // Return to the Draw Tool Bar after choosing Rectangle icon
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case DRAW_SQUARE:
 		pAct = new AddSquareAction(this);
-		pOut->CreateDrawToolBar();
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case DRAW_CIRCLE:
 		pAct = new AddCircleAction(this);
-		pOut->CreateDrawToolBar();
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case DRAW_TRI:
 		pAct = new AddTriangleAction(this);
-		pOut->CreateDrawToolBar();
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case DRAW_HEX:
 		pAct = new AddHexAction(this);
-		pOut->CreateDrawToolBar();
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case SAVE:
 		pAct = new SaveAction(this);
-		pOut->CreateDrawToolBar();
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case LOAD:
 		pAct = new LoadAction(this);
-		pOut->CreateDrawToolBar();
+		UI.InterfaceMode = MODE_DRAW;
 		break;
 
 	case EXIT:
@@ -110,11 +111,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 ////////////////////////////////////////////////////////////////////////////////////
 // Save all figures to a file
-void ApplicationManager::SaveAll(ofstream &OutFile)
+void ApplicationManager::SaveAll(ofstream& OutFile)
 {
 	OutFile << ColorToString(pOut->getCrntDrawColor()) << '\t'
-			<< ColorToString(pOut->getCrntFillColor()) << '\n'
-			<< FigCount << '\n';
+		<< ColorToString(pOut->getCrntFillColor()) << '\n'
+		<< FigCount << '\n';
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Save(OutFile);
 }
@@ -159,13 +160,13 @@ string ApplicationManager::ColorToString(color Color)
 //==================================================================================//
 
 // Add a figure to the list of figures
-void ApplicationManager::AddFigure(CFigure *pFig)
+void ApplicationManager::AddFigure(CFigure* pFig)
 {
 	if (FigCount < MaxFigCount)
 		FigList[FigCount++] = pFig;
 }
 ////////////////////////////////////////////////////////////////////////////////////
-CFigure *ApplicationManager::GetFigure(int x, int y) const
+CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
 	Point CheckPoint;
 	CheckPoint.x = x;
@@ -184,15 +185,15 @@ CFigure *ApplicationManager::GetFigure(int x, int y) const
 	// if didn't find point return NULL
 	return NULL;
 }
-void ApplicationManager::SetSelectedFig(CFigure *selcetFig)
+void ApplicationManager::SetSelectedFig(CFigure* selcetFig)
 {
 	SelectedFig = selcetFig;
 }
-CFigure *ApplicationManager::GetSelectedFig() const
+CFigure* ApplicationManager::GetSelectedFig() const
 {
 	return SelectedFig;
 }
-void ApplicationManager::UnselectAll(CFigure *CurrntFigure)
+void ApplicationManager::UnselectAll(CFigure* CurrntFigure)
 {
 	for (int i = 0; i < FigCount; i++)
 	{
@@ -213,7 +214,7 @@ void ApplicationManager::DeleteFigure(CFigure* SelectedFigure)
 		{
 			//Change the SelectedFig data member to NULL
 			SelectedFig = NULL;
-			
+
 			FigList[i] = FigList[--FigCount];
 			FigList[FigCount] = NULL;
 			return;
@@ -229,15 +230,37 @@ void ApplicationManager::UpdateInterface() const
 {
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut); // Call Draw function (virtual member fn)
+
+	//////////////////////////////////////////////
+	/// Switch tool bar according to mode
+	/// This will also fix drawing over tool bar
+	//////////////////////////////////////////////
+	switch (UI.InterfaceMode)
+	{
+	case MODE_DRAW:
+		pOut->CreateDrawToolBar();
+		break;
+	case MODE_SHAPES:
+		pOut->CreateShapesToolBar();
+		break;
+	case MODE_COLORS:
+		pOut->CreateColorsToolBar();
+		break;
+	case MODE_PLAY:
+		pOut->CreatePlayToolBar();
+		break;
+	default:
+		break;
+	}
 }
 ////////////////////////////////////////////////////////////////////////////////////
 // Return a pointer to the input
-Input *ApplicationManager::GetInput() const
+Input* ApplicationManager::GetInput() const
 {
 	return pIn;
 }
 // Return a pointer to the output
-Output *ApplicationManager::GetOutput() const
+Output* ApplicationManager::GetOutput() const
 {
 	return pOut;
 }
