@@ -10,5 +10,10 @@ public:
 	virtual void ReadActionParameters();
 
 	virtual void Execute();
+
+	/////////////////////////////////////////////
+	/// Switching Between Modes Related Function
+	/////////////////////////////////////////////
+	void LoadDrawModeList();
 };
 

@@ -10,6 +10,7 @@
 #include "Actions/SelectFigureAction.h"
 #include "Actions\DeleteFigureAction.h"
 #include "Actions/SwitchToPlayAction.h"
+#include "Actions/SwitchToDrawAction.h"
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -94,6 +95,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case TO_PLAY:
 		pAct = new SwitchToPlayAction(this);
+		break;
+	case TO_DRAW:
+		pAct = new SwitchToDrawAction(this);
 		break;
 	case EXIT:
 		/// create ExitAction here
