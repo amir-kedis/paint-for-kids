@@ -11,6 +11,7 @@
 #include "Actions\DeleteFigureAction.h"
 #include "Actions/SwitchToPlayAction.h"
 #include "Actions/SwitchToDrawAction.h"
+#include "Actions/ChangeColorAction.h"
 
 // Constructor
 ApplicationManager::ApplicationManager()
