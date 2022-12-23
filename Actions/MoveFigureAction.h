@@ -5,6 +5,16 @@
 
 class MoveFigureAction: public Action
 {
+	Point Center;
+public:
+	MoveFigureAction(ApplicationManager* pApp);
+
+	//Reads the new center of the figure
+	virtual void ReadActionParameters();
+
+	//Call MoveFigure function in ApplicationManager
+	virtual void Execute();
+
 };
 
 #endif
