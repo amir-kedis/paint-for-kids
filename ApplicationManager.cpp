@@ -9,6 +9,7 @@
 #include "Actions\LoadAction.h"
 #include "Actions/SelectFigureAction.h"
 #include "Actions\DeleteFigureAction.h"
+#include "Actions/SwitchToPlayAction.h"
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -91,6 +92,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		UI.InterfaceMode = MODE_DRAW;
 		break;
 
+	case TO_PLAY:
+		pAct = new SwitchToPlayAction(this);
+		break;
 	case EXIT:
 		/// create ExitAction here
 
