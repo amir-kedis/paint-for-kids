@@ -56,3 +56,24 @@ bool CSquare::IsInFigure(Point CheckPoint) const
 
 	return (XIsInShape && YIsInShape);
 }
+
+void CSquare::PrintInfo(Output* pOut)
+{
+	string Info = "SQUARE \t";
+	Info += "id: " + to_string(ID);
+	Info += " center: (" + to_string(Center.x) + ", " + to_string(Center.y) + ") ";
+	Info += " " + ApplicationManager::ColorToString(FigGfxInfo.DrawClr) + ' ';
+
+
+	if (FigGfxInfo.isFilled)
+	{
+		Info += ApplicationManager::ColorToString(FigGfxInfo.FillClr) + ' ';
+	}
+	else
+	{
+		Info += "NO_FILL ";
+
+	}
+
+	pOut->PrintMessage(Info);
+}

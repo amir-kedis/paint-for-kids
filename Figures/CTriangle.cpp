@@ -73,4 +73,27 @@ bool CTriangle::IsInFigure(Point CheckPoint) const
 	return (TriangleArea == SubTriangleArea1 + SubTriangleArea2 + SubTriangleArea3);
 }
 
+void CTriangle::PrintInfo(Output* pOut)
+{
+	string Info = "Triangle \t";
+	Info += "id: " + to_string(ID);
+	Info += " corners: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + ") ";
+	Info += " (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + ") ";
+	Info += " (" + to_string(Corner3.x) + ", " + to_string(Corner3.y) + ") ";
+	Info += " " + ApplicationManager::ColorToString(FigGfxInfo.DrawClr) + ' ';
+
+
+	if (FigGfxInfo.isFilled)
+	{
+		Info += ApplicationManager::ColorToString(FigGfxInfo.FillClr) + ' ';
+	}
+	else
+	{
+		Info += "NO_FILL ";
+
+	}
+
+	pOut->PrintMessage(Info);
+}
+
 

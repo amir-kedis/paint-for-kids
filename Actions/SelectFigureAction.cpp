@@ -48,6 +48,7 @@ void SelectFigureAction::Execute()
 	{
 		ClickedFigure->SetSelected(true);
 		pManager->SetSelectedFig(ClickedFigure);
+		ClickedFigure->PrintInfo(pOut);
 	}
 	else
 	{

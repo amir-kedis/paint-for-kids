@@ -14,16 +14,16 @@ CRectangle::CRectangle(int id) : CFigure(id)
 	Selected = false;
 }
 
-void CRectangle::Draw(Output *pOut) const
+void CRectangle::Draw(Output* pOut) const
 {
 	// Call Output::DrawRect to draw a rectangle on the screen
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
-void CRectangle::Save(ofstream &OutFile) const
+void CRectangle::Save(ofstream& OutFile) const
 {
 	OutFile << "RECT   \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'
-			<< Corner2.x << '\t' << Corner2.y << '\t' 
+		<< Corner2.x << '\t' << Corner2.y << '\t'
 		<< ApplicationManager::ColorToString(FigGfxInfo.DrawClr) << '\t';
 
 	if (FigGfxInfo.isFilled)
@@ -56,4 +56,25 @@ bool CRectangle::IsInFigure(Point CheckPoint) const
 	bool YIsInShape = (CheckPoint.y >= min(Corner1.y, Corner2.y) && CheckPoint.y <= max(Corner1.y, Corner2.y));
 
 	return (XIsInShape && YIsInShape);
+}
+
+void CRectangle::PrintInfo(Output* pOut)
+{
+	string Info = "Rectangle \t";
+	Info += "id: " + to_string(ID);
+	Info += " corners: (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + ") (" + to_string(Corner1.x) + ", " + to_string(Corner1.y) + ") ";
+	Info += " " + ApplicationManager::ColorToString(FigGfxInfo.DrawClr) + ' ';
+
+
+	if (FigGfxInfo.isFilled)
+	{
+		Info += ApplicationManager::ColorToString(FigGfxInfo.FillClr) + ' ';
+	}
+	else
+	{
+		Info += "NO_FILL ";
+
+	}
+
+	pOut->PrintMessage(Info);
 }
