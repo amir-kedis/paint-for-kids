@@ -20,6 +20,21 @@ void CRectangle::Draw(Output* pOut) const
 	pOut->DrawRect(Corner1, Corner2, FigGfxInfo, Selected);
 }
 
+void CRectangle::Move(Point NewCenter)
+{
+	//Get the OldCenter Coordinates of the Rectangle 
+	double OldCenterX = (Corner1.x + Corner2.x) / 2.0;
+	double OldCenterY = (Corner1.y + Corner2.y) / 2.0;
+
+	//Shifting Corner1 by the difference between the NewCenter and the OldCenter
+	Corner1.x += (NewCenter.x - OldCenterX);
+	Corner1.y += (NewCenter.y - OldCenterY);
+
+	//Shifting Corner2 by the difference between the NewCenter and the OldCenter
+	Corner2.x += (NewCenter.x - OldCenterX);
+	Corner2.y += (NewCenter.y - OldCenterY);
+}
+
 void CRectangle::Save(ofstream& OutFile) const
 {
 	OutFile << "RECT   \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'

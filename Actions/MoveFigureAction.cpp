@@ -24,8 +24,24 @@ void MoveFigureAction::ReadActionParameters()
 
 void MoveFigureAction::Execute()
 {
-	//This action needs to read some parameters first
+	//Get a Pointer to the Output Interface
+	Output* pOut = pManager->GetOutput();
+
+	//Get a Pointer to the Selected Figure
+	CFigure* SelectedFig = pManager->GetSelectedFig();
+
+	//Check if there are no Selected Figures
+	if (SelectedFig == NULL)
+	{
+		pOut->PrintMessage("You Must Select A Figure");
+		return;
+	}
+
+	//Read the new Center from the user
 	ReadActionParameters();
+	
+	//Call MoveFigure function to move the selected figure
+	pManager->MoveFigure(SelectedFig, Center);
 
-
+	SelectedFig->SetSelected(false);
 }

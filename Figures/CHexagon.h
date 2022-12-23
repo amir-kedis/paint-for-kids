@@ -13,6 +13,7 @@ public:
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 	CHexagon(int id);
 	virtual void Draw(Output* pOut) const;
+	virtual void Move(Point NewCenter);
 	virtual void Save(ofstream& OutFile) const;
 	virtual void Load(ifstream& InFile);
 	virtual bool IsInFigure(Point CheckPoint) const;
