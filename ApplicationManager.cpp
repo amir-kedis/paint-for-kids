@@ -295,7 +295,7 @@ void ApplicationManager::PlayRecording()
 {
 	for (int i = 1; i < RecordActionCount; i++)
 	{
-		ActionList[i]->Execute();
+		ActionList[i]->play();
 		UpdateInterface();
 		Sleep(1000);
 	}
@@ -455,7 +455,7 @@ ApplicationManager::~ApplicationManager()
 	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 
-	for (int i = 0; i < RecordActionCount; i++)
+	for (int i = 1; i < RecordActionCount; i++)
 	{
 		delete ActionList[i];
 	}

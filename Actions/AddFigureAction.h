@@ -4,7 +4,7 @@
 #include "Action.h"
 
 //Add Figure Action class
-class AddFigureAction: public Action
+class AddFigureAction : public Action
 {
 public:
 	AddFigureAction(ApplicationManager* pApp);
@@ -14,6 +14,9 @@ public:
 
 	//Draw Shapes Tool Bar
 	virtual void Execute();
+
+	// Used For The Ability To Play The Action without further user input
+	virtual void play();
 };
 
 #endif

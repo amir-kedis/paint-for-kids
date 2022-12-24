@@ -28,3 +28,11 @@ void ChangeColorAction::Execute()
 			pManager->GetSelectedFig()->ChngFillClr(Color);
 	}
 }
+
+void ChangeColorAction::play()
+{
+	// Change The Tool Bar
+	UI.InterfaceMode = MODE_COLORS;
+
+	Execute();
+}
