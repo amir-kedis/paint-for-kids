@@ -18,10 +18,3 @@ void ClearAllAction::Execute()
 	//Call ClearAll function in ApplicationManager
 	pManager->ClearAll();
 }
-
-void ClearAllAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-	Execute();
-}

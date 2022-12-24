@@ -17,6 +17,7 @@
 #include "Actions/StopRecordingAction.h"
 #include "Actions/PlayRecordingAction.h"
 #include "Actions/ClearAllAction.h"
+#include "Actions/ExitAction.h"
 #include <Windows.h>
 
 
@@ -176,8 +177,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case EXIT:
-		/// create ExitAction here
-
+		pAct = new ExitAction(this);
 		break;
 
 	case STATUS: // a click on the status bar ==> no action
@@ -301,6 +301,29 @@ void ApplicationManager::PlayRecording()
 	}
 }
 
+void ApplicationManager::ClearRecording()
+{
+	for (int i = 1; i < RecordActionCount; i++)
+	{
+		delete ActionList[i];
+		ActionList[i] = NULL;
+		RecordActionCount = 0;
+	}
+	RecordActionCount = 0;
+	IsRecording = false;
+}
+
+void ApplicationManager::ClearFigList()
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+}
+
+
 //==================================================================================//
 //						Figures Management Functions								//
 //==================================================================================//
@@ -400,6 +423,8 @@ void ApplicationManager::ClearAll()
 	}
 	FigCount = 0;
 
+	ClearRecording();
+
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;
 }
@@ -455,10 +480,7 @@ ApplicationManager::~ApplicationManager()
 	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 
-	for (int i = 1; i < RecordActionCount; i++)
-	{
-		delete ActionList[i];
-	}
+	ClearRecording();
 
 	delete pIn;
 	delete pOut;
