@@ -35,5 +35,6 @@ void PlayRecordingAction::Execute()
 		pOut->PrintMessage("Playing has started (:");
 		pManager->ClearAll();
 		pManager->PlayRecording();
+		pOut->PrintMessage("Playing has Ended (:");
 	}
 }

@@ -198,8 +198,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			case DRAW_CIRCLE:
 			case DRAW_TRI:
 			case ADD_FIGURE:
-			case CHANGE_DRAWING_COLOR:
-			case CHANGE_FILL_COLOR:
 			case COLOUR_BLACK:
 			case COLOUR_YELLOW:
 			case COLOUR_ORANGE:
@@ -212,6 +210,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			case UNDO:
 			case REDO:
 				AddActionToRecording(pAct);
+			default:
+				break;
 			}
 		}
 		else // delete the action if we are not recording
