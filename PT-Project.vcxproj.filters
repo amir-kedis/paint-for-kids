@@ -196,7 +196,7 @@
     <ClCompile Include="Actions\SwitchToDrawAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\ChangeColorAction.cpp" />
+    <ClCompile Include="Actions\ChangeColorAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -334,7 +334,7 @@
     <ClInclude Include="Actions\SwitchToDrawAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\ChangeColorAction.h" />
+    <ClInclude Include="Actions\ChangeColorAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
