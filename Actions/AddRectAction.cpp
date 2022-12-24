@@ -6,17 +6,17 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-AddRectAction::AddRectAction(ApplicationManager * pApp):Action(pApp)
+AddRectAction::AddRectAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
-void AddRectAction::ReadActionParameters() 
-{	
+void AddRectAction::ReadActionParameters()
+{
 	//Get a Pointer to the Input / Output Interfaces
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
 
 	pOut->PrintMessage("New Rectangle: Click at first corner");
-	
+
 	//Read 1st corner and store in point P1
 	pIn->GetPointClicked(P1.x, P1.y);
 
@@ -35,13 +35,26 @@ void AddRectAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddRectAction::Execute() 
+void AddRectAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
-	
+
 	//Create a rectangle with the parameters read from the user
-	CRectangle *R=new CRectangle(P1, P2, RectGfxInfo);
+	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
+
+	//Add the rectangle to the list of figures
+	pManager->AddFigure(R);
+}
+
+void AddRectAction::play()
+{
+	// Change The Tool Bar
+	UI.InterfaceMode = MODE_DRAW;
+
+
+	//Create a rectangle with the parameters read from the user
+	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);

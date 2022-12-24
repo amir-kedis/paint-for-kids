@@ -41,3 +41,15 @@ void AddHexAction::Execute()
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(R);
 }
+
+void AddHexAction::play()
+{
+	// Change The Tool Bar
+	UI.InterfaceMode = MODE_DRAW;
+
+	//Create a hexagon with the parameters read from the user
+	CHexagon* R = new CHexagon(P1, HexGfxInfo);
+
+	//Add the hexagon to the list of figures
+	pManager->AddFigure(R);
+}

@@ -5,7 +5,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-ClearAllAction::ClearAllAction(ApplicationManager* pApp):Action(pApp)
+ClearAllAction::ClearAllAction(ApplicationManager* pApp) :Action(pApp)
 {
 }
 

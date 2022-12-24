@@ -3,7 +3,7 @@
 
 #include "Action.h"
 
-class ClearAllAction: public Action
+class ClearAllAction : public Action
 {
 public:
 	ClearAllAction(ApplicationManager* pApp);

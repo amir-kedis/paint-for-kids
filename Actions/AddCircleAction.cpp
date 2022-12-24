@@ -6,7 +6,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-AddCircleAction::AddCircleAction(ApplicationManager* pApp):Action(pApp)
+AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
 void AddCircleAction::ReadActionParameters()
@@ -38,6 +38,18 @@ void AddCircleAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
+
+	//Create a circle with the parameters read from the user
+	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);
+
+	//Add the circle to the list of figures
+	pManager->AddFigure(R);
+}
+
+void AddCircleAction::play()
+{
+	// Change The Tool Bar
+	UI.InterfaceMode = MODE_DRAW;
 
 	//Create a circle with the parameters read from the user
 	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);
