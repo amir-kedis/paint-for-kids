@@ -48,6 +48,8 @@ public:
 	bool GetRecordingStatus();
 	void SetRecordingStatus(bool status);
 	void AddActionToRecording(Action* pAct);
+	bool IsRecordActionListEmpty(); // Determines the status of the app so that recording can start or no
+	void PlayRecording();
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

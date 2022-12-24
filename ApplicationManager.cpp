@@ -14,6 +14,8 @@
 #include "Actions/ChangeColorAction.h"
 #include "Actions/StartRecordingAction.h"
 #include "Actions/StopRecordingAction.h"
+#include "Actions/PlayRecordingAction.h"
+#include <Windows.h>
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -158,6 +160,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case STOP_RECORDING:
 		pAct = new StopRecordingAction(this);
 		break;
+	case PLAY_RECORDING:
+		pAct = new PlayRecordingAction(this);
+		break;
 	case EXIT:
 		/// create ExitAction here
 
@@ -266,6 +271,21 @@ void ApplicationManager::AddActionToRecording(Action* pAct)
 	if (RecordActionCount < MaxRecordActionCount)
 	{
 		ActionList[RecordActionCount++] = pAct;
+	}
+}
+
+bool ApplicationManager::IsRecordActionListEmpty()
+{
+	return (RecordActionCount == 0);
+}
+
+void ApplicationManager::PlayRecording()
+{
+	for (int i = 0; i < RecordActionCount; i++)
+	{
+		ActionList[i]->Execute();
+		UpdateInterface();
+		Sleep(1);
 	}
 }
 
