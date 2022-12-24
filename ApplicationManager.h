@@ -3,6 +3,7 @@
 
 #include "DEFS.h"
 #include "Figures\CFigure.h"
+#include "Actions/Action.h"
 #include "GUI\input.h"
 #include "GUI\output.h"
 
@@ -10,6 +11,9 @@
 class ApplicationManager
 {
 	enum { MaxFigCount = 200 };	//Max no of figures
+
+	// Max no of Actions to be recorded
+	enum { MaxRecordActionCount = 20 };
 
 private:
 	int FigCount;		//Actual number of figures
@@ -22,6 +26,14 @@ private:
 	Input* pIn;
 	Output* pOut;
 
+	/////////////////////////////////////////
+	/// Record Action Related Members
+	/////////////////////////////////////////
+	int RecordActionCount;					// Actual no of Action
+	Action* ActionList[MaxRecordActionCount];
+	bool IsRecording;
+	/////////////////////////////////////////
+
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -29,7 +41,7 @@ public:
 	// -- Action-Related Functions
 	//Reads the input command from the user and returns the corresponding action type
 	ActionType GetUserAction() const;
-	void ExecuteAction(ActionType) ; //Creates an action and executes it
+	void ExecuteAction(ActionType); //Creates an action and executes it
 	void SaveAll(ofstream& OutFile);
 	static color StringToColor(string str);
 	static string ColorToString(color Color);

@@ -27,6 +27,18 @@ ApplicationManager::ApplicationManager()
 	// Create an array of figure pointers and set them to NULL
 	for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL;
+
+	/////////////////////////////////////////
+	/// Init Record Action Related Members
+	/////////////////////////////////////////
+	RecordActionCount = 0;
+
+	// Create an array of Action pointers and set them to NULL
+	for (int i = 0; i < MaxRecordActionCount; i++)
+	{
+		ActionList[i] = NULL;
+	}
+	/////////////////////////////////////////
 }
 
 //==================================================================================//
