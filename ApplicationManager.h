@@ -50,6 +50,7 @@ public:
 	void AddActionToRecording(Action* pAct);
 	bool IsRecordActionListEmpty(); // Determines the status of the app so that recording can start or no
 	void PlayRecording();
+	void ClearRecording();
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
