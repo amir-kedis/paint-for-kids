@@ -84,7 +84,7 @@ void LoadAction::Execute()
 void LoadAction::LoadDrawModeList()
 {
 	// Clear All Figers Before Loading
-	pManager->ClearAll();
+	pManager->ClearFigList();
 
 	string LoadDrawFileName = "DrawModeFigList";
 	//Create and Open file
