@@ -11,6 +11,9 @@
 #include "Actions\DeleteFigureAction.h"
 #include "Actions/SwitchToPlayAction.h"
 #include "Actions\MoveFigureAction.h"
+#include "Actions/SwitchToDrawAction.h"
+#include "Actions/ChangeColorAction.h"
+
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -41,7 +44,6 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
-
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
@@ -63,7 +65,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case DRAW_RECT:
 		pAct = new AddRectAction(this);
-		//pOut->CreateDrawToolBar(); // Return to the Draw Tool Bar after choosing Rectangle icon
 		UI.InterfaceMode = MODE_DRAW;
 		break;
 
@@ -100,6 +101,50 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case TO_PLAY:
 		pAct = new SwitchToPlayAction(this);
 		break;
+	case TO_DRAW:
+		pAct = new SwitchToDrawAction(this);
+		break;
+
+	case CHANGE_DRAWING_COLOR:
+		DrawOrFill = 'D';
+		UI.InterfaceMode = MODE_COLORS;
+		break;
+
+	case CHANGE_FILL_COLOR:
+		DrawOrFill = 'F';
+		UI.InterfaceMode = MODE_COLORS;
+		break;
+
+	case COLOUR_BLACK:
+		pAct = new ChangeColorAction(this, DrawOrFill, BLACK);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_BLUE:
+		pAct = new ChangeColorAction(this, DrawOrFill, BLUE);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_RED:
+		pAct = new ChangeColorAction(this, DrawOrFill, RED);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_GREEN:
+		pAct = new ChangeColorAction(this, DrawOrFill, GREEN);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_ORANGE:
+		pAct = new ChangeColorAction(this, DrawOrFill, ORANGE);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
+	case COLOUR_YELLOW:
+		pAct = new ChangeColorAction(this, DrawOrFill, YELLOW);
+		UI.InterfaceMode = MODE_DRAW;
+		break;
+
 	case EXIT:
 		/// create ExitAction here
 
