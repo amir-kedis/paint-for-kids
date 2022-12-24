@@ -55,6 +55,7 @@ public:
 	CFigure* GetSelectedFig() const;
 	void UnselectAll(CFigure* CurrntFigure);
 	void DeleteFigure(CFigure* SelectedFigure);
+	bool IsFigListEmpty(); // Determines the status of the app so that recording can start or no
 
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input

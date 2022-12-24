@@ -4,6 +4,7 @@
 class StartRecordingAction :
 	public Action
 {
+	bool CanRecord;
 public:
 	StartRecordingAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();

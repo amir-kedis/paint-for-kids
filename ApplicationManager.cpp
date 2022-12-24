@@ -12,6 +12,7 @@
 #include "Actions/SwitchToPlayAction.h"
 #include "Actions/SwitchToDrawAction.h"
 #include "Actions/ChangeColorAction.h"
+#include "Actions/StartRecordingAction.h"
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -150,6 +151,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new ChangeColorAction(this, DrawOrFill, YELLOW);
 		UI.InterfaceMode = MODE_DRAW;
 		break;
+	case START_RECORDING:
+		pAct = new StartRecordingAction(this);
 
 	case EXIT:
 		/// create ExitAction here
@@ -290,6 +293,10 @@ void ApplicationManager::DeleteFigure(CFigure* SelectedFigure)
 			return;
 		}
 	}
+}
+bool ApplicationManager::IsFigListEmpty()
+{
+	return (FigCount == 0);
 }
 //==================================================================================//
 //							Interface Management Functions							//
