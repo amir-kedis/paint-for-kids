@@ -47,6 +47,7 @@ public:
 	static string ColorToString(color Color);
 	bool GetRecordingStatus();
 	void SetRecordingStatus(bool status);
+	void AddActionToRecording(Action* pAct);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

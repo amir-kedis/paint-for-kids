@@ -171,8 +171,37 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute(); // Execute
-		delete pAct;	 // You may need to change this line depending to your implementation
-		pAct = NULL;
+		if (IsRecording && RecordActionCount < 20)
+		{
+			switch (ActType)
+			{
+			case DRAW_RECT:
+			case DRAW_HEX:
+			case DRAW_SQUARE:
+			case DRAW_CIRCLE:
+			case DRAW_TRI:
+			case ADD_FIGURE:
+			case CHANGE_DRAWING_COLOR:
+			case CHANGE_FILL_COLOR:
+			case COLOUR_BLACK:
+			case COLOUR_YELLOW:
+			case COLOUR_ORANGE:
+			case COLOUR_RED:
+			case COLOUR_GREEN:
+			case COLOUR_BLUE:
+			case SELECT:
+			case DELETE_FIGURE:
+			case MOVE_FIGURE:
+			case UNDO:
+			case REDO:
+				AddActionToRecording(pAct);
+			}
+		}
+		else // delete the action if we are not recording
+		{
+			delete pAct;	 // You may need to change this line depending to your implementation
+			pAct = NULL;
+		}
 	}
 }
 
@@ -230,6 +259,14 @@ bool ApplicationManager::GetRecordingStatus()
 void ApplicationManager::SetRecordingStatus(bool status)
 {
 	IsRecording = status;
+}
+
+void ApplicationManager::AddActionToRecording(Action* pAct)
+{
+	if (RecordActionCount < MaxRecordActionCount)
+	{
+		ActionList[RecordActionCount++] = pAct;
+	}
 }
 
 //==================================================================================//
