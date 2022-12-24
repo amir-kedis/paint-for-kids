@@ -31,7 +31,7 @@ void LoadAction::Execute()
 	//This action needs to read some parameters first
 	ReadActionParameters();
 
-	// clear figures
+	pManager->ClearAll();
 
 	//Create and Open file
 	ifstream InputFile;
@@ -85,6 +85,7 @@ void LoadAction::LoadDrawModeList()
 {
 	// Clear All Figers Before Loading
 	pManager->ClearFigList();
+
 
 	string LoadDrawFileName = "DrawModeFigList";
 	//Create and Open file

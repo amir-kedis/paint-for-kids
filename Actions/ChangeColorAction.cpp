@@ -23,9 +23,16 @@ void ChangeColorAction::Execute()
 	else
 	{
 		if (DrawOrFill == 'D')
+		{
 			pManager->GetSelectedFig()->ChngDrawClr(Color);
+			UI.DrawColor = Color;
+		}
 		else if (DrawOrFill == 'F')
+		{
 			pManager->GetSelectedFig()->ChngFillClr(Color);
+			UI.IsFilled = true;
+			UI.FillColor = Color;
+		}
 	}
 }
 
