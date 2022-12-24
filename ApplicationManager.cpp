@@ -71,7 +71,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DELETE_FIGURE:
 		pAct = new DeleteFigureAction(this);
 		break;
-	
+
 	case MOVE_FIGURE:
 		pAct = new MoveFigureAction(this);
 		break;
@@ -198,8 +198,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			case DRAW_CIRCLE:
 			case DRAW_TRI:
 			case ADD_FIGURE:
-			case CHANGE_DRAWING_COLOR:
-			case CHANGE_FILL_COLOR:
 			case COLOUR_BLACK:
 			case COLOUR_YELLOW:
 			case COLOUR_ORANGE:
@@ -212,6 +210,8 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			case UNDO:
 			case REDO:
 				AddActionToRecording(pAct);
+			default:
+				break;
 			}
 		}
 		else // delete the action if we are not recording
@@ -293,11 +293,11 @@ bool ApplicationManager::IsRecordActionListEmpty()
 
 void ApplicationManager::PlayRecording()
 {
-	for (int i = 0; i < RecordActionCount; i++)
+	for (int i = 1; i < RecordActionCount; i++)
 	{
-		ActionList[i]->Execute();
+		ActionList[i]->play();
 		UpdateInterface();
-		Sleep(1);
+		Sleep(1000);
 	}
 }
 
@@ -400,14 +400,6 @@ void ApplicationManager::ClearAll()
 	}
 	FigCount = 0;
 
-	//loop through all RecordActions to delete them
-	for (int i = 0; i < RecordActionCount; i++)
-	{
-		delete ActionList[i];
-		ActionList[i] = NULL;
-	}
-	RecordActionCount = 0;
-
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;
 }
@@ -463,7 +455,7 @@ ApplicationManager::~ApplicationManager()
 	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 
-	for (int i = 0; i < RecordActionCount; i++)
+	for (int i = 1; i < RecordActionCount; i++)
 	{
 		delete ActionList[i];
 	}

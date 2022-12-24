@@ -33,7 +33,18 @@ void PlayRecordingAction::Execute()
 	if (CanPlayRecord)
 	{
 		pOut->PrintMessage("Playing has started (:");
-		///TODO: Clear All Before Recording
+
+		// save the fig list first then delete all
+		SaveAction saveDraw(pManager);
+		saveDraw.SaveDrawModeList();
+
+		pManager->ClearAll();
 		pManager->PlayRecording();
+		pOut->PrintMessage("Playing has Ended (:");
+		Sleep(1000);
+
+		// Load Draw Mode After Recirding
+		LoadAction loadDraw(pManager);
+		loadDraw.LoadDrawModeList();
 	}
 }

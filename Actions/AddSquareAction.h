@@ -3,7 +3,7 @@
 
 #include "Action.h"
 
-class AddSquareAction: public Action
+class AddSquareAction : public Action
 {
 private:
 	Point P1; //Square Center
@@ -16,6 +16,9 @@ public:
 
 	//Add Square to the ApplicationManager
 	virtual void Execute();
+
+	// Used For The Ability To Play The Action without further user input
+	virtual void play();
 
 };
 

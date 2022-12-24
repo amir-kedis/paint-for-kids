@@ -6,7 +6,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-AddFigureAction::AddFigureAction(ApplicationManager* pApp):Action(pApp)
+AddFigureAction::AddFigureAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
 void AddFigureAction::ReadActionParameters()
@@ -20,6 +20,11 @@ void AddFigureAction::Execute()
 	//Draw Shapes Tool Bar
 	pOut->CreateShapesToolBar();
 
+}
+
+void AddFigureAction::play()
+{
+	Execute();
 }
 
 

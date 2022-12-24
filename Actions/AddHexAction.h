@@ -16,6 +16,9 @@ public:
 
 	//Add rectangle to the ApplicationManager
 	virtual void Execute();
+
+	// Used For The Ability To Play The Action without further user input
+	virtual void play();
 };
 
 #endif

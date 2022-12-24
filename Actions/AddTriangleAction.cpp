@@ -6,7 +6,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-AddTriangleAction::AddTriangleAction(ApplicationManager* pApp):Action(pApp)
+AddTriangleAction::AddTriangleAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
 void AddTriangleAction::ReadActionParameters()
@@ -43,6 +43,19 @@ void AddTriangleAction::Execute()
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
+
+	//Create a triangle with the parameters read from the user
+	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);
+
+	//Add the triangle to the list of figures
+	pManager->AddFigure(R);
+}
+
+void AddTriangleAction::play()
+{
+	// Change The Tool Bar
+	UI.InterfaceMode = MODE_DRAW;
+
 
 	//Create a triangle with the parameters read from the user
 	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);

@@ -5,7 +5,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-MoveFigureAction::MoveFigureAction(ApplicationManager* pApp):Action(pApp)
+MoveFigureAction::MoveFigureAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
 void MoveFigureAction::ReadActionParameters()
@@ -39,7 +39,30 @@ void MoveFigureAction::Execute()
 
 	//Read the new Center from the user
 	ReadActionParameters();
-	
+
+	//Call MoveFigure function to move the selected figure
+	pManager->MoveFigure(SelectedFig, Center);
+
+	SelectedFig->SetSelected(false);
+}
+
+void MoveFigureAction::play()
+{
+	// Change The Tool Bar
+	UI.InterfaceMode = MODE_DRAW;
+	//Get a Pointer to the Output Interface
+	Output* pOut = pManager->GetOutput();
+
+	//Get a Pointer to the Selected Figure
+	CFigure* SelectedFig = pManager->GetSelectedFig();
+
+	//Check if there are no Selected Figures
+	if (SelectedFig == NULL)
+	{
+		pOut->PrintMessage("You Must Select A Figure");
+		return;
+	}
+
 	//Call MoveFigure function to move the selected figure
 	pManager->MoveFigure(SelectedFig, Center);
 

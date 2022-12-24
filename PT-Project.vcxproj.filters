@@ -199,12 +199,19 @@
     <ClCompile Include="Actions\ChangeColorAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\PlayRecordingAction.cpp" />
-    <ClCompile Include="Actions\StartRecordingAction.cpp" />
-    <ClCompile Include="Actions\StopRecordingAction.cpp" />
     <ClCompile Include="Actions\ClearAllAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\PlayRecordingAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\StartRecordingAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\StopRecordingAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Action.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -343,10 +350,16 @@
     <ClInclude Include="Actions\ChangeColorAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\PlayRecordingAction.h" />
-    <ClInclude Include="Actions\StartRecordingAction.h" />
-    <ClInclude Include="Actions\StopRecordingAction.h" />
     <ClInclude Include="Actions\ClearAllAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PlayRecordingAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\StartRecordingAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\StopRecordingAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>
