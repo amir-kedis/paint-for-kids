@@ -29,7 +29,7 @@ ApplicationManager::ApplicationManager()
 		FigList[i] = NULL;
 
 	/////////////////////////////////////////
-	/// Init Record Action Related Members
+	/// Init Action Record List Related Members
 	/////////////////////////////////////////
 	RecordActionCount = 0;
 
@@ -213,6 +213,16 @@ string ApplicationManager::ColorToString(color Color)
 		return "GREEN";
 	if (Color == BLUE)
 		return "BLUE";
+}
+
+bool ApplicationManager::GetRecordingStatus()
+{
+	return IsRecording;
+}
+
+void ApplicationManager::SetRecordingStatus(bool status)
+{
+	IsRecording = status;
 }
 
 //==================================================================================//

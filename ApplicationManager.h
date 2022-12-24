@@ -45,6 +45,8 @@ public:
 	void SaveAll(ofstream& OutFile);
 	static color StringToColor(string str);
 	static string ColorToString(color Color);
+	bool GetRecordingStatus();
+	void SetRecordingStatus(bool status);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
