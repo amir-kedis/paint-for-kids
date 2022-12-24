@@ -41,6 +41,7 @@ public:
 	CFigure* GetSelectedFig() const;
 	void UnselectAll(CFigure* CurrntFigure);
 	void DeleteFigure(CFigure* SelectedFigure);
+	void MoveFigure(CFigure* SelectedFigure, Point Center);
 
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input

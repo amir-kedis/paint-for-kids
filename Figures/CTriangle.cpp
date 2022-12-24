@@ -21,6 +21,25 @@ void CTriangle::Draw(Output* pOut) const
 	pOut->DrawTriangle(Corner1, Corner2, Corner3, FigGfxInfo, Selected);
 }
 
+void CTriangle::Move(Point NewCenter)
+{
+	//Get the OldCenter Coordinates of the Rectangle 
+	double OldCenterX = (Corner1.x + Corner2.x + Corner3.x) / 3.0;
+	double OldCenterY = (Corner1.y + Corner2.y + Corner3.y) / 3.0;
+
+	//Shifting Corner1 by the difference between the NewCenter and the OldCenter
+	Corner1.x += (NewCenter.x - OldCenterX);
+	Corner1.y += (NewCenter.y - OldCenterY);
+
+	//Shifting Corner2 by the difference between the NewCenter and the OldCenter
+	Corner2.x += (NewCenter.x - OldCenterX);
+	Corner2.y += (NewCenter.y - OldCenterY);
+
+	//Shifting Corner3 by the difference between the NewCenter and the OldCenter
+	Corner3.x += (NewCenter.x - OldCenterX);
+	Corner3.y += (NewCenter.y - OldCenterY);
+}
+
 void CTriangle::Save(ofstream& OutFile) const
 {
 	OutFile << "TRIANG \t" << ID << '\t' << Corner1.x << '\t' << Corner1.y << '\t'
