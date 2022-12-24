@@ -83,8 +83,8 @@ void LoadAction::Execute()
 
 void LoadAction::LoadDrawModeList()
 {
-
-	///TODO: clear figures
+	// Clear All Figers Before Loading
+	pManager->ClearAll();
 
 	string LoadDrawFileName = "DrawModeFigList";
 	//Create and Open file
