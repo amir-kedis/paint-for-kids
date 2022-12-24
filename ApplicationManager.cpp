@@ -10,12 +10,14 @@
 #include "Actions/SelectFigureAction.h"
 #include "Actions\DeleteFigureAction.h"
 #include "Actions/SwitchToPlayAction.h"
+#include "Actions\MoveFigureAction.h"
 #include "Actions/SwitchToDrawAction.h"
 #include "Actions/ChangeColorAction.h"
 #include "Actions/StartRecordingAction.h"
 #include "Actions/StopRecordingAction.h"
 #include "Actions/PlayRecordingAction.h"
 #include <Windows.h>
+
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -67,6 +69,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case DELETE_FIGURE:
 		pAct = new DeleteFigureAction(this);
+		break;
+	
+	case MOVE_FIGURE:
+		pAct = new MoveFigureAction(this);
 		break;
 
 	case ADD_FIGURE:
@@ -355,10 +361,29 @@ void ApplicationManager::DeleteFigure(CFigure* SelectedFigure)
 		}
 	}
 }
+
 bool ApplicationManager::IsFigListEmpty()
 {
 	return (FigCount == 0);
 }
+
+void ApplicationManager::MoveFigure(CFigure* SelectedFigure, Point Center)
+{
+	//loop through all figures
+	for (int i = 0; i < FigCount; i++)
+	{
+		//Search for the SelectedFig in FigList array
+		if (SelectedFigure == FigList[i])
+		{
+			//Call Move Function to move the figure to the new point
+			FigList[i]->Move(Center);
+
+			//Change the SelectedFig data member to NULL
+			SelectedFig = NULL;
+		}
+	}
+}
+
 //==================================================================================//
 //							Interface Management Functions							//
 //==================================================================================//
@@ -366,6 +391,7 @@ bool ApplicationManager::IsFigListEmpty()
 // Draw all figures on the user interface
 void ApplicationManager::UpdateInterface() const
 {
+	pOut->ClearDrawArea();
 	for (int i = 0; i < FigCount; i++)
 		FigList[i]->Draw(pOut); // Call Draw function (virtual member fn)
 

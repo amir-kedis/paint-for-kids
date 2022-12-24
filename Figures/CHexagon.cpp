@@ -20,6 +20,11 @@ void CHexagon::Draw(Output* pOut) const
 	pOut->DrawHexagon(Center, FigGfxInfo, Selected);
 }
 
+void CHexagon::Move(Point NewCenter)
+{
+	Center = NewCenter;
+}
+
 void CHexagon::Save(ofstream& OutFile) const
 {
 	OutFile << "HEXAGON\t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'

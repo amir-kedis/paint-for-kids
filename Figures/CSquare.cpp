@@ -19,6 +19,11 @@ void CSquare::Draw(Output* pOut) const
 	pOut->DrawSquare(Center, FigGfxInfo, Selected);
 }
 
+void CSquare::Move(Point NewCenter)
+{
+	Center = NewCenter;
+}
+
 void CSquare::Save(ofstream& OutFile) const
 {
 	OutFile << "SQUARE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'

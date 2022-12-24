@@ -32,6 +32,4 @@ void DeleteFigureAction::Execute()
 	//Delete the dynamically allocated figure from the memory
 	delete SelectedFig;
 
-	pOut->ClearDrawArea();
-
 }

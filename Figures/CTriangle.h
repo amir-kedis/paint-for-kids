@@ -13,6 +13,7 @@ public:
 	CTriangle(Point, Point, Point, GfxInfo FigureGfxInfo);
 	CTriangle(int id);
 	virtual void Draw(Output* pOut) const;
+	virtual void Move(Point NewCenter);
 	virtual void Save(ofstream& OutFile) const;
 	virtual void Load(ifstream& InFile);
 	double CalcArea(Point V1, Point V2, Point V3) const;

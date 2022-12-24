@@ -1,0 +1,20 @@
+#ifndef MOVE_FIGURE_ACTION_H
+#define MOVE_FIGURE_ACTION_H
+
+#include "Action.h"
+
+class MoveFigureAction: public Action
+{
+	Point Center;
+public:
+	MoveFigureAction(ApplicationManager* pApp);
+
+	//Reads the new center of the figure
+	virtual void ReadActionParameters();
+
+	//Call MoveFigure function in ApplicationManager
+	virtual void Execute();
+
+};
+
+#endif

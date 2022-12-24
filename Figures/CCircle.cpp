@@ -19,6 +19,17 @@ void CCircle::Draw(Output* pOut) const
 	pOut->DrawCircle(Center, P, FigGfxInfo, Selected);
 }
 
+void CCircle::Move(Point NewCenter)
+{
+	//Shifting P.x by the difference between the NewCenter and the OldCenter
+	P.x += (NewCenter.x - Center.x);
+
+	//Shifting P.y by the difference between the NewCenter and the OldCenter
+	P.y += (NewCenter.y - Center.y);
+
+	Center = NewCenter;
+}
+
 void CCircle::Save(ofstream& OutFile) const
 {
 	OutFile << "CIRCLE \t" << ID << '\t' << Center.x << '\t' << Center.y << '\t'
