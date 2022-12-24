@@ -13,6 +13,10 @@
 #include "Actions\MoveFigureAction.h"
 #include "Actions/SwitchToDrawAction.h"
 #include "Actions/ChangeColorAction.h"
+#include "Actions/StartRecordingAction.h"
+#include "Actions/StopRecordingAction.h"
+#include "Actions/PlayRecordingAction.h"
+#include <Windows.h>
 
 
 // Constructor
@@ -29,6 +33,18 @@ ApplicationManager::ApplicationManager()
 	// Create an array of figure pointers and set them to NULL
 	for (int i = 0; i < MaxFigCount; i++)
 		FigList[i] = NULL;
+
+	/////////////////////////////////////////
+	/// Init Action Record List Related Members
+	/////////////////////////////////////////
+	RecordActionCount = 0;
+
+	// Create an array of Action pointers and set them to NULL
+	for (int i = 0; i < MaxRecordActionCount; i++)
+	{
+		ActionList[i] = NULL;
+	}
+	/////////////////////////////////////////
 }
 
 //==================================================================================//
@@ -144,7 +160,15 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new ChangeColorAction(this, DrawOrFill, YELLOW);
 		UI.InterfaceMode = MODE_DRAW;
 		break;
-
+	case START_RECORDING:
+		pAct = new StartRecordingAction(this);
+		break;
+	case STOP_RECORDING:
+		pAct = new StopRecordingAction(this);
+		break;
+	case PLAY_RECORDING:
+		pAct = new PlayRecordingAction(this);
+		break;
 	case EXIT:
 		/// create ExitAction here
 
@@ -158,8 +182,37 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute(); // Execute
-		delete pAct;	 // You may need to change this line depending to your implementation
-		pAct = NULL;
+		if (IsRecording && RecordActionCount < 20)
+		{
+			switch (ActType)
+			{
+			case DRAW_RECT:
+			case DRAW_HEX:
+			case DRAW_SQUARE:
+			case DRAW_CIRCLE:
+			case DRAW_TRI:
+			case ADD_FIGURE:
+			case CHANGE_DRAWING_COLOR:
+			case CHANGE_FILL_COLOR:
+			case COLOUR_BLACK:
+			case COLOUR_YELLOW:
+			case COLOUR_ORANGE:
+			case COLOUR_RED:
+			case COLOUR_GREEN:
+			case COLOUR_BLUE:
+			case SELECT:
+			case DELETE_FIGURE:
+			case MOVE_FIGURE:
+			case UNDO:
+			case REDO:
+				AddActionToRecording(pAct);
+			}
+		}
+		else // delete the action if we are not recording
+		{
+			delete pAct;	 // You may need to change this line depending to your implementation
+			pAct = NULL;
+		}
 	}
 }
 
@@ -207,6 +260,39 @@ string ApplicationManager::ColorToString(color Color)
 		return "GREEN";
 	if (Color == BLUE)
 		return "BLUE";
+}
+
+bool ApplicationManager::GetRecordingStatus()
+{
+	return IsRecording;
+}
+
+void ApplicationManager::SetRecordingStatus(bool status)
+{
+	IsRecording = status;
+}
+
+void ApplicationManager::AddActionToRecording(Action* pAct)
+{
+	if (RecordActionCount < MaxRecordActionCount)
+	{
+		ActionList[RecordActionCount++] = pAct;
+	}
+}
+
+bool ApplicationManager::IsRecordActionListEmpty()
+{
+	return (RecordActionCount == 0);
+}
+
+void ApplicationManager::PlayRecording()
+{
+	for (int i = 0; i < RecordActionCount; i++)
+	{
+		ActionList[i]->Execute();
+		UpdateInterface();
+		Sleep(1);
+	}
 }
 
 //==================================================================================//
@@ -276,6 +362,11 @@ void ApplicationManager::DeleteFigure(CFigure* SelectedFigure)
 	}
 }
 
+bool ApplicationManager::IsFigListEmpty()
+{
+	return (FigCount == 0);
+}
+
 void ApplicationManager::MoveFigure(CFigure* SelectedFigure, Point Center)
 {
 	//loop through all figures
@@ -343,6 +434,12 @@ ApplicationManager::~ApplicationManager()
 {
 	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
+
+	for (int i = 0; i < RecordActionCount; i++)
+	{
+		delete ActionList[i];
+	}
+
 	delete pIn;
 	delete pOut;
 }
