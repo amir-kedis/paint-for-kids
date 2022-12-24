@@ -71,7 +71,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case DELETE_FIGURE:
 		pAct = new DeleteFigureAction(this);
 		break;
-	
+
 	case MOVE_FIGURE:
 		pAct = new MoveFigureAction(this);
 		break;
@@ -293,11 +293,11 @@ bool ApplicationManager::IsRecordActionListEmpty()
 
 void ApplicationManager::PlayRecording()
 {
-	for (int i = 0; i < RecordActionCount; i++)
+	for (int i = 1; i < RecordActionCount; i++)
 	{
 		ActionList[i]->Execute();
 		UpdateInterface();
-		Sleep(1);
+		Sleep(1000);
 	}
 }
 
@@ -399,14 +399,6 @@ void ApplicationManager::ClearAll()
 		FigList[i] = NULL;
 	}
 	FigCount = 0;
-
-	//loop through all RecordActions to delete them
-	for (int i = 0; i < RecordActionCount; i++)
-	{
-		delete ActionList[i];
-		ActionList[i] = NULL;
-	}
-	RecordActionCount = 0;
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;

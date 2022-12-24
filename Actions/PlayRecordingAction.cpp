@@ -33,7 +33,7 @@ void PlayRecordingAction::Execute()
 	if (CanPlayRecord)
 	{
 		pOut->PrintMessage("Playing has started (:");
-		///TODO: Clear All Before Recording
+		pManager->ClearAll();
 		pManager->PlayRecording();
 	}
 }
