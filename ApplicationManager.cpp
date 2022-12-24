@@ -388,6 +388,12 @@ ApplicationManager::~ApplicationManager()
 {
 	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
+
+	for (int i = 0; i < RecordActionCount; i++)
+	{
+		delete ActionList[i];
+	}
+
 	delete pIn;
 	delete pOut;
 }
