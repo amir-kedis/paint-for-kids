@@ -13,6 +13,7 @@
 #include "Actions/SwitchToDrawAction.h"
 #include "Actions/ChangeColorAction.h"
 #include "Actions/StartRecordingAction.h"
+#include "Actions/StopRecordingAction.h"
 
 // Constructor
 ApplicationManager::ApplicationManager()
@@ -153,7 +154,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case START_RECORDING:
 		pAct = new StartRecordingAction(this);
-
+		break;
+	case STOP_RECORDING:
+		pAct = new StopRecordingAction(this);
+		break;
 	case EXIT:
 		/// create ExitAction here
 
