@@ -273,6 +273,13 @@ string ApplicationManager::ColorToString(color Color)
 		return "BLUE";
 }
 
+CFigure* ApplicationManager::GetRandomFig() const
+{
+	// get random number from 0 to Figcount-1
+	int r = rand() % FigCount;
+	return FigList[r];
+}
+
 bool ApplicationManager::GetRecordingStatus()
 {
 	return IsRecording;

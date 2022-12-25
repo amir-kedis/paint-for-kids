@@ -1,9 +1,11 @@
 #pragma once
 #include "Action.h"
+#include "..\Figures\CFigure.h"
 class PickByShapeAction : public Action
 {
 private:
 	string FileName;
+	CFigure *Shape;
 public:
 	PickByShapeAction(ApplicationManager* pApp);
 

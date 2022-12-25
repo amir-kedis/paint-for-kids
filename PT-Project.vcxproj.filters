@@ -298,9 +298,6 @@
     <ClInclude Include="GUI\Output.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\UI_Info.h">
-      <Filter>GUI Classes</Filter>
-    </ClInclude>
     <ClInclude Include="ApplicationManager.h">
       <Filter>Application Manager</Filter>
     </ClInclude>
@@ -372,6 +369,9 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\PickByShapeAction.h" />
+    <ClInclude Include="GUI\UI_Info.h">
+      <Filter>CMUgraphicsLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

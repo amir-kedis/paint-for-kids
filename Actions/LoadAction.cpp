@@ -20,7 +20,7 @@ void LoadAction::ReadActionParameters()
 
 	pOut->PrintMessage("Enter File Name :");
 
-	//Read the file name to save graph into it
+	//Read the file name to Load graph from
 	FileName = pIn->GetSrting(pOut);
 
 	pOut->ClearStatusBar();
