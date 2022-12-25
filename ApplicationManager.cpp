@@ -342,7 +342,7 @@ void ApplicationManager::ClearRecording()
 	{
 		delete ActionList[i];
 		ActionList[i] = NULL;
-		RecordActionCount = 0;
+		//RecordActionCount = 0;
 	}
 	RecordActionCount = 0;
 	IsRecording = false;
@@ -483,13 +483,12 @@ void ApplicationManager::ClearAll()
 	ClearFigList();
 
 	ClearRecording();
-
-	/*for (int i = 0; i < URActionCount; i++)
+	for (int i = 0; i < URActionCount; i++)
 	{
-		delete URActionList[i];
+		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
 		URActionList[i] = NULL;
 	}
-	URActionCount = 0;*/
+	URActionCount = 0;
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;
