@@ -18,6 +18,7 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
+#include "Actions/PickByShapeAction.h"
 #include <Windows.h>
 
 
@@ -174,6 +175,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case CLEAR_ALL:
 		pAct = new ClearAllAction(this);
+		break;
+
+	case PICK_BY_SHAPES:
+		pAct = new PickByShapeAction(this);
 		break;
 
 	case EXIT:
