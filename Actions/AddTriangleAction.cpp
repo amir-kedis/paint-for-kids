@@ -7,7 +7,9 @@
 #include "..\GUI\Output.h"
 
 AddTriangleAction::AddTriangleAction(ApplicationManager* pApp) :Action(pApp)
-{}
+{
+	SelectedFig = NULL;
+}
 
 void AddTriangleAction::ReadActionParameters()
 {
@@ -46,6 +48,7 @@ void AddTriangleAction::Execute()
 
 	//Create a triangle with the parameters read from the user
 	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);
+	SelectedFig = R;
 
 	//Add the triangle to the list of figures
 	pManager->AddFigure(R);
@@ -59,7 +62,17 @@ void AddTriangleAction::play()
 
 	//Create a triangle with the parameters read from the user
 	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);
+	SelectedFig = R;
 
 	//Add the triangle to the list of figures
 	pManager->AddFigure(R);
+}
+
+void AddTriangleAction::UndoAct()
+{
+	//Call DeleteFigure function to delete the selected figure
+	pManager->DeleteFigure(SelectedFig);
+
+	//Delete the dynamically allocated figure from the memory
+	delete SelectedFig;
 }

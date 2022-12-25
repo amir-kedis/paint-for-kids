@@ -15,6 +15,8 @@ class ApplicationManager
 	// Max no of Actions to be recorded
 	enum { MaxRecordActionCount = 20 };
 
+	// Max no of Actions to be stored for Undo and Redo
+	enum {MaxURActionCount = 5}; 
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
@@ -34,6 +36,12 @@ private:
 	bool IsRecording;
 	/////////////////////////////////////////
 
+	////////////////////////////////////////
+	//// Undo and Redo Related Members
+	////////////////////////////////////////
+	int URActionCount;                      //Undo Redo ActionCount
+	Action* URActionList[MaxURActionCount];
+
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -52,6 +60,9 @@ public:
 	void PlayRecording();
 	void ClearRecording();
 	void ClearFigList();
+	void AddToURActionList(Action* pAct); //Adds the Action to Undo Redo ActionList
+	int GetURActionCount() const;   //returns the num of URACtionCount to check if an undo action can be done or not
+	void UndoAction();
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

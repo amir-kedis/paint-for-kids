@@ -25,6 +25,7 @@ public:
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
 
+	virtual void UndoAct();
 };
 
 #endif

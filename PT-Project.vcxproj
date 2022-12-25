@@ -147,6 +147,7 @@
     <ClCompile Include="Actions\StopRecordingAction.cpp" />
     <ClCompile Include="Actions\SwitchToDrawAction.cpp" />
     <ClCompile Include="Actions\SwitchToPlayAction.cpp" />
+    <ClCompile Include="Actions\UndoAct.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -214,6 +215,7 @@
     <ClInclude Include="Actions\StopRecordingAction.h" />
     <ClInclude Include="Actions\SwitchToDrawAction.h" />
     <ClInclude Include="Actions\SwitchToPlayAction.h" />
+    <ClInclude Include="Actions\UndoAct.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />

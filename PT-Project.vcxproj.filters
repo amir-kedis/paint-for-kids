@@ -211,7 +211,13 @@
     <ClCompile Include="Actions\StopRecordingAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Action.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp" />
+    <ClCompile Include="Actions\UndoAct.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Action.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -360,6 +366,10 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\StopRecordingAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ExitAction.h" />
+    <ClInclude Include="Actions\UndoAct.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

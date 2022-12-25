@@ -3,3 +3,7 @@
 void Action::play()
 {
 }
+
+void Action::UndoAct()
+{
+}
