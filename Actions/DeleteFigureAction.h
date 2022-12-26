@@ -14,6 +14,9 @@ public:
 
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
+
+	// Used to delete figure after the right pick
+	static CFigure* SelectForPlay();
 };
 
 #endif

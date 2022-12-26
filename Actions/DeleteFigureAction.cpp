@@ -56,3 +56,5 @@ void DeleteFigureAction::play()
 	//Delete the dynamically allocated figure from the memory
 	delete SelectedFig;
 }
+
+
