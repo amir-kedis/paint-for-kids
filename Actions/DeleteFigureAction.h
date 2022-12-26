@@ -2,6 +2,7 @@
 #define DELETE_FIGURE_ACTION_H
 
 #include "Action.h"
+#include "../Figures/CFigure.h"
 
 class DeleteFigureAction : public Action
 {
@@ -16,7 +17,7 @@ public:
 	virtual void play();
 
 	// Used to delete figure after the right pick
-	static CFigure* SelectForPlay();
+	void DeleteForPlay(CFigure *Fig);
 };
 
 #endif

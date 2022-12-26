@@ -18,5 +18,8 @@ public:
 
 	// checks if the figure is one needed
 	bool IsShape(CFigure* UserPick) const;
+
+	// Prints score till that moment
+	void PrintScore() const;
 };
 

@@ -8,6 +8,7 @@
 #include "..\Figures\CSquare.h"
 #include "..\Figures\CTriangle.h"
 #include "..\Actions\SelectFigureAction.h"
+#include "DeleteFigureAction.h"
 #include <fstream>
 #include <typeinfo>
 
@@ -26,16 +27,22 @@ void PickByShapeAction::ReadActionParameters()
 void PickByShapeAction::Execute()
 {
 	CFigure* UserPick;
+	UserPick = SelectFigureAction::SelectForPlay();
 	while(true)
 	{
-		UserPick = SelectFigureAction::SelectForPlay();
 		if (IsShape(UserPick))
 		{
 			CorrectCnt++;
-
+			DeleteFigureAction* Delete = new DeleteFigureAction(pManager);
+			Delete->DeleteForPlay(UserPick);
+			pManager->UpdateInterface();
 		}
 		else
 			IncorrectCnt++;
+
+		PrintScore();
+
+		UserPick = SelectFigureAction::SelectForPlay();
 	}
 
 }
@@ -48,4 +55,13 @@ bool PickByShapeAction::IsShape(CFigure* UserPick) const
 	if (typeid(Shape) == typeid(UserPick))
 		return true;
 	return false;
+}
+
+void PickByShapeAction::PrintScore() const
+{
+	Output* Out = pManager->GetOutput();
+	Out->PrintMessage("Correct Picks: ");
+	Out->PrintMessage(to_string(CorrectCnt));
+	Out->PrintMessage("		Incorrect Picks: ");
+	Out->PrintMessage(to_string(IncorrectCnt));
 }

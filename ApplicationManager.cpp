@@ -178,6 +178,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 
 	case PICK_BY_SHAPES:
+		UI.InterfaceMode = MODE_PLAY;
 		pAct = new PickByShapeAction(this);
 		break;
 
