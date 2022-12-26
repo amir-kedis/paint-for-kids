@@ -7,7 +7,8 @@
 #include "..\Figures\CRectangle.h"
 #include "..\Figures\CSquare.h"
 #include "..\Figures\CTriangle.h"
-#include "..\Actions\SelectFigureAction.h"
+#include "SelectFigureAction.h"
+#include "LoadAction.h"
 #include "DeleteFigureAction.h"
 #include <fstream>
 #include <typeinfo>
@@ -28,10 +29,34 @@ void PickByShapeAction::ReadActionParameters()
 //Execute action
 void PickByShapeAction::Execute()
 {
+	Output* pOut = pManager->GetOutput();
+	Input* pIn = pManager->GetInput();
+	LoadAction* Load = new LoadAction(pManager);
+
+	// Ask if the user want to load file or stay on same previous graph
+	pOut->PrintMessage("Do You want to keep graph to play with ? (Y/N) : ");
+	string ans;
+	do
+	{
+		ans = pIn->GetSrting(pOut);
+	}
+	while (ans != "Y" || ans != "N");
+
+	if (ans == "Y")
+	{
+		Load->LoadDrawModeList();
+	}
+	else
+	{
+		Load->Execute();
+	}
+
 	WelcomePrint();
+
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
 	UserPick = Select->SelectForPlay();
+
 	while(true)
 	{
 		if (IsShape(UserPick))
