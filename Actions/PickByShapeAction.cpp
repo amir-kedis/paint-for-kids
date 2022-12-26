@@ -28,9 +28,7 @@ void PickByShapeAction::ReadActionParameters()
 //Execute action
 void PickByShapeAction::Execute()
 {
-	Output* Out = pManager->GetOutput();
-	string shape = to_string(typeid(*Shape).name);
-	Out->PrintMessage("Pick ");
+	WelcomePrint();
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
 	UserPick = Select->SelectForPlay();
@@ -74,7 +72,13 @@ void PickByShapeAction::PrintScore() const
 void PickByShapeAction::WelcomePrint() const
 {
 	Output* Out = pManager->GetOutput();
-	string score = "Correct Picks: " + to_string(CorrectCnt) + '\t';
-	score += " Incorrect Picks: " + to_string(IncorrectCnt);
-	Out->PrintMessage(score);
+
+	string welcome = "Pick ";
+
+	string shape;
+	for (int i = 7; i < strlen(typeid(*Shape).name()); i++)
+		shape += (typeid(*Shape).name())[i];
+
+	welcome += shape += 's';
+	Out->PrintMessage(welcome);
 }
