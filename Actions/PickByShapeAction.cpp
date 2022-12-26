@@ -15,6 +15,8 @@
 PickByShapeAction::PickByShapeAction(ApplicationManager* pApp) : Action(pApp)
 {
 	Shape = pManager->GetRandomFig();
+	CorrectCnt = 0;
+	IncorrectCnt = 0;
 }
 
 //Reads parameters required for action to execute
@@ -26,8 +28,12 @@ void PickByShapeAction::ReadActionParameters()
 //Execute action
 void PickByShapeAction::Execute()
 {
+	Output* Out = pManager->GetOutput();
+	string shape = to_string(typeid(*Shape).name);
+	Out->PrintMessage("Pick ");
 	CFigure* UserPick;
-	UserPick = SelectFigureAction::SelectForPlay();
+	SelectFigureAction* Select = new SelectFigureAction(pManager);
+	UserPick = Select->SelectForPlay();
 	while(true)
 	{
 		if (IsShape(UserPick))
@@ -42,7 +48,7 @@ void PickByShapeAction::Execute()
 
 		PrintScore();
 
-		UserPick = SelectFigureAction::SelectForPlay();
+		UserPick = Select->SelectForPlay();
 	}
 
 }
@@ -52,7 +58,7 @@ bool PickByShapeAction::IsShape(CFigure* UserPick) const
 {
 	if (UserPick == NULL)
 		return false;
-	if (typeid(Shape) == typeid(UserPick))
+	if (typeid(*Shape) == typeid(*UserPick))
 		return true;
 	return false;
 }
@@ -60,8 +66,15 @@ bool PickByShapeAction::IsShape(CFigure* UserPick) const
 void PickByShapeAction::PrintScore() const
 {
 	Output* Out = pManager->GetOutput();
-	Out->PrintMessage("Correct Picks: ");
-	Out->PrintMessage(to_string(CorrectCnt));
-	Out->PrintMessage("		Incorrect Picks: ");
-	Out->PrintMessage(to_string(IncorrectCnt));
+	string score = "Correct Picks: " + to_string(CorrectCnt) + '\t';
+	score += " Incorrect Picks: " + to_string(IncorrectCnt);
+	Out->PrintMessage(score);
+}
+
+void PickByShapeAction::WelcomePrint() const
+{
+	Output* Out = pManager->GetOutput();
+	string score = "Correct Picks: " + to_string(CorrectCnt) + '\t';
+	score += " Incorrect Picks: " + to_string(IncorrectCnt);
+	Out->PrintMessage(score);
 }

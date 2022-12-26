@@ -17,6 +17,6 @@ public:
 	virtual void play();
 
 	// Used to take user pick for playing
-	static CFigure* SelectForPlay();
+	CFigure* SelectForPlay();
 };
 
