@@ -7,6 +7,7 @@
 #include "..\Figures\CRectangle.h"
 #include "..\Figures\CSquare.h"
 #include "..\Figures\CTriangle.h"
+#include "..\Actions\SelectFigureAction.h"
 #include <fstream>
 
 PickByShapeAction::PickByShapeAction(ApplicationManager* pApp) : Action(pApp)
@@ -23,5 +24,6 @@ void PickByShapeAction::ReadActionParameters()
 //Execute action
 void PickByShapeAction::Execute()
 {
+	CFigure* UserPick = SelectFigureAction::SelectForPlay();
 
 }

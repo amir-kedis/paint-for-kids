@@ -4,8 +4,9 @@
 class PickByShapeAction : public Action
 {
 private:
-	string FileName;
 	CFigure *Shape;
+	int CorrectCnt;
+	int IncorrectCnt;
 public:
 	PickByShapeAction(ApplicationManager* pApp);
 
