@@ -15,6 +15,8 @@ public:
 	virtual void Move(Point NewCenter);
 	virtual void Save(ofstream& OutFile) const;
 	virtual void Load(ifstream& InFile);
+	virtual string ClassString() const;
+	virtual bool IsThisType(CFigure* fig) const;
 	virtual bool IsInFigure(Point CheckPoint) const;
 	virtual void PrintInfo(Output* pOut);	//print all figure info on the status bar
 };

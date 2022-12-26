@@ -50,6 +50,19 @@ void CSquare::Load(ifstream& InFile)
 		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
+string CSquare::ClassString() const
+{
+	return "Square";
+}
+
+bool CSquare::IsThisType(CFigure* fig) const
+{
+	CSquare* test = dynamic_cast <CSquare*> (fig);
+	if (test == NULL)
+		return false;
+	return true;
+}
+
 bool CSquare::IsInFigure(Point CheckPoint) const
 {
 	// to check of point is in square:
