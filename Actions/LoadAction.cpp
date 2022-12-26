@@ -87,7 +87,7 @@ void LoadAction::LoadDrawModeList()
 	pManager->ClearFigList();
 
 
-	string LoadDrawFileName = "DrawModeFigList";
+	string LoadDrawFileName = "DrawModeFigList.txt";
 	//Create and Open file
 	ifstream InputFile;
 	InputFile.open(LoadDrawFileName, ios::in);

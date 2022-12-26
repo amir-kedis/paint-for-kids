@@ -16,11 +16,6 @@ public:
 	//Execute action
 	virtual void Execute();
 
-	// checks if the figure is one needed
-	bool IsShape(CFigure* UserPick) const;
-
-	void WelcomePrint() const;
-
 	// Prints score till that moment
 	void PrintScore() const;
 };

@@ -40,7 +40,7 @@ void PickByShapeAction::Execute()
 	{
 		ans = pIn->GetSrting(pOut);
 	}
-	while (ans != "Y" || ans != "N");
+	while (ans != "Y" && ans != "N");
 
 	if (ans == "Y")
 	{
@@ -51,18 +51,18 @@ void PickByShapeAction::Execute()
 		Load->Execute();
 	}
 
-	WelcomePrint();
+	pOut->PrintMessage("Pick" + Shape->ClassString());
 
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
+	DeleteFigureAction* Delete = new DeleteFigureAction(pManager);
 	UserPick = Select->SelectForPlay();
 
 	while(true)
 	{
-		if (IsShape(UserPick))
+		if (UserPick->IsThisType(Shape))
 		{
 			CorrectCnt++;
-			DeleteFigureAction* Delete = new DeleteFigureAction(pManager);
 			Delete->DeleteForPlay(UserPick);
 			pManager->UpdateInterface();
 		}
@@ -76,34 +76,10 @@ void PickByShapeAction::Execute()
 
 }
 
-// checks if the figure is one needed
-bool PickByShapeAction::IsShape(CFigure* UserPick) const
-{
-	if (UserPick == NULL)
-		return false;
-	if (typeid(*Shape) == typeid(*UserPick))
-		return true;
-	return false;
-}
-
 void PickByShapeAction::PrintScore() const
 {
 	Output* Out = pManager->GetOutput();
 	string score = "Correct Picks: " + to_string(CorrectCnt) + '\t';
 	score += " Incorrect Picks: " + to_string(IncorrectCnt);
 	Out->PrintMessage(score);
-}
-
-void PickByShapeAction::WelcomePrint() const
-{
-	Output* Out = pManager->GetOutput();
-
-	string welcome = "Pick ";
-
-	string shape;
-	for (int i = 7; i < strlen(typeid(*Shape).name()); i++)
-		shape += (typeid(*Shape).name())[i];
-
-	welcome += shape += 's';
-	Out->PrintMessage(welcome);
 }
