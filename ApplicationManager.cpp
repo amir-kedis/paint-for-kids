@@ -50,11 +50,19 @@ ApplicationManager::ApplicationManager()
 	}
 	/////////////////////////////////////////
 
-	//Undo and Redo Related Members
+	/////////////////////////////////////////
+	/// Undo and Redo Related Members
+	/////////////////////////////////////////
 	URActionCount = 0;
 	for (int i = 0; i < MaxURActionCount; i++)
 	{
 		URActionList[i] = NULL;
+	}
+
+	DeletedFigsCount = 0;
+	for (int i = 0; i < MaxDeletedFigsCount; i++)
+	{
+		DeletedFigs[i] = NULL;
 	}
 }
 
@@ -385,6 +393,25 @@ int ApplicationManager::GetURActionCount() const
 void ApplicationManager::UndoAction()
 {
 	URActionList[--URActionCount]->UndoAct();
+}
+
+void ApplicationManager::AddToDeletedFigures(CFigure* pFig)
+{
+	if (DeletedFigsCount < MaxDeletedFigsCount)
+	{
+		DeletedFigs[DeletedFigsCount++] = pFig;
+	}
+	else
+	{
+		for (int i = 1; i < MaxDeletedFigsCount; i++)
+		{
+			DeletedFigs[i - 1] = DeletedFigs[i];
+			if (i == MaxDeletedFigsCount - 1)
+			{
+				DeletedFigs[i] = pFig;
+			}
+		}
+	}
 }
 
 

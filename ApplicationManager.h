@@ -17,6 +17,9 @@ class ApplicationManager
 
 	// Max no of Actions to be stored for Undo and Redo
 	enum {MaxURActionCount = 5}; 
+
+	// Max no of Deleted Figures that can be Undone
+	enum {MaxDeletedFigsCount = 5};
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
@@ -41,6 +44,8 @@ private:
 	////////////////////////////////////////
 	int URActionCount;                      //Undo Redo ActionCount
 	Action* URActionList[MaxURActionCount];
+	int DeletedFigsCount;
+	CFigure* DeletedFigs[MaxDeletedFigsCount];
 
 public:
 	ApplicationManager();
@@ -63,6 +68,7 @@ public:
 	void AddToURActionList(Action* pAct); //Adds the Action to Undo Redo ActionList
 	int GetURActionCount() const;   //returns the num of URACtionCount to check if an undo action can be done or not
 	void UndoAction();
+	void AddToDeletedFigures(CFigure* pFig);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

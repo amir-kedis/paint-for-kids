@@ -2,6 +2,7 @@
 #define ACTION_H
 
 #include "..\DefS.h"
+#include "..\Figures\CFigure.h"
 
 class ApplicationManager; //forward class declaration
 
