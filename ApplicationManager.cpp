@@ -366,7 +366,6 @@ void ApplicationManager::AddToURActionList(Action* pAct)
 	}
 	else
 	{
-		delete URActionList[0];
 		for (int i = 1; i < MaxURActionCount; i++)
 		{
 			URActionList[i - 1] = URActionList[i];
