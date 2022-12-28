@@ -17,6 +17,6 @@ public:
 	virtual void Execute();
 
 	// Prints score till that moment
-	void PrintScore() const;
+	void PrintScore(string start = "") const;
 };
 

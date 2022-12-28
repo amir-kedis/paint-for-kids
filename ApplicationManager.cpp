@@ -283,6 +283,16 @@ string ApplicationManager::GetRandomFig() const
 	return FigList[r]->ClassString();
 }
 
+bool ApplicationManager::Stop(string shape) const
+{
+	for (int i = 0; i < FigCount; i++)
+	{
+		if (FigList[i]->ClassString() == shape)
+			return false;
+	}
+	return true;
+}
+
 bool ApplicationManager::GetRecordingStatus()
 {
 	return IsRecording;

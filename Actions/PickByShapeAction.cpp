@@ -10,8 +10,6 @@
 #include "SelectFigureAction.h"
 #include "LoadAction.h"
 #include "DeleteFigureAction.h"
-#include <fstream>
-#include <typeinfo>
 
 PickByShapeAction::PickByShapeAction(ApplicationManager* pApp) : Action(pApp)
 {
@@ -72,14 +70,15 @@ void PickByShapeAction::Execute()
 
 		PrintScore();
 
-	} while (true);
+	} while (!(pManager->Stop(Shape)));
 
+	PrintScore("Well Done!    You Have Got  ");
 }
 
-void PickByShapeAction::PrintScore() const
+void PickByShapeAction::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
-	string score = "Correct Picks: " + to_string(CorrectCnt) + '\t';
-	score += " Incorrect Picks: " + to_string(IncorrectCnt);
+	string score = start + "Correct Picks: " + to_string(CorrectCnt);
+	score += "   Incorrect Picks: " + to_string(IncorrectCnt);
 	Out->PrintMessage(score);
 }
