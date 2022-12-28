@@ -27,6 +27,8 @@ public:
 	virtual void play();
 
 	virtual void UndoAct();
+
+	virtual void RedoAct();
 };
 
 #endif

@@ -62,7 +62,9 @@ void AddHexAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(SelectedFig);
+}
 
-	//Delete the dynamically allocated figure from the memory
-	delete SelectedFig;
+void AddHexAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }

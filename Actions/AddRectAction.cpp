@@ -68,7 +68,9 @@ void AddRectAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(SelectedFig);
+}
 
-	//Delete the dynamically allocated figure from the memory
-	delete SelectedFig;
+void AddRectAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }

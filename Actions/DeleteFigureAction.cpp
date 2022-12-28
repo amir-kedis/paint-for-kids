@@ -72,3 +72,15 @@ void DeleteFigureAction::UndoAct()
 		return; //In case we added anything else in the future after this condition
 	}
 }
+
+void DeleteFigureAction::RedoAct()
+{
+	if (SelectedFig != NULL)
+		pManager->DeleteFigure(SelectedFig);
+	else
+	{
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMessage("A Failed Undo attempt was made");
+		return;
+	}
+}

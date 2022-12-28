@@ -85,3 +85,8 @@ void MoveFigureAction::UndoAct()
 		return; //In case we added anything else in the future after this condition
 	}
 }
+
+void MoveFigureAction::RedoAct()
+{
+	pManager->MoveFigure(SelectedFig, Center);
+}

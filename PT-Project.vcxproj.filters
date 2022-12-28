@@ -218,6 +218,9 @@
     <ClCompile Include="Actions\Action.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Actions\RedoAct.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="Actions\ExitAction.h" />
     <ClInclude Include="Actions\UndoAct.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\RedoAct.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

@@ -72,7 +72,9 @@ void AddTriangleAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(SelectedFig);
+}
 
-	//Delete the dynamically allocated figure from the memory
-	delete SelectedFig;
+void AddTriangleAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }

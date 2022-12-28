@@ -19,6 +19,9 @@ public:
 
 	// Used to Undo the Delete Action
 	virtual void UndoAct();
+	
+	//Redo the Undo Action (delete the figure again)
+	virtual void RedoAct();
 };
 
 #endif

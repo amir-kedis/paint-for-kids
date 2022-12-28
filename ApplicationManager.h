@@ -69,6 +69,7 @@ public:
 	int GetURActionCount() const;   //returns the num of URACtionCount to check if an undo action can be done or not
 	void UndoAction();
 	void AddToDeletedFigures(CFigure* pFig);
+	bool RedoAction();
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

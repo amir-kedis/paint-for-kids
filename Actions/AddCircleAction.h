@@ -24,6 +24,9 @@ public:
 
 	//Undo the Created Figure (delete it)
 	virtual void UndoAct();
+
+	//Redo the Action of undo (make the figure again)
+	virtual void RedoAct();
 };
 
 #endif

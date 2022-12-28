@@ -5,9 +5,9 @@
 
 class MoveFigureAction : public Action
 {
-	Point Center;
-	Point PreviousCenter;
-	CFigure* SelectedFig;
+	Point Center;               //Current center of the figure
+	Point PreviousCenter;       //Previous center of the figure
+	CFigure* SelectedFig;       //Pointer to a the figure that will be moved
 public:
 	MoveFigureAction(ApplicationManager* pApp);
 
@@ -20,7 +20,11 @@ public:
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
 
+	//Used to Undo the Delete Action
 	virtual void UndoAct();
+
+	//Redo the Undo Action (delete the figure again)
+	virtual void RedoAct();
 };
 
 #endif

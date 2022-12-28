@@ -19,6 +19,7 @@
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
 #include "Actions\UndoAct.h"
+#include "Actions/RedoAct.h"
 #include <Windows.h>
 
 
@@ -96,6 +97,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case UNDO:
 		pAct = new UndoAct(this);
+		break;
+
+	case REDO:
+		pAct = new RedoAct(this);
 		break;
 
 	case ADD_FIGURE:
@@ -414,6 +419,17 @@ void ApplicationManager::AddToDeletedFigures(CFigure* pFig)
 		}
 	}
 }
+
+bool ApplicationManager::RedoAction()
+{
+	if (URActionList[URActionCount] == NULL)
+	{
+		return false;
+	}
+	else
+		URActionList[URActionCount++]->RedoAct();
+	return true;
+ }
 
 
 //==================================================================================//
