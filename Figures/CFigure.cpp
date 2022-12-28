@@ -1,4 +1,5 @@
 #include "CFigure.h"
+#include "../ApplicationManager.h"
 #include <ctime>
 
 CFigure::CFigure(GfxInfo FigureGfxInfo)
@@ -38,7 +39,12 @@ void CFigure::ChngFillClr(color Fclr)
 void CFigure::Save(ofstream& OutFile) const
 {}
 
-bool CFigure::IsThisType(string fig) const
+string CFigure::getFillColor() const
+{
+	return ApplicationManager::ColorToString(FigGfxInfo.FillClr);
+}
+
+bool CFigure::IsThisType(string fig, char ShapeOrColor) const
 {
 	return (ClassString() == fig);
 }

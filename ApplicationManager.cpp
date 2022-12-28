@@ -275,12 +275,16 @@ string ApplicationManager::ColorToString(color Color)
 		return "BLUE";
 }
 
-string ApplicationManager::GetRandomFig() const
+string ApplicationManager::GetRandomFig(char ShapeOrColor) const
 {
 	srand(time(0));
 	// get random number from 0 to Figcount-1
 	int r = rand() % FigCount;
-	return FigList[r]->ClassString();
+
+	if(ShapeOrColor == 'S')
+		return FigList[r]->ClassString();
+
+	return FigList[r]->getFillColor();
 }
 
 bool ApplicationManager::Stop(string shape) const

@@ -139,7 +139,7 @@
     <ClCompile Include="Actions\DeleteFigureAction.cpp" />
     <ClCompile Include="Actions\ExitAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
-    <ClCompile Include="Actions\PickByShapeAction.cpp" />
+    <ClCompile Include="Actions\PickByShapeOrColorAction.cpp" />
     <ClCompile Include="Actions\PlayRecordingAction.cpp" />
     <ClCompile Include="Actions\MoveFigureAction.cpp" />
     <ClCompile Include="Actions\SaveAction.cpp" />
@@ -207,7 +207,7 @@
     <ClInclude Include="Actions\DeleteFigureAction.h" />
     <ClInclude Include="Actions\ExitAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
-    <ClInclude Include="Actions\PickByShapeAction.h" />
+    <ClInclude Include="Actions\PickByShapeOrColorAction.h" />
     <ClInclude Include="Actions\PlayRecordingAction.h" />
     <ClInclude Include="Actions\MoveFigureAction.h" />
     <ClInclude Include="Actions\SaveAction.h" />

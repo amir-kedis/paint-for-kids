@@ -1,4 +1,4 @@
-#include "PickByShapeAction.h"
+#include "PickByShapeOrColorAction.h"
 #include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
@@ -11,21 +11,21 @@
 #include "LoadAction.h"
 #include "DeleteFigureAction.h"
 
-PickByShapeAction::PickByShapeAction(ApplicationManager* pApp) : Action(pApp)
+PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, char ShapeOrColor) : Action(pApp)
 {
-	Shape = pManager->GetRandomFig();
+	Pick = pManager->GetRandomFig(ShapeOrColor);
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
 }
 
 //Reads parameters required for action to execute
-void PickByShapeAction::ReadActionParameters()
+void PickByShapeOrColorAction::ReadActionParameters()
 {
 
 }
 
 //Execute action
-void PickByShapeAction::Execute()
+void PickByShapeOrColorAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -48,7 +48,7 @@ void PickByShapeAction::Execute()
 		Load->Execute();
 	}
 
-	pOut->PrintMessage("Pick " + Shape);
+	pOut->PrintMessage("Pick " + Pick);
 
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
@@ -59,7 +59,7 @@ void PickByShapeAction::Execute()
 		UserPick = Select->SelectForPlay();
 		if (UserPick == NULL)
 			continue;
-		if (UserPick->IsThisType(Shape))
+		if (UserPick->IsThisType(Pick))
 		{
 			CorrectCnt++;
 			Delete->DeleteForPlay(UserPick);
@@ -70,12 +70,12 @@ void PickByShapeAction::Execute()
 
 		PrintScore();
 
-	} while (!(pManager->Stop(Shape)));
+	} while (!(pManager->Stop(Pick)));
 
 	PrintScore("Well Done!    You Have Got  ");
 }
 
-void PickByShapeAction::PrintScore(string start) const
+void PickByShapeOrColorAction::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);
