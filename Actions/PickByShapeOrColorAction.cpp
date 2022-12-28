@@ -39,14 +39,8 @@ void PickByShapeOrColorAction::Execute()
 		ans = pIn->GetSrting(pOut);
 	} while (ans != "y" && ans != "n");
 
-	if (ans == "y")
-	{
-		Load->LoadDrawModeList();
-	}
-	else
-	{
+	if (ans == "n")
 		Load->Execute();
-	}
 
 	pOut->PrintMessage("Pick " + Pick);
 
@@ -73,6 +67,8 @@ void PickByShapeOrColorAction::Execute()
 	} while (!(pManager->Stop(Pick, ShapeOrColor)));
 
 	PrintScore("Well Done!    You Have Got  ");
+
+	Load->LoadDrawModeList();
 }
 
 void PickByShapeOrColorAction::PrintScore(string start) const

@@ -41,7 +41,10 @@ void CFigure::Save(ofstream& OutFile) const
 
 string CFigure::getFillColor() const
 {
-	return ApplicationManager::ColorToString(FigGfxInfo.FillClr);
+	if (FigGfxInfo.isFilled)
+		return ApplicationManager::ColorToString(FigGfxInfo.FillClr);
+	else
+		return "NoFill";
 }
 
 bool CFigure::IsThisType(string fig, char ShapeOrColor) const
