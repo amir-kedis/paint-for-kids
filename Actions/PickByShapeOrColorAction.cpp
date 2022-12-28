@@ -11,8 +11,9 @@
 #include "LoadAction.h"
 #include "DeleteFigureAction.h"
 
-PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, char ShapeOrColor) : Action(pApp)
+PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
 {
+	ShapeOrColor = SOrC;
 	Pick = pManager->GetRandomFig(ShapeOrColor);
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
@@ -21,7 +22,6 @@ PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, cha
 //Reads parameters required for action to execute
 void PickByShapeOrColorAction::ReadActionParameters()
 {
-
 }
 
 //Execute action
@@ -59,7 +59,7 @@ void PickByShapeOrColorAction::Execute()
 		UserPick = Select->SelectForPlay();
 		if (UserPick == NULL)
 			continue;
-		if (UserPick->IsThisType(Pick))
+		if (UserPick->IsThisType(Pick, ShapeOrColor))
 		{
 			CorrectCnt++;
 			Delete->DeleteForPlay(UserPick);
@@ -70,7 +70,7 @@ void PickByShapeOrColorAction::Execute()
 
 		PrintScore();
 
-	} while (!(pManager->Stop(Pick)));
+	} while (!(pManager->Stop(Pick, ShapeOrColor)));
 
 	PrintScore("Well Done!    You Have Got  ");
 }

@@ -18,7 +18,7 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
-#include "Actions/PickByShapeAction.h"
+#include "Actions/PickByShapeOrColorAction.h"
 #include <Windows.h>
 #include <cstdlib>
 
@@ -180,7 +180,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case PICK_BY_SHAPES:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickByShapeAction(this);
+		pAct = new PickByShapeOrColorAction(this, 'S');
+		break;
+
+	case PICK_BY_COLORS:
+		UI.InterfaceMode = MODE_PLAY;
+		pAct = new PickByShapeOrColorAction(this, 'C');
 		break;
 
 	case EXIT:
@@ -281,18 +286,29 @@ string ApplicationManager::GetRandomFig(char ShapeOrColor) const
 	// get random number from 0 to Figcount-1
 	int r = rand() % FigCount;
 
-	if(ShapeOrColor == 'S')
+	if (ShapeOrColor == 'S')
 		return FigList[r]->ClassString();
 
 	return FigList[r]->getFillColor();
 }
 
-bool ApplicationManager::Stop(string shape) const
+bool ApplicationManager::Stop(string pick, char ShapeOrColor) const
 {
-	for (int i = 0; i < FigCount; i++)
+	if (ShapeOrColor == 'S')
 	{
-		if (FigList[i]->ClassString() == shape)
-			return false;
+		for (int i = 0; i < FigCount; i++)
+		{
+			if (FigList[i]->ClassString() == pick)
+				return false;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < FigCount; i++)
+		{
+			if (FigList[i]->getFillColor() == pick)
+				return false;
+		}
 	}
 	return true;
 }

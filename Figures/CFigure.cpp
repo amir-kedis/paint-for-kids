@@ -46,6 +46,8 @@ string CFigure::getFillColor() const
 
 bool CFigure::IsThisType(string fig, char ShapeOrColor) const
 {
-	return (ClassString() == fig);
+	if(ShapeOrColor == 'S')
+		return (ClassString() == fig);
+	return (getFillColor() == fig);
 }
 

@@ -5,6 +5,7 @@ class PickByShapeOrColorAction : public Action
 {
 private:
 	string Pick;
+	char ShapeOrColor;
 	int CorrectCnt;
 	int IncorrectCnt;
 public:
