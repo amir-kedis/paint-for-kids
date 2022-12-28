@@ -6,6 +6,8 @@
 class MoveFigureAction : public Action
 {
 	Point Center;
+	Point PreviousCenter;
+	CFigure* SelectedFig;
 public:
 	MoveFigureAction(ApplicationManager* pApp);
 
@@ -17,6 +19,8 @@ public:
 
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
+
+	virtual void UndoAct();
 };
 
 #endif

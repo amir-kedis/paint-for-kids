@@ -82,6 +82,11 @@ bool CHexagon::IsInFigure(Point CheckPoint) const
 	return (checkCorner >= 0);
 }
 
+Point CHexagon::GetCenter() const
+{
+	return Center;
+}
+
 void CHexagon::PrintInfo(Output* pOut)
 {
 	string Info = "Hexagon \t";

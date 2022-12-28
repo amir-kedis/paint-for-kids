@@ -392,6 +392,7 @@ int ApplicationManager::GetURActionCount() const
 
 void ApplicationManager::UndoAction()
 {
+	//Call the UndoAct function in the action class and decrement the Count by 1
 	URActionList[--URActionCount]->UndoAct();
 }
 
@@ -515,6 +516,12 @@ void ApplicationManager::ClearAll()
 		URActionList[i] = NULL;
 	}
 	URActionCount = 0;
+
+	for (int i = 0; i < DeletedFigsCount; i++)
+	{
+		DeletedFigs[i] = NULL;
+	}
+	DeletedFigsCount = 0;
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;

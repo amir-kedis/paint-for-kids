@@ -63,5 +63,12 @@ void DeleteFigureAction::play()
 
 void DeleteFigureAction::UndoAct()
 {
-	pManager->AddFigure(SelectedFig);
+	if (SelectedFig != NULL)
+		pManager->AddFigure(SelectedFig);
+	else
+	{
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMessage("A Failed Deleting attempt was made");
+		return; //In case we added anything else in the future after this condition
+	}
 }
