@@ -38,16 +38,8 @@ void CFigure::ChngFillClr(color Fclr)
 void CFigure::Save(ofstream& OutFile) const
 {}
 
-string CFigure::ClassString() const
+bool CFigure::IsThisType(string fig) const
 {
-	return "Figure";
-}
-
-bool CFigure::IsThisType(CFigure* fig) const
-{
-	CFigure* test = dynamic_cast <CFigure*> (fig);
-	if (test == NULL)
-		return false;
-	return true;
+	return (ClassString() == fig);
 }
 

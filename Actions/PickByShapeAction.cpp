@@ -34,15 +34,14 @@ void PickByShapeAction::Execute()
 	LoadAction* Load = new LoadAction(pManager);
 
 	// Ask if the user want to load file or stay on same previous graph
-	pOut->PrintMessage("Do You want to keep graph to play with ? (Y/N) : ");
+	pOut->PrintMessage("Do You want to keep graph to play with ? (y/n) : ");
 	string ans;
 	do
 	{
 		ans = pIn->GetSrting(pOut);
-	}
-	while (ans != "Y" && ans != "N");
+	} while (ans != "y" && ans != "n");
 
-	if (ans == "Y")
+	if (ans == "y")
 	{
 		Load->LoadDrawModeList();
 	}
@@ -51,15 +50,17 @@ void PickByShapeAction::Execute()
 		Load->Execute();
 	}
 
-	pOut->PrintMessage("Pick" + Shape->ClassString());
+	pOut->PrintMessage("Pick " + Shape);
 
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
 	DeleteFigureAction* Delete = new DeleteFigureAction(pManager);
-	UserPick = Select->SelectForPlay();
 
-	while(true)
+	do
 	{
+		UserPick = Select->SelectForPlay();
+		if (UserPick == NULL)
+			continue;
 		if (UserPick->IsThisType(Shape))
 		{
 			CorrectCnt++;
@@ -71,8 +72,7 @@ void PickByShapeAction::Execute()
 
 		PrintScore();
 
-		UserPick = Select->SelectForPlay();
-	}
+	} while (true);
 
 }
 

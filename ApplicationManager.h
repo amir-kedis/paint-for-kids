@@ -58,7 +58,7 @@ public:
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	void SetSelectedFig(CFigure* selcetFig);
 	CFigure* GetSelectedFig() const;
-	CFigure* GetRandomFig() const;
+	string GetRandomFig() const;
 	void UnselectAll(CFigure* CurrntFigure);
 	void DeleteFigure(CFigure* SelectedFigure);
 	bool IsFigListEmpty(); // Determines the status of the app so that recording can start or no

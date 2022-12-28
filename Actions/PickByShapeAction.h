@@ -4,7 +4,7 @@
 class PickByShapeAction : public Action
 {
 private:
-	CFigure *Shape;
+	string Shape;
 	int CorrectCnt;
 	int IncorrectCnt;
 public:

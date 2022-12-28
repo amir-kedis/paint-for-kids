@@ -56,14 +56,6 @@ string CHexagon::ClassString() const
 	return "Hexagon";
 }
 
-bool CHexagon::IsThisType(CFigure* fig) const
-{
-	CHexagon* test = dynamic_cast <CHexagon*> (fig);
-	if (test == NULL)
-		return false;
-	return true;
-}
-
 bool CHexagon::IsInFigure(Point CheckPoint) const
 {
 	//////////////////////////////////////////////////////////////////////////

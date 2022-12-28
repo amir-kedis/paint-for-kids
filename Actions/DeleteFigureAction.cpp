@@ -59,9 +59,10 @@ void DeleteFigureAction::play()
 
 void DeleteFigureAction::DeleteForPlay(CFigure* Fig)
 {
+	CFigure* temp = Fig;
 	//Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(Fig);
 
 	//Delete the dynamically allocated figure from the memory
-	delete Fig;
+	delete temp;
 }

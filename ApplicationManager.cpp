@@ -20,6 +20,7 @@
 #include "Actions/ExitAction.h"
 #include "Actions/PickByShapeAction.h"
 #include <Windows.h>
+#include <cstdlib>
 
 
 // Constructor
@@ -274,11 +275,12 @@ string ApplicationManager::ColorToString(color Color)
 		return "BLUE";
 }
 
-CFigure* ApplicationManager::GetRandomFig() const
+string ApplicationManager::GetRandomFig() const
 {
+	srand(time(0));
 	// get random number from 0 to Figcount-1
 	int r = rand() % FigCount;
-	return FigList[r];
+	return FigList[r]->ClassString();
 }
 
 bool ApplicationManager::GetRecordingStatus()
