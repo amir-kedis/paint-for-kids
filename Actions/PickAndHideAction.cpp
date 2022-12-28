@@ -10,6 +10,7 @@
 #include "SelectFigureAction.h"
 #include "LoadAction.h"
 #include "DeleteFigureAction.h"
+#include <string>
 
 PickAndHideAction::PickAndHideAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
 {
@@ -59,11 +60,15 @@ void PickAndHideAction::Execute()
 	string Pick = "Pick ";
 
 	if (ShapeOrColor == 'S')
-		Pick += PickShape;
-	if (ShapeOrColor == 'C')
-		Pick += PickColor;
+		Pick += PickShape + 's';
+	if (ShapeOrColor == 'C' || ShapeOrColor == 'B')
+	{
+		Pick += PickColor[0];
+		for(int i = 1; i < PickColor.size(); i++)
+		Pick += tolower(PickColor[i]);
+	}
 	if (ShapeOrColor == 'B')
-		Pick += ( PickColor + " " + PickShape );
+		Pick += " " + PickShape + 's';
 
 	pOut->PrintMessage(Pick);
 
@@ -89,7 +94,7 @@ void PickAndHideAction::Execute()
 
 	} while (!(pManager->Stop(PickShape, PickColor, ShapeOrColor)));
 
-	PrintScore("Well Done!   You Have Got   ");
+	PrintScore("Well Done!   You Have Got ");
 
 }
 
@@ -97,6 +102,6 @@ void PickAndHideAction::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);
-	score += "  Incorrect Picks: " + to_string(IncorrectCnt);
+	score += " Incorrect Picks: " + to_string(IncorrectCnt);
 	Out->PrintMessage(score);
 }
