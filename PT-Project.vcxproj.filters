@@ -211,7 +211,15 @@
     <ClCompile Include="Actions\StopRecordingAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\Action.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\Action.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickAndHideAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -292,9 +300,6 @@
     <ClInclude Include="GUI\Output.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\UI_Info.h">
-      <Filter>GUI Classes</Filter>
-    </ClInclude>
     <ClInclude Include="ApplicationManager.h">
       <Filter>Application Manager</Filter>
     </ClInclude>
@@ -360,6 +365,15 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\StopRecordingAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\ExitAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\UI_Info.h">
+      <Filter>CMUgraphicsLib</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickAndHideAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

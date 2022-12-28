@@ -58,11 +58,13 @@ public:
 	CFigure* GetFigure(int x, int y) const; //Search for a figure given a point inside the figure
 	void SetSelectedFig(CFigure* selcetFig);
 	CFigure* GetSelectedFig() const;
+	string GetRandomFig(char ShapeOrColor, int& prev) const;
 	void UnselectAll(CFigure* CurrntFigure);
 	void DeleteFigure(CFigure* SelectedFigure);
 	bool IsFigListEmpty(); // Determines the status of the app so that recording can start or no
 	void MoveFigure(CFigure* SelectedFigure, Point Center);
 	void ClearAll();
+	bool Stop(string Shape, string Color, char ShapeOrColor) const; // Checks if there are still shapes that should be picked
 
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input

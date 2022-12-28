@@ -56,6 +56,11 @@ void CCircle::Load(ifstream& InFile)
 		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
+string CCircle::ClassString() const
+{
+	return "Circle";
+}
+
 bool CCircle::IsInFigure(Point CheckPoint) const
 {
 	// radius is distance between center and point in parameter

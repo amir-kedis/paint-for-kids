@@ -20,7 +20,7 @@ void LoadAction::ReadActionParameters()
 
 	pOut->PrintMessage("Enter File Name :");
 
-	//Read the file name to save graph into it
+	//Read the file name to Load graph from
 	FileName = pIn->GetSrting(pOut);
 
 	pOut->ClearStatusBar();
@@ -87,7 +87,7 @@ void LoadAction::LoadDrawModeList()
 	pManager->ClearFigList();
 
 
-	string LoadDrawFileName = "DrawModeFigList";
+	string LoadDrawFileName = "DrawModeFigList.txt";
 	//Create and Open file
 	ifstream InputFile;
 	InputFile.open(LoadDrawFileName, ios::in);

@@ -62,6 +62,11 @@ void CRectangle::Load(ifstream& InFile)
 		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
+string CRectangle::ClassString() const
+{
+	return "Rectangle";
+}
+
 bool CRectangle::IsInFigure(Point CheckPoint) const
 {
 	// Check if x between corners

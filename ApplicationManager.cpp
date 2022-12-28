@@ -18,7 +18,9 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
+#include "Actions/PickAndHideAction.h"
 #include <Windows.h>
+#include <cstdlib>
 
 
 // Constructor
@@ -176,6 +178,21 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new ClearAllAction(this);
 		break;
 
+	case PICK_BY_SHAPES:
+		UI.InterfaceMode = MODE_PLAY;
+		pAct = new PickAndHideAction(this, 'S');
+		break;
+
+	case PICK_BY_COLORS:
+		UI.InterfaceMode = MODE_PLAY;
+		pAct = new PickAndHideAction(this, 'C');
+		break;
+
+	case PICK_BY_BOTH:
+		UI.InterfaceMode = MODE_PLAY;
+		pAct = new PickAndHideAction(this, 'B');
+		break;
+
 	case EXIT:
 		pAct = new ExitAction(this);
 		break;
@@ -266,6 +283,54 @@ string ApplicationManager::ColorToString(color Color)
 		return "GREEN";
 	if (Color == BLUE)
 		return "BLUE";
+}
+
+string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
+{
+	int r;
+	if (prev >= 0)
+		r = prev;
+	else
+	{
+		srand(time(0));
+		// get random number from 0 to Figcount-1
+		r = rand() % FigCount;
+		prev = r;
+	}
+	
+	if (ShapeOrColor == 'S')
+		return FigList[r]->ClassString();
+
+	return FigList[r]->getFillColor();
+}
+
+bool ApplicationManager::Stop(string Shape, string Color, char ShapeOrColor) const
+{
+	if (ShapeOrColor == 'B')
+	{
+		for (int i = 0; i < FigCount; i++)
+		{
+			if (FigList[i]->ClassString() == Shape && FigList[i]->getFillColor() == Color)
+				return false;
+		}
+	}
+	else if (ShapeOrColor == 'S')
+	{
+		for (int i = 0; i < FigCount; i++)
+		{
+			if (FigList[i]->ClassString() == Shape)
+				return false;
+		}
+	}
+	else
+	{
+		for (int i = 0; i < FigCount; i++)
+		{
+			if (FigList[i]->getFillColor() == Color)
+				return false;
+		}
+	}
+	return true;
 }
 
 bool ApplicationManager::GetRecordingStatus()

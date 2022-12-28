@@ -47,7 +47,7 @@ void SaveAction::Execute()
 void SaveAction::SaveDrawModeList()
 {
 
-	string SaveDrawFileName = "DrawModeFigList";
+	string SaveDrawFileName = "DrawModeFigList.txt";
 
 	//Create and Open file
 	ofstream OutputFile;

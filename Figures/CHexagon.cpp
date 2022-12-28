@@ -51,6 +51,11 @@ void CHexagon::Load(ifstream& InFile)
 		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
+string CHexagon::ClassString() const
+{
+	return "Hexagon";
+}
+
 bool CHexagon::IsInFigure(Point CheckPoint) const
 {
 	//////////////////////////////////////////////////////////////////////////

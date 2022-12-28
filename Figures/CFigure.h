@@ -40,6 +40,11 @@ public:
 
 	virtual void Save(ofstream& OutFile) const;	//Save the figure parameters to the file
 	virtual void Load(ifstream& InFile) = 0;	//Load the figure parameters to the file
+	virtual string ClassString() const = 0;
+	virtual string getFillColor() const;
+
+	// Checks if this class meets the parameters
+	virtual bool IsThisType(string Shape, string Color, char ShapeOrColor) const;
 
 	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };

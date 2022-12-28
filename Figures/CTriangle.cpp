@@ -68,6 +68,11 @@ void CTriangle::Load(ifstream& InFile)
 		ChngFillClr(ApplicationManager::StringToColor(Color));
 }
 
+string CTriangle::ClassString() const
+{
+	return "Triangle";
+}
+
 double CTriangle::CalcArea(Point V1, Point V2, Point V3) const
 {
 	return abs((V1.x * (V2.y - V3.y) + V2.x * (V3.y - V1.y) + V3.x * (V1.y - V2.y)) / 2.0);

@@ -2,6 +2,7 @@
 #define DELETE_FIGURE_ACTION_H
 
 #include "Action.h"
+#include "../Figures/CFigure.h"
 
 class DeleteFigureAction : public Action
 {
@@ -14,6 +15,8 @@ public:
 
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
+
+	virtual void DeleteForPlay(CFigure* Fig);
 };
 
 #endif
