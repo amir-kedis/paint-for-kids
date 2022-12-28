@@ -14,16 +14,6 @@
 PickAndHideAction::PickAndHideAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
 {
 	ShapeOrColor = SOrC;
-	int prev = -1;
-	if (ShapeOrColor == 'B')
-	{
-		PickShape = pManager->GetRandomFig('S', prev);
-		PickColor = pManager->GetRandomFig('C', prev);
-	}
-	else if(ShapeOrColor == 'S')
-		PickShape = pManager->GetRandomFig(ShapeOrColor, prev);
-	else
-		PickColor = pManager->GetRandomFig(ShapeOrColor, prev);
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
 }
@@ -48,15 +38,34 @@ void PickAndHideAction::Execute()
 		ans = pIn->GetSrting(pOut);
 	} while (ans != "y" && ans != "n");
 
+	if (ans == "y")
+		Load->LoadDrawModeList();
 	if (ans == "n")
 		Load->Execute();
 
-	if (ShapeOrColor == 'S')
-		pOut->PrintMessage("Pick " + PickShape);
-	else if (ShapeOrColor = 'C')
-		pOut->PrintMessage("Pick " + PickColor);
+	pManager->UpdateInterface();
+
+	int prev = -1;
+	if (ShapeOrColor == 'B')
+	{
+		PickShape = pManager->GetRandomFig('S', prev);
+		PickColor = pManager->GetRandomFig('C', prev);
+	}
+	else if (ShapeOrColor == 'S')
+		PickShape = pManager->GetRandomFig(ShapeOrColor, prev);
 	else
-		pOut->PrintMessage("Pick " + PickColor + " " + PickShape);
+		PickColor = pManager->GetRandomFig(ShapeOrColor, prev);
+
+	string Pick = "Pick ";
+
+	if (ShapeOrColor == 'S')
+		Pick += PickShape;
+	if (ShapeOrColor == 'C')
+		Pick += PickColor;
+	if (ShapeOrColor == 'B')
+		Pick += ( PickColor + " " + PickShape );
+
+	pOut->PrintMessage(Pick);
 
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
@@ -80,15 +89,14 @@ void PickAndHideAction::Execute()
 
 	} while (!(pManager->Stop(PickShape, PickColor, ShapeOrColor)));
 
-	PrintScore("Well Done!    You Have Got  ");
+	PrintScore("Well Done!   You Have Got   ");
 
-	Load->LoadDrawModeList();
 }
 
 void PickAndHideAction::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);
-	score += "   Incorrect Picks: " + to_string(IncorrectCnt);
+	score += "  Incorrect Picks: " + to_string(IncorrectCnt);
 	Out->PrintMessage(score);
 }
