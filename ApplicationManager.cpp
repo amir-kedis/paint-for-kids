@@ -280,12 +280,19 @@ string ApplicationManager::ColorToString(color Color)
 		return "BLUE";
 }
 
-string ApplicationManager::GetRandomFig(char ShapeOrColor) const
+string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
 {
-	srand(time(0));
-	// get random number from 0 to Figcount-1
-	int r = rand() % FigCount;
-
+	int r;
+	if (prev >= 0)
+		r = prev;
+	else
+	{
+		srand(time(0));
+		// get random number from 0 to Figcount-1
+		r = rand() % FigCount;
+		prev = r;
+	}
+	
 	if (ShapeOrColor == 'S')
 		return FigList[r]->ClassString();
 

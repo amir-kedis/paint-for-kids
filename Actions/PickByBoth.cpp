@@ -1,4 +1,4 @@
-#include "PickByShapeOrColorAction.h"
+#include "PickByBoth.h"
 #include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
@@ -11,30 +11,20 @@
 #include "LoadAction.h"
 #include "DeleteFigureAction.h"
 
-PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
+PickByBoth::PickByBoth(ApplicationManager* pApp) : Action(pApp)
 {
-	ShapeOrColor = SOrC;
-	if (ShapeOrColor == 'B')
-	{
-		int prev = -1;
-		PickShape = pManager->GetRandomFig('S', prev);
-		PickColor = pManager->GetRandomFig('C', prev);
-	}
-	else if(ShapeOrColor == 'S')
-		PickShape = pManager->GetRandomFig(ShapeOrColor,);
-	else
-		PickColor = pManager->GetRandomFig(ShapeOrColor);
+	Pick = pManager->GetRandomFig(ShapeOrColor);
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
 }
 
 //Reads parameters required for action to execute
-void PickByShapeOrColorAction::ReadActionParameters()
+void PickByBoth::ReadActionParameters()
 {
 }
 
 //Execute action
-void PickByShapeOrColorAction::Execute()
+void PickByBoth::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -80,7 +70,7 @@ void PickByShapeOrColorAction::Execute()
 	Load->LoadDrawModeList();
 }
 
-void PickByShapeOrColorAction::PrintScore(string start) const
+void PickByBoth::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);
