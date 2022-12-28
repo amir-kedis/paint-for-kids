@@ -16,8 +16,7 @@ public:
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
 
-	// Used to delete figure after the right pick
-	void DeleteForPlay(CFigure *Fig);
+	virtual void DeleteForPlay(CFigure* Fig);
 };
 
 #endif

@@ -10,11 +10,11 @@ DeleteFigureAction::DeleteFigureAction(ApplicationManager* pApp) :Action(pApp)
 {}
 
 void DeleteFigureAction::ReadActionParameters()
-{}
+{
+}
 
 void DeleteFigureAction::Execute()
 {
-	ReadActionParameters();
 	Output* pOut = pManager->GetOutput();
 
 	CFigure* SelectedFig = pManager->GetSelectedFig();
@@ -31,7 +31,6 @@ void DeleteFigureAction::Execute()
 
 	//Delete the dynamically allocated figure from the memory
 	delete SelectedFig;
-
 }
 
 void DeleteFigureAction::play()

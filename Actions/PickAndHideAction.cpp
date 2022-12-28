@@ -44,8 +44,10 @@ void PickAndHideAction::Execute()
 	if (ans == "n")
 		Load->Execute();
 
+	// Update Interface to make all figures show up
 	pManager->UpdateInterface();
-
+	
+	// Get a random shape or color or both according to the case
 	int prev = -1;
 	if (ShapeOrColor == 'B')
 	{
@@ -57,8 +59,8 @@ void PickAndHideAction::Execute()
 	else
 		PickColor = pManager->GetRandomFig(ShapeOrColor, prev);
 
+	// print the thing that the user should pick to let him know
 	string Pick = "Pick ";
-
 	if (ShapeOrColor == 'S')
 		Pick += PickShape + 's';
 	if (ShapeOrColor == 'C' || ShapeOrColor == 'B')
@@ -76,16 +78,17 @@ void PickAndHideAction::Execute()
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
 	DeleteFigureAction* Delete = new DeleteFigureAction(pManager);
 
+	//loop till all figures that should be picked are already picked
 	do
 	{
-		UserPick = Select->SelectForPlay();
+		UserPick = Select->SelectForPlay(); // Get picked figure
 		if (UserPick == NULL)
 			continue;
 		if (UserPick->IsThisType(PickShape, PickColor, ShapeOrColor))
 		{
 			CorrectCnt++;
-			Delete->DeleteForPlay(UserPick);
-			pManager->UpdateInterface();
+			Delete->DeleteForPlay(UserPick); // If it is the required figure, so I need to delete it
+			pManager->UpdateInterface();	// Update Interface to make the deleted figure disappear
 		}
 		else
 			IncorrectCnt++;
