@@ -42,7 +42,7 @@ public:
 	virtual void Load(ifstream& InFile) = 0;	//Load the figure parameters to the file
 	virtual string ClassString() const = 0;
 	virtual string getFillColor() const;
-	virtual bool IsThisType(string fig, char ShapeOrColor) const;
+	virtual bool IsThisType(string Shape, string Color, char ShapeOrColor) const;
 
 	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };

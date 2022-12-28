@@ -14,16 +14,16 @@
 PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
 {
 	ShapeOrColor = SOrC;
+	int prev = -1;
 	if (ShapeOrColor == 'B')
 	{
-		int prev = -1;
 		PickShape = pManager->GetRandomFig('S', prev);
 		PickColor = pManager->GetRandomFig('C', prev);
 	}
 	else if(ShapeOrColor == 'S')
-		PickShape = pManager->GetRandomFig(ShapeOrColor,);
+		PickShape = pManager->GetRandomFig(ShapeOrColor, prev);
 	else
-		PickColor = pManager->GetRandomFig(ShapeOrColor);
+		PickColor = pManager->GetRandomFig(ShapeOrColor, prev);
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
 }
@@ -51,7 +51,12 @@ void PickByShapeOrColorAction::Execute()
 	if (ans == "n")
 		Load->Execute();
 
-	pOut->PrintMessage("Pick " + Pick);
+	if (ShapeOrColor == 'S')
+		pOut->PrintMessage("Pick " + PickShape);
+	else if (ShapeOrColor = 'C')
+		pOut->PrintMessage("Pick " + PickColor);
+	else
+		pOut->PrintMessage("Pick " + PickColor + " " + PickShape);
 
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
@@ -62,7 +67,7 @@ void PickByShapeOrColorAction::Execute()
 		UserPick = Select->SelectForPlay();
 		if (UserPick == NULL)
 			continue;
-		if (UserPick->IsThisType(Pick, ShapeOrColor))
+		if (UserPick->IsThisType(PickShape, PickColor, ShapeOrColor))
 		{
 			CorrectCnt++;
 			Delete->DeleteForPlay(UserPick);
@@ -73,7 +78,7 @@ void PickByShapeOrColorAction::Execute()
 
 		PrintScore();
 
-	} while (!(pManager->Stop(Pick, ShapeOrColor)));
+	} while (!(pManager->Stop(PickShape, PickColor, ShapeOrColor)));
 
 	PrintScore("Well Done!    You Have Got  ");
 

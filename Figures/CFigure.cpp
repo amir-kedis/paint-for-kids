@@ -47,10 +47,12 @@ string CFigure::getFillColor() const
 		return "NoFill";
 }
 
-bool CFigure::IsThisType(string fig, char ShapeOrColor) const
+bool CFigure::IsThisType(string Shape, string Color, char ShapeOrColor) const
 {
+	if (ShapeOrColor == 'B')
+		return (ClassString() == Shape && getFillColor() == Color);
 	if(ShapeOrColor == 'S')
-		return (ClassString() == fig);
-	return (getFillColor() == fig);
+		return (ClassString() == Shape);
+	return (getFillColor() == Color);
 }
 

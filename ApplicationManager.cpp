@@ -188,6 +188,11 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		pAct = new PickByShapeOrColorAction(this, 'C');
 		break;
 
+	case PICK_BY_BOTH:
+		UI.InterfaceMode = MODE_PLAY;
+		pAct = new PickByShapeOrColorAction(this, 'B');
+		break;
+
 	case EXIT:
 		pAct = new ExitAction(this);
 		break;
@@ -299,13 +304,21 @@ string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
 	return FigList[r]->getFillColor();
 }
 
-bool ApplicationManager::Stop(string pick, char ShapeOrColor) const
+bool ApplicationManager::Stop(string Shape, string Color, char ShapeOrColor) const
 {
-	if (ShapeOrColor == 'S')
+	if (ShapeOrColor == 'B')
 	{
 		for (int i = 0; i < FigCount; i++)
 		{
-			if (FigList[i]->ClassString() == pick)
+			if (FigList[i]->ClassString() == Shape && FigList[i]->getFillColor() == Color)
+				return false;
+		}
+	}
+	else if (ShapeOrColor == 'S')
+	{
+		for (int i = 0; i < FigCount; i++)
+		{
+			if (FigList[i]->ClassString() == Shape)
 				return false;
 		}
 	}
@@ -313,7 +326,7 @@ bool ApplicationManager::Stop(string pick, char ShapeOrColor) const
 	{
 		for (int i = 0; i < FigCount; i++)
 		{
-			if (FigList[i]->getFillColor() == pick)
+			if (FigList[i]->getFillColor() == Color)
 				return false;
 		}
 	}
