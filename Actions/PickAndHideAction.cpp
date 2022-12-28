@@ -1,4 +1,4 @@
-#include "PickByShapeOrColorAction.h"
+#include "PickAndHideAction.h"
 #include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
@@ -11,7 +11,7 @@
 #include "LoadAction.h"
 #include "DeleteFigureAction.h"
 
-PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
+PickAndHideAction::PickAndHideAction(ApplicationManager* pApp, char SOrC) : Action(pApp)
 {
 	ShapeOrColor = SOrC;
 	int prev = -1;
@@ -29,12 +29,12 @@ PickByShapeOrColorAction::PickByShapeOrColorAction(ApplicationManager* pApp, cha
 }
 
 //Reads parameters required for action to execute
-void PickByShapeOrColorAction::ReadActionParameters()
+void PickAndHideAction::ReadActionParameters()
 {
 }
 
 //Execute action
-void PickByShapeOrColorAction::Execute()
+void PickAndHideAction::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -85,7 +85,7 @@ void PickByShapeOrColorAction::Execute()
 	Load->LoadDrawModeList();
 }
 
-void PickByShapeOrColorAction::PrintScore(string start) const
+void PickAndHideAction::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);

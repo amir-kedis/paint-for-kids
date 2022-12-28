@@ -1,7 +1,7 @@
 #pragma once
 #include "Action.h"
 #include "..\Figures\CFigure.h"
-class PickByShapeOrColorAction : public Action
+class PickAndHideAction : public Action
 {
 private:
 	string PickShape;
@@ -10,7 +10,7 @@ private:
 	int CorrectCnt;
 	int IncorrectCnt;
 public:
-	PickByShapeOrColorAction(ApplicationManager* pApp, char ShapeOrColor);
+	PickAndHideAction(ApplicationManager* pApp, char ShapeOrColor);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();

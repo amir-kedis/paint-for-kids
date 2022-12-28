@@ -18,7 +18,7 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
-#include "Actions/PickByShapeOrColorAction.h"
+#include "Actions/PickAndHideAction.h"
 #include <Windows.h>
 #include <cstdlib>
 
@@ -180,17 +180,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case PICK_BY_SHAPES:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickByShapeOrColorAction(this, 'S');
+		pAct = new PickAndHideAction(this, 'S');
 		break;
 
 	case PICK_BY_COLORS:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickByShapeOrColorAction(this, 'C');
+		pAct = new PickAndHideAction(this, 'C');
 		break;
 
 	case PICK_BY_BOTH:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickByShapeOrColorAction(this, 'B');
+		pAct = new PickAndHideAction(this, 'B');
 		break;
 
 	case EXIT:

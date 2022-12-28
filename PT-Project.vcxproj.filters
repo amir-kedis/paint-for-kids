@@ -217,10 +217,9 @@
     <ClCompile Include="Actions\Action.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\PickByShapeOrColorAction.cpp">
+    <ClCompile Include="Actions\PickAndHideAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\PickByBoth.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -374,10 +373,9 @@
     <ClInclude Include="GUI\UI_Info.h">
       <Filter>CMUgraphicsLib</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\PickByShapeOrColorAction.h">
+    <ClInclude Include="Actions\PickAndHideAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\PickByBoth.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

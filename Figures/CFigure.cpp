@@ -44,7 +44,7 @@ string CFigure::getFillColor() const
 	if (FigGfxInfo.isFilled)
 		return ApplicationManager::ColorToString(FigGfxInfo.FillClr);
 	else
-		return "NoFill";
+		return "Not Filled";
 }
 
 bool CFigure::IsThisType(string Shape, string Color, char ShapeOrColor) const
