@@ -60,7 +60,7 @@ void ChangeColorAction::UndoAct()
 		if (DrawOrFill == 'D')
 		{
 			SelectedFig->ChngDrawClr(PreviousInfo.DrawClr);
-			UI.DrawColor = Color;
+			UI.DrawColor = PreviousInfo.DrawClr;
 		}
 		else if (DrawOrFill == 'F')
 		{
