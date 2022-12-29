@@ -31,8 +31,6 @@ void DeleteFigureAction::Execute()
 	// Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(SelectedFig);
 
-	// Delete the dynamically allocated figure from the memory
-	delete SelectedFig;
 	// Make the figure not highlighted
 	SelectedFig->SetSelected(false);
 
