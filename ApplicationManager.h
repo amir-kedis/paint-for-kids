@@ -46,6 +46,7 @@ private:
 	Action* URActionList[MaxURActionCount];
 	int DeletedFigsCount;
 	CFigure* DeletedFigs[MaxDeletedFigsCount];
+	bool IsUndo;
 
 public:
 	ApplicationManager();
@@ -70,6 +71,7 @@ public:
 	void UndoAction();
 	void AddToDeletedFigures(CFigure* pFig);
 	bool RedoAction();
+	bool IsUndoLastAct();
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

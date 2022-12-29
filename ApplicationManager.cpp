@@ -67,6 +67,7 @@ ApplicationManager::ApplicationManager()
 	{
 		DeletedFigs[i] = NULL;
 	}
+	IsUndo = false;
 }
 
 //==================================================================================//
@@ -82,6 +83,10 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
+	if (ActType != REDO)
+	{
+		IsUndo = false;
+	}
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
@@ -99,6 +104,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case UNDO:
 		pAct = new UndoAct(this);
+		IsUndo = true;
 		break;
 
 	case REDO:
@@ -496,6 +502,11 @@ bool ApplicationManager::RedoAction()
 	return true;
  }
 
+bool ApplicationManager::IsUndoLastAct()
+{
+	return IsUndo;
+}
+
 
 //==================================================================================//
 //						Figures Management Functions								//
@@ -591,7 +602,10 @@ void ApplicationManager::ClearAll()
 	ClearFigList();
 
 	ClearRecording();
-	for (int i = 0; i < URActionCount; i++)
+
+	//MaxURActionCount is used instead of URActionCount because when undoing or redoing something
+	//we change the counter so if we clear all some actions won't be cleared
+	for (int i = 0; i < MaxURActionCount; i++)  
 	{
 		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
 		URActionList[i] = NULL;
