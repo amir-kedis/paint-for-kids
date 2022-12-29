@@ -36,6 +36,29 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.FillClr = Fclr;
 }
 
+void CFigure::ChngFigFillCond(bool IsFilled)
+{
+	FigGfxInfo.isFilled = IsFilled;
+}
+
+GfxInfo CFigure::GetFigInfo() const
+{
+	return FigGfxInfo;
+}
+
+//color CFigure::GetFillColor() const
+//{
+//	//if (FigGfxInfo.isFilled)
+//		return FigGfxInfo.FillClr;
+//	//else
+//		//return 0;
+//}
+//
+//color CFigure::GetDrawColor() const
+//{
+//	return FigGfxInfo.DrawClr;
+//}
+
 void CFigure::Save(ofstream& OutFile) const
 {}
 
