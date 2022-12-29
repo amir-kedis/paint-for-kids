@@ -21,7 +21,7 @@ void RedoAct::Execute()
 	bool IsDone = false;
 
 	//Check if the Redo action is still in URActionList Or not 
-	if (pManager->GetURActionCount() < 5)
+	if (pManager->GetURActionCount() < 5 && pManager->IsUndoLastAct())
 		IsDone = pManager->RedoAction();   //Make the Redo action which return a boolean value (true if done, false if not)
 
 	// To check if a redo action can be done or not
