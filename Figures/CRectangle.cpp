@@ -78,6 +78,15 @@ bool CRectangle::IsInFigure(Point CheckPoint) const
 	return (XIsInShape && YIsInShape);
 }
 
+Point CRectangle::GetCenter() const
+{
+	Point Center;
+	Center.x = (Corner1.x + Corner2.x) / 2.0; //X Coordinate of the center
+	Center.y = (Corner1.y + Corner2.y) / 2.0; //Y Coordinate of the center
+	
+	return Center;
+}
+
 void CRectangle::PrintInfo(Output* pOut)
 {
 	string Info = "Rectangle \t";

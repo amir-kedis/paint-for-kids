@@ -97,6 +97,15 @@ bool CTriangle::IsInFigure(Point CheckPoint) const
 	return (TriangleArea == SubTriangleArea1 + SubTriangleArea2 + SubTriangleArea3);
 }
 
+Point CTriangle::GetCenter() const
+{
+	Point Center;
+	Center.x = (Corner1.x + Corner2.x + Corner3.x) / 3.0; //X Coordinate of the center
+	Center.y = (Corner1.y + Corner2.y + Corner3.y) / 3.0; //Y Coordinate of the center
+	
+	return Center;
+}
+
 void CTriangle::PrintInfo(Output* pOut)
 {
 	string Info = "Triangle \t";

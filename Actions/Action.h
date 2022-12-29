@@ -2,6 +2,7 @@
 #define ACTION_H
 
 #include "..\DefS.h"
+#include "..\Figures\CFigure.h"
 
 class ApplicationManager; //forward class declaration
 
@@ -25,6 +26,9 @@ public:
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
 
+	virtual void UndoAct();
+
+	virtual void RedoAct();
 };
 
 #endif

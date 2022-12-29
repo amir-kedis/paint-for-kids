@@ -73,6 +73,11 @@ bool CCircle::IsInFigure(Point CheckPoint) const
 	return CheckRaduis <= radiusOfCircle;
 }
 
+Point CCircle::GetCenter() const
+{
+	return Center;
+}
+
 void CCircle::PrintInfo(Output* pOut)
 {
 	string Info = "Circle \t";

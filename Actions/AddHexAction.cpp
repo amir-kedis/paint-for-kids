@@ -7,7 +7,9 @@
 #include "..\GUI\Output.h"
 
 AddHexAction::AddHexAction(ApplicationManager* pApp) :Action(pApp)
-{}
+{
+	SelectedFig = NULL;
+}
 
 void AddHexAction::ReadActionParameters()
 {
@@ -37,6 +39,7 @@ void AddHexAction::Execute()
 
 	//Create a hexagon with the parameters read from the user
 	CHexagon* R = new CHexagon(P1, HexGfxInfo);
+	SelectedFig = R;
 
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(R);
@@ -49,7 +52,19 @@ void AddHexAction::play()
 
 	//Create a hexagon with the parameters read from the user
 	CHexagon* R = new CHexagon(P1, HexGfxInfo);
+	SelectedFig = R;
 
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(R);
+}
+
+void AddHexAction::UndoAct()
+{
+	//Call DeleteFigure function to delete the selected figure
+	pManager->DeleteFigure(SelectedFig);
+}
+
+void AddHexAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }

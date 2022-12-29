@@ -19,6 +19,8 @@
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
 #include "Actions/PickAndHideAction.h"
+#include "Actions\UndoAct.h"
+#include "Actions/RedoAct.h"
 #include <Windows.h>
 #include <cstdlib>
 
@@ -43,12 +45,28 @@ ApplicationManager::ApplicationManager()
 	/////////////////////////////////////////
 	RecordActionCount = 0;
 
+	IsRecording = false;
 	// Create an array of Action pointers and set them to NULL
 	for (int i = 0; i < MaxRecordActionCount; i++)
 	{
 		ActionList[i] = NULL;
 	}
 	/////////////////////////////////////////
+
+	/////////////////////////////////////////
+	/// Undo and Redo Related Members
+	/////////////////////////////////////////
+	URActionCount = 0;
+	for (int i = 0; i < MaxURActionCount; i++)
+	{
+		URActionList[i] = NULL;
+	}
+
+	DeletedFigsCount = 0;
+	for (int i = 0; i < MaxDeletedFigsCount; i++)
+	{
+		DeletedFigs[i] = NULL;
+	}
 }
 
 //==================================================================================//
@@ -77,6 +95,14 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case MOVE_FIGURE:
 		pAct = new MoveFigureAction(this);
+		break;
+
+	case UNDO:
+		pAct = new UndoAct(this);
+		break;
+
+	case REDO:
+		pAct = new RedoAct(this);
 		break;
 
 	case ADD_FIGURE:
@@ -205,6 +231,27 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	if (pAct != NULL)
 	{
 		pAct->Execute(); // Execute
+		bool ShouldBeDeleted = true;
+		switch (ActType)
+		{
+		case DRAW_RECT:
+		case DRAW_HEX:
+		case DRAW_SQUARE:
+		case DRAW_CIRCLE:
+		case DRAW_TRI:
+		case DELETE_FIGURE:
+		case COLOUR_BLACK:
+		case COLOUR_YELLOW:
+		case COLOUR_ORANGE:
+		case COLOUR_RED:
+		case COLOUR_GREEN:
+		case COLOUR_BLUE:
+		case MOVE_FIGURE:
+			AddToURActionList(pAct); //Adds the Action to Undo Redo ActionList
+			ShouldBeDeleted = false;
+		default:
+			break;
+		}
 		if (IsRecording && RecordActionCount < 20)
 		{
 			switch (ActType)
@@ -227,11 +274,12 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 			case UNDO:
 			case REDO:
 				AddActionToRecording(pAct);
+				ShouldBeDeleted = false;
 			default:
 				break;
 			}
 		}
-		else // delete the action if we are not recording
+		if (ShouldBeDeleted) // delete the action if we are not recording
 		{
 			delete pAct;	 // You may need to change this line depending to your implementation
 			pAct = NULL;
@@ -372,7 +420,7 @@ void ApplicationManager::ClearRecording()
 	{
 		delete ActionList[i];
 		ActionList[i] = NULL;
-		RecordActionCount = 0;
+		//RecordActionCount = 0;
 	}
 	RecordActionCount = 0;
 	IsRecording = false;
@@ -387,6 +435,66 @@ void ApplicationManager::ClearFigList()
 	}
 	FigCount = 0;
 }
+
+void ApplicationManager::AddToURActionList(Action* pAct)
+{
+	if (URActionCount < MaxURActionCount)
+	{
+		URActionList[URActionCount++] = pAct;
+	}
+	else
+	{
+		for (int i = 1; i < MaxURActionCount; i++)
+		{
+			URActionList[i - 1] = URActionList[i];
+			if (i == MaxURActionCount - 1)
+			{
+				URActionList[i] = pAct;
+			}
+		}
+	}
+}
+
+int ApplicationManager::GetURActionCount() const
+{
+	return URActionCount;
+}
+
+void ApplicationManager::UndoAction()
+{
+	//Call the UndoAct function in the action class and decrement the Count by 1
+	URActionList[--URActionCount]->UndoAct();
+}
+
+void ApplicationManager::AddToDeletedFigures(CFigure* pFig)
+{
+	if (DeletedFigsCount < MaxDeletedFigsCount)
+	{
+		DeletedFigs[DeletedFigsCount++] = pFig;
+	}
+	else
+	{
+		for (int i = 1; i < MaxDeletedFigsCount; i++)
+		{
+			DeletedFigs[i - 1] = DeletedFigs[i];
+			if (i == MaxDeletedFigsCount - 1)
+			{
+				DeletedFigs[i] = pFig;
+			}
+		}
+	}
+}
+
+bool ApplicationManager::RedoAction()
+{
+	if (URActionList[URActionCount] == NULL)
+	{
+		return false;
+	}
+	else
+		URActionList[URActionCount++]->RedoAct();
+	return true;
+ }
 
 
 //==================================================================================//
@@ -480,15 +588,21 @@ void ApplicationManager::MoveFigure(CFigure* SelectedFigure, Point Center)
 
 void ApplicationManager::ClearAll()
 {
-	//loop through all figures to delete them
-	for (int i = 0; i < FigCount; i++)
-	{
-		delete FigList[i];
-		FigList[i] = NULL;
-	}
-	FigCount = 0;
+	ClearFigList();
 
 	ClearRecording();
+	for (int i = 0; i < URActionCount; i++)
+	{
+		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
+		URActionList[i] = NULL;
+	}
+	URActionCount = 0;
+
+	for (int i = 0; i < DeletedFigsCount; i++)
+	{
+		DeletedFigs[i] = NULL;
+	}
+	DeletedFigsCount = 0;
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;
@@ -542,10 +656,7 @@ Output* ApplicationManager::GetOutput() const
 // Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for (int i = 0; i < FigCount; i++)
-		delete FigList[i];
-
-	ClearRecording();
+	ClearAll();
 
 	delete pIn;
 	delete pOut;

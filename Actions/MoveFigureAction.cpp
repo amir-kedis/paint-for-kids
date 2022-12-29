@@ -6,7 +6,9 @@
 #include "..\GUI\Output.h"
 
 MoveFigureAction::MoveFigureAction(ApplicationManager* pApp) :Action(pApp)
-{}
+{
+	SelectedFig = NULL;
+}
 
 void MoveFigureAction::ReadActionParameters()
 {
@@ -28,7 +30,7 @@ void MoveFigureAction::Execute()
 	Output* pOut = pManager->GetOutput();
 
 	//Get a Pointer to the Selected Figure
-	CFigure* SelectedFig = pManager->GetSelectedFig();
+	SelectedFig = pManager->GetSelectedFig();
 
 	//Check if there are no Selected Figures
 	if (SelectedFig == NULL)
@@ -36,6 +38,9 @@ void MoveFigureAction::Execute()
 		pOut->PrintMessage("You Must Select A Figure");
 		return;
 	}
+
+	//Get the Center of the shape before moving it
+	PreviousCenter = SelectedFig->GetCenter();
 
 	//Read the new Center from the user
 	ReadActionParameters();
@@ -67,4 +72,21 @@ void MoveFigureAction::play()
 	pManager->MoveFigure(SelectedFig, Center);
 
 	SelectedFig->SetSelected(false);
+}
+
+void MoveFigureAction::UndoAct()
+{
+	if (SelectedFig != NULL)
+		pManager->MoveFigure(SelectedFig, PreviousCenter);
+	else
+	{
+		Output* pOut = pManager->GetOutput();
+		pOut->PrintMessage("A Failed Moving attempt was made");
+		return; //In case we added anything else in the future after this condition
+	}
+}
+
+void MoveFigureAction::RedoAct()
+{
+	pManager->MoveFigure(SelectedFig, Center);
 }

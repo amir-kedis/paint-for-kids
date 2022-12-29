@@ -7,7 +7,9 @@
 #include "..\GUI\Output.h"
 
 AddRectAction::AddRectAction(ApplicationManager* pApp) :Action(pApp)
-{}
+{
+	SelectedFig = NULL;
+}
 
 void AddRectAction::ReadActionParameters()
 {
@@ -42,6 +44,7 @@ void AddRectAction::Execute()
 
 	//Create a rectangle with the parameters read from the user
 	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
+	SelectedFig = R;
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
@@ -55,7 +58,19 @@ void AddRectAction::play()
 
 	//Create a rectangle with the parameters read from the user
 	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
+	SelectedFig = R;
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+}
+
+void AddRectAction::UndoAct()
+{
+	//Call DeleteFigure function to delete the selected figure
+	pManager->DeleteFigure(SelectedFig);
+}
+
+void AddRectAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }

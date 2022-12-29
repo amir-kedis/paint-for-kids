@@ -67,6 +67,11 @@ bool CSquare::IsInFigure(Point CheckPoint) const
 	return (XIsInShape && YIsInShape);
 }
 
+Point CSquare::GetCenter() const
+{
+	return Center;
+}
+
 void CSquare::PrintInfo(Output* pOut)
 {
 	string Info = "SQUARE \t";

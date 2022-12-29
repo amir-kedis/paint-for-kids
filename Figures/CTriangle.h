@@ -19,6 +19,7 @@ public:
 	virtual string ClassString() const;
 	double CalcArea(Point V1, Point V2, Point V3) const;
 	virtual bool IsInFigure(Point CheckPoint) const;
+	virtual Point GetCenter() const;
 	virtual void PrintInfo(Output* pOut);	//print all figure info on the status bar
 };
 

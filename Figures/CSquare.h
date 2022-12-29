@@ -16,6 +16,7 @@ public:
 	virtual void Load(ifstream& InFile);
 	virtual string ClassString() const;
 	virtual bool IsInFigure(Point CheckPoint) const;
+	virtual Point GetCenter() const;
 	virtual void PrintInfo(Output* pOut);	//print all figure info on the status bar
 };
 

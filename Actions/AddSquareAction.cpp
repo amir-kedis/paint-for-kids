@@ -7,7 +7,9 @@
 #include "..\GUI\Output.h"
 
 AddSquareAction::AddSquareAction(ApplicationManager* pApp) :Action(pApp)
-{}
+{
+	SelectedFig = NULL;
+}
 
 void AddSquareAction::ReadActionParameters()
 {
@@ -36,6 +38,7 @@ void AddSquareAction::Execute()
 
 	//Create a square with the parameters read from the user
 	CSquare* R = new CSquare(P1, SquareGfxInfo);
+	SelectedFig = R;
 
 	//Add the square to the list of figures
 	pManager->AddFigure(R);
@@ -49,7 +52,19 @@ void AddSquareAction::play()
 
 	//Create a square with the parameters read from the user
 	CSquare* R = new CSquare(P1, SquareGfxInfo);
+	SelectedFig = R;
 
 	//Add the square to the list of figures
 	pManager->AddFigure(R);
+}
+
+void AddSquareAction::UndoAct()
+{
+	//Call DeleteFigure function to delete the selected figure
+	pManager->DeleteFigure(SelectedFig);
+}
+
+void AddSquareAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }

@@ -7,7 +7,9 @@
 #include "..\GUI\Output.h"
 
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
-{}
+{
+	SelectedFig = NULL;
+}
 
 void AddCircleAction::ReadActionParameters()
 {
@@ -41,6 +43,7 @@ void AddCircleAction::Execute()
 
 	//Create a circle with the parameters read from the user
 	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);
+	SelectedFig = R;
 
 	//Add the circle to the list of figures
 	pManager->AddFigure(R);
@@ -53,7 +56,20 @@ void AddCircleAction::play()
 
 	//Create a circle with the parameters read from the user
 	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);
+	SelectedFig = R;
 
 	//Add the circle to the list of figures
 	pManager->AddFigure(R);
+}
+
+void AddCircleAction::UndoAct()
+{
+	//Call DeleteFigure function to delete the selected figure
+	pManager->DeleteFigure(SelectedFig);
+
+}
+
+void AddCircleAction::RedoAct()
+{
+	pManager->AddFigure(SelectedFig);
 }
