@@ -34,8 +34,6 @@ void DeleteFigureAction::Execute()
 	// Make the figure not highlighted
 	SelectedFig->SetSelected(false);
 
-	// Add the figure to a list to get access to it when we undo
-	pManager->AddToDeletedFigures(SelectedFig);
 }
 
 void DeleteFigureAction::play()

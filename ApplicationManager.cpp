@@ -63,11 +63,6 @@ ApplicationManager::ApplicationManager()
 		URActionList[i] = NULL;
 	}
 
-	DeletedFigsCount = 0;
-	for (int i = 0; i < MaxDeletedFigsCount; i++)
-	{
-		DeletedFigs[i] = NULL;
-	}
 	IsUndo = false;
 
 	/////////////////////////////////////////
@@ -481,24 +476,6 @@ void ApplicationManager::UndoAction()
 	URActionList[--URActionCount]->UndoAct();
 }
 
-void ApplicationManager::AddToDeletedFigures(CFigure* pFig)
-{
-	if (DeletedFigsCount < MaxDeletedFigsCount)
-	{
-		DeletedFigs[DeletedFigsCount++] = pFig;
-	}
-	else
-	{
-		for (int i = 1; i < MaxDeletedFigsCount; i++)
-		{
-			DeletedFigs[i - 1] = DeletedFigs[i];
-			if (i == MaxDeletedFigsCount - 1)
-			{
-				DeletedFigs[i] = pFig;
-			}
-		}
-	}
-}
 
 bool ApplicationManager::RedoAction()
 {
@@ -631,11 +608,6 @@ void ApplicationManager::ClearAll()
 	}
 	URActionCount = 0;
 
-	for (int i = 0; i < DeletedFigsCount; i++)
-	{
-		DeletedFigs[i] = NULL;
-	}
-	DeletedFigsCount = 0;
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;
