@@ -103,12 +103,6 @@ CFigure* SelectFigureAction::SelectForPlay()
 	// Get Point From User
 	pIn->GetPointClicked(SelectPoint.x, SelectPoint.y);
 
-	// Validate that the point is in The Play area
-	while (SelectPoint.y < UI.StatusBarHeight || SelectPoint.y >(UI.height - UI.StatusBarHeight))
-	{
-		pIn->GetPointClicked(SelectPoint.x, SelectPoint.y);
-	}
-
 	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.y);
 
 	return ClickedFigure;

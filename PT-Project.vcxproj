@@ -140,6 +140,7 @@
     <ClCompile Include="Actions\ExitAction.cpp" />
     <ClCompile Include="Actions\LoadAction.cpp" />
     <ClCompile Include="Actions\PickAndHideAction.cpp" />
+    <ClCompile Include="Actions\PickByShapes.cpp" />
     <ClCompile Include="Actions\PlayRecordingAction.cpp" />
     <ClCompile Include="Actions\MoveFigureAction.cpp" />
     <ClCompile Include="Actions\RedoAct.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="Actions\ExitAction.h" />
     <ClInclude Include="Actions\LoadAction.h" />
     <ClInclude Include="Actions\PickAndHideAction.h" />
+    <ClInclude Include="Actions\PickByShapes.h" />
     <ClInclude Include="Actions\PlayRecordingAction.h" />
     <ClInclude Include="Actions\MoveFigureAction.h" />
     <ClInclude Include="Actions\RedoAct.h" />

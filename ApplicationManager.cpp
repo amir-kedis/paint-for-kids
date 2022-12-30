@@ -346,6 +346,7 @@ string ApplicationManager::ColorToString(color Color)
 string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
 {
 	int r;
+	// This is needed for getting the color of the same picked shape in case of pickking by shape and color
 	if (prev >= 0)
 		r = prev;
 	else
@@ -362,13 +363,13 @@ string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
 	return FigList[r]->getFillColor();
 }
 
-bool ApplicationManager::Stop(string Shape, string Color, char ShapeOrColor) const
+bool ApplicationManager::Stop(char ShapeOrColor, string Pick, string Pick2) const
 {
 	if (ShapeOrColor == 'B')
 	{
 		for (int i = 0; i < FigCount; i++)
 		{
-			if (FigList[i]->ClassString() == Shape && FigList[i]->getFillColor() == Color)
+			if (FigList[i]->ClassString() == Pick && FigList[i]->getFillColor() == Pick2)
 				return false;
 		}
 	}
@@ -376,7 +377,7 @@ bool ApplicationManager::Stop(string Shape, string Color, char ShapeOrColor) con
 	{
 		for (int i = 0; i < FigCount; i++)
 		{
-			if (FigList[i]->ClassString() == Shape)
+			if (FigList[i]->ClassString() == Pick)
 				return false;
 		}
 	}
@@ -384,7 +385,7 @@ bool ApplicationManager::Stop(string Shape, string Color, char ShapeOrColor) con
 	{
 		for (int i = 0; i < FigCount; i++)
 		{
-			if (FigList[i]->getFillColor() == Color)
+			if (FigList[i]->getFillColor() == Pick)
 				return false;
 		}
 	}

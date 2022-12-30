@@ -47,7 +47,7 @@ public:
 	virtual string getFillColor() const;
 
 	// Checks if this class meets the parameters
-	virtual bool IsThisType(string Shape, string Color, char ShapeOrColor) const;
+	virtual bool IsThisType(string Pick, char ShapeOrColor) const;
 
 	virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
 };
