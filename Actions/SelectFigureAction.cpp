@@ -36,6 +36,12 @@ void SelectFigureAction::Execute()
 
 	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.y);
 
+	// PLay sound if on
+	if (pManager->GetSoundStatus())
+	{
+		PlaySound(TEXT("sounds\\select.wav"), NULL, SND_ASYNC);
+	}
+
 	// If Clicked in No Figure
 	if (ClickedFigure == NULL)
 	{

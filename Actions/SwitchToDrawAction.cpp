@@ -11,6 +11,11 @@ void SwitchToDrawAction::ReadActionParameters()
 
 void SwitchToDrawAction::Execute()
 {
+	if (pManager->GetSoundStatus())
+	{
+		PlaySound(TEXT("sounds\\draw-mode.wav"), NULL, SND_ASYNC);
+	}
+
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Back to Draw Mode.......");
 

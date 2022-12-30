@@ -212,7 +212,7 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\ExitAction.cpp">
-        <Filter>Action Classes</Filter>
+      <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\UndoAct.cpp">
       <Filter>Action Classes</Filter>
@@ -224,6 +224,9 @@
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\RedoAct.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\SoundAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -376,9 +379,6 @@
     <ClInclude Include="Actions\ExitAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\UI_Info.h">
-      <Filter>CMUgraphicsLib</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\PickAndHideAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
@@ -387,6 +387,12 @@
       <Filter>Action Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\RedoAct.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\UI_Info.h">
+      <Filter>GUI Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\SoundAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

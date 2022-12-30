@@ -39,11 +39,14 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_PLAY,				//Switch interface to Play mode
 	EMPTY,					//A click on empty place in the toolbar
 	DRAWING_AREA,			//A click on the drawing area
+	SOUND,					//A click on the sound btn
 	STATUS					//A click on the status bar
 };
 
 struct Point	//To be used for figures points
-{ int x,y; };
+{
+	int x, y;
+};
 
 struct GfxInfo	//Graphical info of each figure (you may add more members)
 {

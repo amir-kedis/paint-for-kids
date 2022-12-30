@@ -16,10 +16,10 @@ class ApplicationManager
 	enum { MaxRecordActionCount = 20 };
 
 	// Max no of Actions to be stored for Undo and Redo
-	enum {MaxURActionCount = 5}; 
+	enum { MaxURActionCount = 5 };
 
 	// Max no of Deleted Figures that can be Undone
-	enum {MaxDeletedFigsCount = 5};
+	enum { MaxDeletedFigsCount = 5 };
 private:
 	int FigCount;		//Actual number of figures
 	CFigure* FigList[MaxFigCount];	//List of all figures (Array of pointers)
@@ -48,6 +48,9 @@ private:
 	CFigure* DeletedFigs[MaxDeletedFigsCount];
 	bool IsUndo;
 
+	////////////////////////////////////////
+	bool IsSoundOn;			// Sound Flag
+
 public:
 	ApplicationManager();
 	~ApplicationManager();
@@ -72,6 +75,8 @@ public:
 	void AddToDeletedFigures(CFigure* pFig);
 	bool RedoAction();
 	bool IsUndoLastAct();
+	bool GetSoundStatus();
+	void SetSoundStatus(bool);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

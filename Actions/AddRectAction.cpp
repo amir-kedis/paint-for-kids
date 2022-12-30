@@ -39,6 +39,11 @@ void AddRectAction::ReadActionParameters()
 //Execute the action
 void AddRectAction::Execute()
 {
+	// PLay sound if on
+	if (pManager->GetSoundStatus())
+	{
+		PlaySound(TEXT("sounds\\rectangle.wav"), NULL, SND_ASYNC);
+	}
 	//This action needs to read some parameters first
 	ReadActionParameters();
 

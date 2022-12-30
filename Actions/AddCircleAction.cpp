@@ -38,6 +38,12 @@ void AddCircleAction::ReadActionParameters()
 
 void AddCircleAction::Execute()
 {
+	// PLay sound if on
+	if (pManager->GetSoundStatus())
+	{
+		PlaySound(TEXT("sounds\\circle.wav"), NULL, SND_ASYNC);
+	}
+
 	//This action needs to read some parameters first
 	ReadActionParameters();
 
