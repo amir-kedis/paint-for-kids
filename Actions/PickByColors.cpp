@@ -1,4 +1,4 @@
-#include "PickByShapes.h"
+#include "PickByColors.h"
 #include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
@@ -7,19 +7,19 @@
 #include "DeleteFigureAction.h"
 #include <string>
 
-PickByShapes::PickByShapes(ApplicationManager* pApp) : Action(pApp)
+PickByColors::PickByColors(ApplicationManager* pApp) : Action(pApp)
 {
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
 }
 
 //Reads parameters required for action to execute
-void PickByShapes::ReadActionParameters()
+void PickByColors::ReadActionParameters()
 {
 }
 
 //Execute action
-void PickByShapes::Execute()
+void PickByColors::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -47,11 +47,11 @@ void PickByShapes::Execute()
 	// Update Interface to make all figures show up
 	pManager->UpdateInterface();
 
-	// Get a random shape from Figure List
+	// Get a random Color from Figure List
 	int prev = -1; // Because the function needs a second
-	Pick = pManager->GetRandomFig('S', prev);
+	Pick = pManager->GetRandomFig('C', prev);
 
-	// print the Shape that the user should pick to let him know
+	// print the Color that the user should pick to let him know
 	pOut->PrintMessage("Pick " + Pick);
 
 	CFigure* UserPick;
@@ -64,7 +64,7 @@ void PickByShapes::Execute()
 		UserPick = Select->SelectForPlay(); // Get picked figure
 		if (UserPick == NULL)
 			continue;
-		if (UserPick->IsThisType(Pick, 'S')) //To check Shape in order to know if it is the needed one or not
+		if (UserPick->IsThisType(Pick, 'C')) //To check Color in order to know if it is the needed one or not
 		{
 			CorrectCnt++;
 			Delete->DeleteForPlay(UserPick); // If it is the required figure, so I need to delete it
@@ -75,13 +75,13 @@ void PickByShapes::Execute()
 
 		PrintScore();
 
-	} while (!(pManager->Stop('S', Pick)));
+	} while (!(pManager->Stop('C', Pick)));
 
 	PrintScore("Well Done!   You Have Got ");
 
 }
 
-void PickByShapes::PrintScore(string start) const
+void PickByColors::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);
