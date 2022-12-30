@@ -68,6 +68,10 @@ ApplicationManager::ApplicationManager()
 		DeletedFigs[i] = NULL;
 	}
 	IsUndo = false;
+
+	/////////////////////////////////////////
+	IsSoundOn = true;
+	UI.IsSoundOn = true;
 }
 
 //==================================================================================//
@@ -351,7 +355,7 @@ string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
 		r = rand() % FigCount;
 		prev = r;
 	}
-	
+
 	if (ShapeOrColor == 'S')
 		return FigList[r]->ClassString();
 
@@ -500,7 +504,7 @@ bool ApplicationManager::RedoAction()
 	else
 		URActionList[URActionCount++]->RedoAct();
 	return true;
- }
+}
 
 bool ApplicationManager::IsUndoLastAct()
 {
@@ -605,7 +609,7 @@ void ApplicationManager::ClearAll()
 
 	//MaxURActionCount is used instead of URActionCount because when undoing or redoing something
 	//we change the counter so if we clear all some actions won't be cleared
-	for (int i = 0; i < MaxURActionCount; i++)  
+	for (int i = 0; i < MaxURActionCount; i++)
 	{
 		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
 		URActionList[i] = NULL;

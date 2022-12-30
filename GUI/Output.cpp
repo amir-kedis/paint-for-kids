@@ -24,6 +24,7 @@ Output::Output()
 	UI.StatusBarColor = color(251, 192, 147); // status Bar color
 	UI.ToolBarColor = WHITE; // status Bar color
 	UI.PenWidth = 3;	//width of the figures frames
+	UI.IsSoundOn = true; // sound Is On by Default
 
 
 	//Create the output window
