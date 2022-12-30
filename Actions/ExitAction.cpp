@@ -16,6 +16,7 @@ void ExitAction::Execute()
 	{
 		PlaySound(TEXT("sounds\\exit.wav"), NULL, SND_ASYNC);
 	}
+	Sleep(1000);
 
 	pManager->ClearAll();
 }

@@ -226,7 +226,9 @@
     <ClCompile Include="Actions\RedoAct.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\SoundAction.cpp" />
+    <ClCompile Include="Actions\SoundAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -390,7 +392,9 @@
     <ClInclude Include="GUI\UI_Info.h">
       <Filter>GUI Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\SoundAction.h" />
+    <ClInclude Include="Actions\SoundAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
