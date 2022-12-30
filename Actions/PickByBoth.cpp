@@ -1,4 +1,4 @@
-#include "PickByColors.h"
+#include "PickByBoth.h"
 #include "..\ApplicationManager.h"
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
@@ -7,19 +7,19 @@
 #include "DeleteFigureAction.h"
 #include <string>
 
-PickByColors::PickByColors(ApplicationManager* pApp) : Action(pApp)
+PickByBoth::PickByBoth(ApplicationManager* pApp) : Action(pApp)
 {
 	CorrectCnt = 0;
 	IncorrectCnt = 0;
 }
 
 //Reads parameters required for action to execute
-void PickByColors::ReadActionParameters()
+void PickByBoth::ReadActionParameters()
 {
 }
 
 //Execute action
-void PickByColors::Execute()
+void PickByBoth::Execute()
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -47,12 +47,18 @@ void PickByColors::Execute()
 	// Update Interface to make all figures show up
 	pManager->UpdateInterface();
 
-	// Get a random Color from Figure List
-	int prev = -1; // Because the function needs a second
-	Pick = pManager->GetRandomFig('C', prev);
+	// Get a random shape with a specific color from Figure List
+	int prev = -1; // This is needed for getting the color of the same picked shape
+	PickShape = pManager->GetRandomFig('S', prev);
+	PickColor = pManager->GetRandomFig('C', prev);
 
-	// print the Color that the user should pick to let him know
-	pOut->PrintMessage("Pick " + Pick);
+	// print the Color and sahpe that the user should pick to let him know (while making color lower case)
+	string Pick = "Pick ";
+	Pick += PickColor[0];
+	for (int i = 1; i < PickColor.size(); i++)
+		Pick += tolower(PickColor[i]);
+	Pick += " " + PickShape + 's';
+	pOut->PrintMessage(Pick);
 
 	CFigure* UserPick;
 	SelectFigureAction* Select = new SelectFigureAction(pManager);
@@ -66,7 +72,8 @@ void PickByColors::Execute()
 		if (UserPick == NULL) // in case the user clicked on an empty area
 			continue;
 
-		if (UserPick->IsThisType(Pick, 'C')) //To check Color in order to know if it is the needed one or not
+		//To check Shape and Color to know if it is the needed one or not
+		if (UserPick->IsThisType(PickShape, 'S') && UserPick->IsThisType(PickColor, 'C'))
 		{
 			CorrectCnt++;
 			Delete->DeleteForPlay(UserPick); // If it is the required figure, so I need to delete it
@@ -77,13 +84,13 @@ void PickByColors::Execute()
 
 		PrintScore();
 
-	} while (!(pManager->Stop('C', Pick)));
+	} while (!(pManager->Stop('B', PickShape, PickColor)));
 
 	PrintScore("Well Done!   You Have Got ");
 
 }
 
-void PickByColors::PrintScore(string start) const
+void PickByBoth::PrintScore(string start) const
 {
 	Output* Out = pManager->GetOutput();
 	string score = start + "Correct Picks: " + to_string(CorrectCnt);

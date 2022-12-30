@@ -62,8 +62,10 @@ void PickByShapes::Execute()
 	do
 	{
 		UserPick = Select->SelectForPlay(); // Get picked figure
-		if (UserPick == NULL)
+
+		if (UserPick == NULL) // in case the user clicked on an empty area
 			continue;
+
 		if (UserPick->IsThisType(Pick, 'S')) //To check Shape in order to know if it is the needed one or not
 		{
 			CorrectCnt++;
