@@ -16,6 +16,8 @@ void RedoAct::ReadActionParameters()
 void RedoAct::Execute()
 {
 	Output* pOut = pManager->GetOutput();
+
+	pOut->ClearStatusBar();
 	
 	//a bool variable to check if the redo action is done or not
 	bool IsDone = false;

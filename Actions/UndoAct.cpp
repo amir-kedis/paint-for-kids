@@ -17,6 +17,8 @@ void UndoAct::Execute()
 	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();
 
+	pOut->ClearStatusBar();
+
 	//Check if there are actions to Undo or not
 	if (pManager->GetURActionCount() == 0)
 	{
