@@ -11,6 +11,11 @@ void SwitchToPlayAction::ReadActionParameters()
 
 void SwitchToPlayAction::Execute()
 {
+	if (pManager->GetSoundStatus())
+	{
+		PlaySound(TEXT("sounds\\play-mode.wav"), NULL, SND_ASYNC);
+	}
+
 	Output* pOut = pManager->GetOutput();
 	pOut->PrintMessage("Play Mode started");
 
