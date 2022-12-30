@@ -220,13 +220,19 @@
     <ClCompile Include="Actions\Action.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\PickAndHideAction.cpp">
-      <Filter>Action Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Actions\RedoAct.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
     <ClCompile Include="Actions\SoundAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickByBothAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickByColorsAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickByShapesAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -379,9 +385,6 @@
     <ClInclude Include="Actions\ExitAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\PickAndHideAction.h">
-      <Filter>Action Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Actions\ExitAction.h" />
     <ClInclude Include="Actions\UndoAct.h">
       <Filter>Action Classes</Filter>
@@ -393,6 +396,15 @@
       <Filter>GUI Classes</Filter>
     </ClInclude>
     <ClInclude Include="Actions\SoundAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickByBothAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickByColorsAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickByShapesAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
   </ItemGroup>

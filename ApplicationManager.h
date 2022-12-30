@@ -89,7 +89,8 @@ public:
 	bool IsFigListEmpty(); // Determines the status of the app so that recording can start or no
 	void MoveFigure(CFigure* SelectedFigure, Point Center);
 	void ClearAll();
-	bool Stop(string Shape, string Color, char ShapeOrColor) const; // Checks if there are still shapes that should be picked
+	// Checks if there are still Figures that should be picked
+	bool Stop(char ShapeOrColor, string Pick, string Pick2 = "") const; 
 
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input

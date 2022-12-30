@@ -1,16 +1,14 @@
 #pragma once
 #include "Action.h"
-#include "..\Figures\CFigure.h"
-class PickAndHideAction : public Action
+class PickByBothAction : public Action
 {
 private:
 	string PickShape;
 	string PickColor;
-	char ShapeOrColor; // S for Shape , C for Color , B for Both
 	int CorrectCnt;
 	int IncorrectCnt;
 public:
-	PickAndHideAction(ApplicationManager* pApp, char ShapeOrColor);
+	PickByBothAction(ApplicationManager* pApp);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();
