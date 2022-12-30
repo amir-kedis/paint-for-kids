@@ -1,13 +1,13 @@
 #pragma once
 #include "Action.h"
-class PickByColors : public Action
+class PickByColorsAction : public Action
 {
 private:
 	string Pick;
 	int CorrectCnt;
 	int IncorrectCnt;
 public:
-	PickByColors(ApplicationManager* pApp);
+	PickByColorsAction(ApplicationManager* pApp);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();

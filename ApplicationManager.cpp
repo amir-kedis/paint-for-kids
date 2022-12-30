@@ -18,7 +18,9 @@
 #include "Actions/PlayRecordingAction.h"
 #include "Actions/ClearAllAction.h"
 #include "Actions/ExitAction.h"
-#include "Actions/PickAndHideAction.h"
+#include "Actions/PickByShapesAction.h"
+#include "Actions/PickByColorsAction.h"
+#include "Actions//PickByBothAction.h"
 #include "Actions\UndoAct.h"
 #include "Actions/RedoAct.h"
 #include "Actions/SoundAction.h"
@@ -212,17 +214,17 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case PICK_BY_SHAPES:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickAndHideAction(this, 'S');
+		pAct = new PickByShapesAction(this);
 		break;
 
 	case PICK_BY_COLORS:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickAndHideAction(this, 'C');
+		pAct = new PickByColorsAction(this);
 		break;
 
 	case PICK_BY_BOTH:
 		UI.InterfaceMode = MODE_PLAY;
-		pAct = new PickAndHideAction(this, 'B');
+		pAct = new PickByBothAction(this);
 		break;
 
 	case SOUND:

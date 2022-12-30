@@ -229,9 +229,15 @@
     <ClCompile Include="Actions\SoundAction.cpp">
       <Filter>Action Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Actions\PickByShapes.cpp" />
-    <ClCompile Include="Actions\PickByColors.cpp" />
-    <ClCompile Include="Actions\PickByBoth.cpp" />
+    <ClCompile Include="Actions\PickByBothAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickByColorsAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Actions\PickByShapesAction.cpp">
+      <Filter>Action Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CMUgraphicsLib\auxil.h">
@@ -398,9 +404,15 @@
     <ClInclude Include="Actions\SoundAction.h">
       <Filter>Action Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Actions\PickByShapes.h" />
-    <ClInclude Include="Actions\PickByColors.h" />
-    <ClInclude Include="Actions\PickByBoth.h" />
+    <ClInclude Include="Actions\PickByBothAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickByColorsAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Actions\PickByShapesAction.h">
+      <Filter>Action Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

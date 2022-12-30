@@ -1,14 +1,13 @@
 #pragma once
 #include "Action.h"
-class PickByBoth : public Action
+class PickByShapesAction : public Action
 {
 private:
-	string PickShape;
-	string PickColor;
+	string Pick;
 	int CorrectCnt;
 	int IncorrectCnt;
 public:
-	PickByBoth(ApplicationManager* pApp);
+	PickByShapesAction(ApplicationManager* pApp);
 
 	//Reads parameters required for action to execute
 	virtual void ReadActionParameters();
