@@ -21,6 +21,7 @@
 #include "Actions/PickAndHideAction.h"
 #include "Actions\UndoAct.h"
 #include "Actions/RedoAct.h"
+#include "Actions/SoundAction.h"
 #include <Windows.h>
 #include <cstdlib>
 
@@ -227,6 +228,10 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case PICK_BY_BOTH:
 		UI.InterfaceMode = MODE_PLAY;
 		pAct = new PickAndHideAction(this, 'B');
+		break;
+
+	case SOUND:
+		pAct = new SoundAction(this);
 		break;
 
 	case EXIT:
@@ -509,6 +514,16 @@ bool ApplicationManager::RedoAction()
 bool ApplicationManager::IsUndoLastAct()
 {
 	return IsUndo;
+}
+
+bool ApplicationManager::GetSoundStatus()
+{
+	return IsSoundOn;
+}
+
+void ApplicationManager::SetSoundStatus(bool status)
+{
+	IsSoundOn = status;
 }
 
 

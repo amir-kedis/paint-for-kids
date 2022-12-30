@@ -75,6 +75,8 @@ public:
 	void AddToDeletedFigures(CFigure* pFig);
 	bool RedoAction();
 	bool IsUndoLastAct();
+	bool GetSoundStatus();
+	void SetSoundStatus(bool);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList
