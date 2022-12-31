@@ -48,7 +48,7 @@ void DeleteFigureAction::Execute(bool ReadActionParams)
 
 }
 
-void DeleteFigureAction::DeleteForPlay(CFigure* Fig)
+void DeleteFigureAction::DeleteForPlay(CFigure* Fig) //it is needed for play mode, because I don't need much of Execute() 
 {
 	// Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(Fig);
