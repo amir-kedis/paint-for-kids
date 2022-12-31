@@ -81,6 +81,7 @@ bool PickByColorsAction::Execute(bool ReadActionParams)
 
 	PrintScore("Well Done!   You Have Got ");
 
+	return true; // By default every action should be deleted
 }
 
 void PickByColorsAction::PrintScore(string start) const

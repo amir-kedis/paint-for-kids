@@ -36,7 +36,7 @@ bool MoveFigureAction::Execute(bool ReadActionParams)
 	if (SelectedFig == NULL)
 	{
 		pOut->PrintMessage("You Must Select A Figure");
-		return;
+		return true;
 	}
 
 	//Get the Center of the shape before moving it
@@ -57,6 +57,8 @@ bool MoveFigureAction::Execute(bool ReadActionParams)
 	pManager->MoveFigure(SelectedFig, Center);
 
 	SelectedFig->SetSelected(false);
+
+	return true; // By default every action should be deleted
 }
 
 

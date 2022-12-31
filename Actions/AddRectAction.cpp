@@ -58,6 +58,8 @@ bool AddRectAction::Execute(bool ReadActionParams)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+
+	return true; // By default every action should be deleted
 }
 
 void AddRectAction::UndoAct()

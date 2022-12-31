@@ -88,6 +88,7 @@ bool PickByBothAction::Execute(bool ReadActionParams)
 
 	PrintScore("Well Done!   You Have Got ");
 
+	return true; // By default every action should be deleted
 }
 
 void PickByBothAction::PrintScore(string start) const

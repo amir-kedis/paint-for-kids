@@ -37,7 +37,7 @@ bool DeleteFigureAction::Execute(bool ReadActionParams)
 	if (SelectedFig == NULL)
 	{
 		pOut->PrintMessage("You Must Select A Figure");
-		return;
+		return true;
 	}
 
 	// Call DeleteFigure function to delete the selected figure
@@ -46,6 +46,7 @@ bool DeleteFigureAction::Execute(bool ReadActionParams)
 	// Make the figure not highlighted
 	SelectedFig->SetSelected(false);
 
+	return true; // By default every action should be deleted
 }
 
 void DeleteFigureAction::DeleteForPlay(CFigure* Fig)

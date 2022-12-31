@@ -52,6 +52,8 @@ bool AddSquareAction::Execute(bool ReadActionParams)
 
 	//Add the square to the list of figures
 	pManager->AddFigure(R);
+
+	return true; // By default every action should be deleted
 }
 
 void AddSquareAction::UndoAct()

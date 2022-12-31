@@ -56,7 +56,7 @@ bool SelectFigureAction::Execute(bool ReadActionParams)
 	if (ClickedFigure == NULL)
 	{
 		pOut->PrintMessage("No Figure To Be Selected");
-		return;
+		return true;
 	}
 
 	// If The Figure was Selected Unselect it and if it wasn't reverse
@@ -72,6 +72,8 @@ bool SelectFigureAction::Execute(bool ReadActionParams)
 		pManager->SetSelectedFig(NULL);
 	}
 	pManager->UnselectAll(ClickedFigure);
+
+	return true; // By default every action should be deleted
 }
 
 CFigure* SelectFigureAction::SelectForPlay()

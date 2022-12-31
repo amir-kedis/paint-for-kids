@@ -29,4 +29,6 @@ bool RedoAct::Execute(bool ReadActionParams)
 	// To check if a redo action can be done or not
 	if (!IsDone)
 		pOut->PrintMessage("Cannot Redo");
+
+	return true; // By default every action should be deleted
 }

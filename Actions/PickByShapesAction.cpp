@@ -81,6 +81,7 @@ bool PickByShapesAction::Execute(bool ReadActionParams)
 
 	PrintScore("Well Done!   You Have Got ");
 
+	return true; // By default every action should be deleted
 }
 
 void PickByShapesAction::PrintScore(string start) const

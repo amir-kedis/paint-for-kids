@@ -26,4 +26,5 @@ bool SwitchToDrawAction::Execute(bool ReadActionParams)
 	LoadAction loadFile(pManager);
 	loadFile.LoadDrawModeList();
 
+	return true; // By default every action should be deleted
 }

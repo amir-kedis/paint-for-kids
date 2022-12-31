@@ -40,7 +40,7 @@ bool LoadAction::Execute(bool ReadActionParams)
 	{
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Couldn't open file...");
-		return;
+		return true;
 	}
 	string str;
 	InputFile >> str;
@@ -79,6 +79,8 @@ bool LoadAction::Execute(bool ReadActionParams)
 	}
 
 	InputFile.close();
+
+	return true; // By default every action should be deleted
 }
 
 void LoadAction::LoadDrawModeList()

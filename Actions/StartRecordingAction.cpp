@@ -44,4 +44,6 @@ bool StartRecordingAction::Execute(bool ReadActionParams)
 		pManager->SetRecordingStatus(true);
 		pOut->PrintMessage("Recording has started (:");
 	}
+
+	return true; // By default every action should be deleted
 }

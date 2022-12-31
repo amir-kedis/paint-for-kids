@@ -28,4 +28,6 @@ bool SwitchToPlayAction::Execute(bool ReadActionParams)
 	// Save Current Draw Mode List
 	SaveAction saveFile(pManager);
 	saveFile.SaveDrawModeList();
+
+	return true; // By default every action should be deleted
 }

@@ -23,8 +23,10 @@ bool UndoAct::Execute(bool ReadActionParams)
 	if (pManager->GetURActionCount() == 0)
 	{
 		pOut->PrintMessage("You Must do an action first to Undo");
-		return;
+		return true;
 	}
 
 	pManager->UndoAction();
+
+	return true; // By default every action should be deleted
 }

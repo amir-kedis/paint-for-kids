@@ -49,4 +49,7 @@ bool PlayRecordingAction::Execute(bool ReadActionParams)
 		LoadAction loadDraw(pManager);
 		loadDraw.LoadDrawModeList();
 	}
+
+
+	return true; // By default every action should be deleted
 }

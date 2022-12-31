@@ -51,6 +51,8 @@ bool ChangeColorAction::Execute(bool ReadActionParams)
 			UI.FillColor = Color;
 		}
 	}
+
+	return true; // By default every action should be deleted
 }
 
 void ChangeColorAction::UndoAct()

@@ -58,6 +58,8 @@ bool AddCircleAction::Execute(bool ReadActionParams)
 
 	//Add the circle to the list of figures
 	pManager->AddFigure(R);
+
+	return true; // By default every action should be deleted
 }
 
 void AddCircleAction::UndoAct()

@@ -38,4 +38,7 @@ bool StopRecordingAction::Execute(bool ReadActionParams)
 		pManager->SetRecordingStatus(false);
 		pOut->PrintMessage("Recording has Stoped");
 	}
+
+
+	return true; // By default every action should be deleted
 }

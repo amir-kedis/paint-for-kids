@@ -62,6 +62,8 @@ bool AddTriangleAction::Execute(bool ReadActionParams)
 
 	//Add the triangle to the list of figures
 	pManager->AddFigure(R);
+
+	return true; // By default every action should be deleted
 }
 
 void AddTriangleAction::UndoAct()

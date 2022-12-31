@@ -19,4 +19,6 @@ bool ExitAction::Execute(bool ReadActionParams)
 	Sleep(1000);
 
 	pManager->ClearAll();
+
+	return true; // By default every action should be deleted
 }

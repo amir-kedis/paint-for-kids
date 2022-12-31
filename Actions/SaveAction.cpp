@@ -35,13 +35,15 @@ bool SaveAction::Execute(bool ReadActionParams)
 	{
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Couldn't open file...");
-		return;
+		return true;
 	}
 
 	//Save all figures
 	pManager->SaveAll(OutputFile);
 
 	OutputFile.close();
+
+	return true; // By default every action should be deleted
 }
 
 void SaveAction::SaveDrawModeList()
