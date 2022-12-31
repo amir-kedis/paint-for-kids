@@ -54,20 +54,6 @@ void AddSquareAction::Execute(bool ReadActionParams)
 	pManager->AddFigure(R);
 }
 
-void AddSquareAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-
-	//Create a square with the parameters read from the user
-	CSquare* R = new CSquare(P1, SquareGfxInfo);
-	SelectedFig = R;
-
-	//Add the square to the list of figures
-	pManager->AddFigure(R);
-}
-
 void AddSquareAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure

@@ -60,19 +60,6 @@ void AddCircleAction::Execute(bool ReadActionParams)
 	pManager->AddFigure(R);
 }
 
-void AddCircleAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-	//Create a circle with the parameters read from the user
-	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);
-	SelectedFig = R;
-
-	//Add the circle to the list of figures
-	pManager->AddFigure(R);
-}
-
 void AddCircleAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure

@@ -53,14 +53,6 @@ void ChangeColorAction::Execute(bool ReadActionParams)
 	}
 }
 
-void ChangeColorAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_COLORS;
-
-	Execute();
-}
-
 void ChangeColorAction::UndoAct()
 {
 	if (SelectedFig == NULL)

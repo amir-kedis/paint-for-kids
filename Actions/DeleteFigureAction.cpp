@@ -48,29 +48,6 @@ void DeleteFigureAction::Execute(bool ReadActionParams)
 
 }
 
-void DeleteFigureAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-	Output* pOut = pManager->GetOutput();
-
-	SelectedFig = pManager->GetSelectedFig();
-
-	// Check if there are no Selected Figures
-	if (SelectedFig == NULL)
-	{
-		pOut->PrintMessage("You Must Select A Figure");
-		return;
-	}
-
-	// Call DeleteFigure function to delete the selected figure
-	pManager->DeleteFigure(SelectedFig);
-
-	// Delete the dynamically allocated figure from the memory
-	delete SelectedFig;
-}
-
 void DeleteFigureAction::DeleteForPlay(CFigure* Fig)
 {
 	// Call DeleteFigure function to delete the selected figure

@@ -36,6 +36,11 @@ void SelectFigureAction::Execute(bool ReadActionParams)
 		//This action needs to read some parameters first
 		ReadActionParameters();
 	}
+	else
+	{
+		// Change The Tool Bar
+		UI.InterfaceMode = MODE_DRAW;
+	}
 
 	Output* pOut = pManager->GetOutput();
 
@@ -67,38 +72,6 @@ void SelectFigureAction::Execute(bool ReadActionParams)
 		pManager->SetSelectedFig(NULL);
 	}
 	pManager->UnselectAll(ClickedFigure);
-}
-
-void SelectFigureAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-	Output* pOut = pManager->GetOutput();
-
-	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.y);
-
-	// If Clicked in No Figure
-	if (ClickedFigure == NULL)
-	{
-		pOut->PrintMessage("No Figure To Be Selected");
-		return;
-	}
-
-	// If The Figure was Selected Unselect it and if it wasn't reverse
-	if (!ClickedFigure->IsSelected())
-	{
-		ClickedFigure->SetSelected(true);
-		pManager->SetSelectedFig(ClickedFigure);
-		ClickedFigure->PrintInfo(pOut);
-	}
-	else
-	{
-		ClickedFigure->SetSelected(false);
-		pManager->SetSelectedFig(NULL);
-	}
-	pManager->UnselectAll(ClickedFigure);
-
 }
 
 CFigure* SelectFigureAction::SelectForPlay()

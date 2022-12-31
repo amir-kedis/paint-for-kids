@@ -19,9 +19,6 @@ public:
 	//Add circle to the ApplicationManager
 	virtual void Execute(bool ReadActionParams = true);
 
-	// Used For The Ability To Play The Action without further user input
-	virtual void play();
-
 	//Undo the Created Figure (delete it)
 	virtual void UndoAct();
 

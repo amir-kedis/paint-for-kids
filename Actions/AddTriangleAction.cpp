@@ -64,20 +64,6 @@ void AddTriangleAction::Execute(bool ReadActionParams)
 	pManager->AddFigure(R);
 }
 
-void AddTriangleAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-
-	//Create a triangle with the parameters read from the user
-	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);
-	SelectedFig = R;
-
-	//Add the triangle to the list of figures
-	pManager->AddFigure(R);
-}
-
 void AddTriangleAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure

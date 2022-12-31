@@ -60,20 +60,6 @@ void AddRectAction::Execute(bool ReadActionParams)
 	pManager->AddFigure(R);
 }
 
-void AddRectAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-
-	//Create a rectangle with the parameters read from the user
-	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
-	SelectedFig = R;
-
-	//Add the rectangle to the list of figures
-	pManager->AddFigure(R);
-}
-
 void AddRectAction::UndoAct()
 {
 	//Call DeleteFigure function to delete the selected figure

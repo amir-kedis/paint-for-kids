@@ -22,9 +22,4 @@ void AddFigureAction::Execute(bool ReadActionParams)
 
 }
 
-void AddFigureAction::play()
-{
-	Execute();
-}
-
 
