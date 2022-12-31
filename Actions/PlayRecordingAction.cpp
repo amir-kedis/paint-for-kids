@@ -54,6 +54,9 @@ bool PlayRecordingAction::Execute(bool ReadActionParams)
 		// restore recording state
 		pManager->SetRecordingStatus(recordingStat);
 
+		// when you return the toolbar should be on draw mode
+		UI.InterfaceMode = MODE_DRAW;
+
 		// Load Draw Mode After Recirding
 		LoadAction loadDraw(pManager);
 		loadDraw.LoadDrawModeList();
