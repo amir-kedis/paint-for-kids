@@ -28,5 +28,13 @@ bool UndoAct::Execute(bool ReadActionParams)
 
 	pManager->UndoAction();
 
-	return true; // By default every action should be deleted
+	bool shouldBeDeleted = true; // this action should be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		shouldBeDeleted = !pManager->AddActionToRecording(this);
+	}
+
+	return shouldBeDeleted; // By default every action should be deleted
 }

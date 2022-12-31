@@ -46,7 +46,16 @@ bool DeleteFigureAction::Execute(bool ReadActionParams)
 	// Make the figure not highlighted
 	SelectedFig->SetSelected(false);
 
-	return true; // By default every action should be deleted
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void DeleteFigureAction::DeleteForPlay(CFigure* Fig)

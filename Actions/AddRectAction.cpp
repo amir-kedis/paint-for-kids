@@ -59,7 +59,16 @@ bool AddRectAction::Execute(bool ReadActionParams)
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
 
-	return true; // By default every action should be deleted
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void AddRectAction::UndoAct()
