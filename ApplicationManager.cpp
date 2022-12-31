@@ -427,6 +427,18 @@ void ApplicationManager::PlayRecording()
 	}
 }
 
+void ApplicationManager::ClearUndoRedoList()
+{
+	//MaxURActionCount is used instead of URActionCount because when undoing or redoing something
+	//we change the counter so if we clear all some actions won't be cleared
+	for (int i = 0; i < MaxURActionCount; i++)
+	{
+		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
+		URActionList[i] = NULL;
+	}
+	URActionCount = 0;
+}
+
 void ApplicationManager::ClearRecording()
 {
 	for (int i = 1; i < RecordActionCount; i++)
@@ -602,15 +614,7 @@ void ApplicationManager::ClearAll()
 
 	ClearRecording();
 
-	//MaxURActionCount is used instead of URActionCount because when undoing or redoing something
-	//we change the counter so if we clear all some actions won't be cleared
-	for (int i = 0; i < MaxURActionCount; i++)
-	{
-		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
-		URActionList[i] = NULL;
-	}
-	URActionCount = 0;
-
+	ClearUndoRedoList();
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;

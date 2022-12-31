@@ -67,8 +67,6 @@ public:
 	void AddActionToRecording(Action* pAct);
 	bool IsRecordActionListEmpty(); // Determines the status of the app so that recording can start or no
 	void PlayRecording();
-	void ClearRecording();
-	void ClearFigList();
 	void AddToURActionList(Action* pAct); //Adds the Action to Undo Redo ActionList
 	int GetURActionCount() const;   //returns the num of URACtionCount to check if an undo action can be done or not
 	void UndoAction();
@@ -88,9 +86,14 @@ public:
 	void DeleteFigure(CFigure* SelectedFigure);
 	bool IsFigListEmpty(); // Determines the status of the app so that recording can start or no
 	void MoveFigure(CFigure* SelectedFigure, Point Center);
-	void ClearAll();
 	// Checks if there are still Figures that should be picked
-	bool Stop(char ShapeOrColor, string Pick, string Pick2 = "") const; 
+	bool Stop(char ShapeOrColor, string Pick, string Pick2 = "") const;
+
+	// -- Clear Functions
+	void ClearUndoRedoList();
+	void ClearRecording();
+	void ClearFigList();
+	void ClearAll();
 
 	// -- Interface Management Functions
 	Input* GetInput() const; //Return pointer to the input
