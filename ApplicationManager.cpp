@@ -421,7 +421,7 @@ void ApplicationManager::PlayRecording()
 {
 	for (int i = 1; i < RecordActionCount; i++)
 	{
-		ActionList[i]->play();
+		ActionList[i]->Execute(false);
 		UpdateInterface();
 		Sleep(1000);
 	}

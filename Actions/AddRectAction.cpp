@@ -37,29 +37,20 @@ void AddRectAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddRectAction::Execute()
+void AddRectAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
 	{
 		PlaySound(TEXT("sounds\\rectangle.wav"), NULL, SND_ASYNC);
 	}
-	//This action needs to read some parameters first
-	ReadActionParameters();
 
-	//Create a rectangle with the parameters read from the user
-	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);
-	SelectedFig = R;
-
-	//Add the rectangle to the list of figures
-	pManager->AddFigure(R);
-}
-
-void AddRectAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a rectangle with the parameters read from the user
 	CRectangle* R = new CRectangle(P1, P2, RectGfxInfo);

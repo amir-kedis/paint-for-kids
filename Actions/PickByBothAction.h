@@ -14,7 +14,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Execute action
-	virtual void Execute();
+	virtual void Execute(bool ReadActionParams = true);
 
 	// Prints score till that moment
 	void PrintScore(string start = "") const;

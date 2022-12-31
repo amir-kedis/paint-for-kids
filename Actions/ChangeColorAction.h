@@ -13,10 +13,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Change Color of the figure
-	virtual void Execute();
-
-	// Used For The Ability To Play The Action without further user input
-	virtual void play();
+	virtual void Execute(bool ReadActionParams = true);
 
 	virtual void UndoAct();
 

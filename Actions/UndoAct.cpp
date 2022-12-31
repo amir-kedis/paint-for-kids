@@ -5,14 +5,14 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-UndoAct::UndoAct(ApplicationManager* pApp):Action(pApp)
+UndoAct::UndoAct(ApplicationManager* pApp) :Action(pApp)
 {}
 
 void UndoAct::ReadActionParameters()
 {
 }
 
-void UndoAct::Execute()
+void UndoAct::Execute(bool ReadActionParams)
 {
 	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();

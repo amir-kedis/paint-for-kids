@@ -15,8 +15,20 @@ void ChangeColorAction::ReadActionParameters()
 }
 
 //Change Color of the figure
-void ChangeColorAction::Execute()
+void ChangeColorAction::Execute(bool ReadActionParams)
 {
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
+	else
+	{
+		UI.InterfaceMode = MODE_COLORS;
+	}
+
+
 	SelectedFig = pManager->GetSelectedFig();
 
 	if (SelectedFig == NULL)
@@ -39,14 +51,6 @@ void ChangeColorAction::Execute()
 			UI.FillColor = Color;
 		}
 	}
-}
-
-void ChangeColorAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_COLORS;
-
-	Execute();
 }
 
 void ChangeColorAction::UndoAct()
@@ -93,9 +97,9 @@ void ChangeColorAction::RedoAct()
 		}
 		else if (DrawOrFill == 'F')
 		{
-				SelectedFig->ChngFillClr(Color);
-				UI.IsFilled = true;
-				UI.FillColor = Color;
+			SelectedFig->ChngFillClr(Color);
+			UI.IsFilled = true;
+			UI.FillColor = Color;
 		}
 	}
 }

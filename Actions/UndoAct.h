@@ -3,14 +3,14 @@
 
 #include "Action.h"
 
-class UndoAct: public Action
+class UndoAct : public Action
 {
 public:
 	UndoAct(ApplicationManager* pApp);
 
 	virtual void ReadActionParameters();
 
-	virtual void Execute();
+	virtual void Execute(bool ReadActionParams = true);
 };
 
 #endif

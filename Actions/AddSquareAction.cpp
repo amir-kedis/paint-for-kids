@@ -31,29 +31,20 @@ void AddSquareAction::ReadActionParameters()
 
 }
 
-void AddSquareAction::Execute()
+void AddSquareAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
 	{
 		PlaySound(TEXT("sounds\\square.wav"), NULL, SND_ASYNC);
 	}
-	//This action needs to read some parameters first
-	ReadActionParameters();
 
-	//Create a square with the parameters read from the user
-	CSquare* R = new CSquare(P1, SquareGfxInfo);
-	SelectedFig = R;
-
-	//Add the square to the list of figures
-	pManager->AddFigure(R);
-}
-
-void AddSquareAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a square with the parameters read from the user
 	CSquare* R = new CSquare(P1, SquareGfxInfo);

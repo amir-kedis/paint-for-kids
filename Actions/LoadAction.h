@@ -9,7 +9,7 @@ public:
 
 	virtual void ReadActionParameters();
 
-	virtual void Execute();
+	virtual void Execute(bool ReadActionParams = true);
 
 	/////////////////////////////////////////////
 	/// Switching Between Modes Related Function

@@ -36,7 +36,7 @@ void AddCircleAction::ReadActionParameters()
 
 }
 
-void AddCircleAction::Execute()
+void AddCircleAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -44,21 +44,13 @@ void AddCircleAction::Execute()
 		PlaySound(TEXT("sounds\\circle.wav"), NULL, SND_ASYNC);
 	}
 
-	//This action needs to read some parameters first
-	ReadActionParameters();
 
-	//Create a circle with the parameters read from the user
-	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);
-	SelectedFig = R;
-
-	//Add the circle to the list of figures
-	pManager->AddFigure(R);
-}
-
-void AddCircleAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a circle with the parameters read from the user
 	CCircle* R = new CCircle(P1, P2, CircleGfxInfo);

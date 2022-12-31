@@ -6,7 +6,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-DeleteFigureAction::DeleteFigureAction(ApplicationManager *pApp) : Action(pApp)
+DeleteFigureAction::DeleteFigureAction(ApplicationManager* pApp) : Action(pApp)
 {
 	SelectedFig = NULL;
 }
@@ -15,9 +15,21 @@ void DeleteFigureAction::ReadActionParameters()
 {
 }
 
-void DeleteFigureAction::Execute()
+void DeleteFigureAction::Execute(bool ReadActionParams)
 {
-	Output *pOut = pManager->GetOutput();
+
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
+	else
+	{
+		UI.InterfaceMode = MODE_DRAW;
+	}
+
+	Output* pOut = pManager->GetOutput();
 
 	SelectedFig = pManager->GetSelectedFig();
 
@@ -36,30 +48,7 @@ void DeleteFigureAction::Execute()
 
 }
 
-void DeleteFigureAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
-	Output *pOut = pManager->GetOutput();
-
-	SelectedFig = pManager->GetSelectedFig();
-
-	// Check if there are no Selected Figures
-	if (SelectedFig == NULL)
-	{
-		pOut->PrintMessage("You Must Select A Figure");
-		return;
-	}
-
-	// Call DeleteFigure function to delete the selected figure
-	pManager->DeleteFigure(SelectedFig);
-
-	// Delete the dynamically allocated figure from the memory
-	delete SelectedFig;
-}
-
-void DeleteFigureAction::DeleteForPlay(CFigure *Fig)
+void DeleteFigureAction::DeleteForPlay(CFigure* Fig)
 {
 	// Call DeleteFigure function to delete the selected figure
 	pManager->DeleteFigure(Fig);
@@ -73,7 +62,7 @@ void DeleteFigureAction::UndoAct()
 		pManager->AddFigure(SelectedFig);
 	else
 	{
-		Output *pOut = pManager->GetOutput();
+		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("A Failed Deleting attempt was made");
 		return; // In case we added anything else in the future after this condition
 	}
@@ -85,7 +74,7 @@ void DeleteFigureAction::RedoAct()
 		pManager->DeleteFigure(SelectedFig);
 	else
 	{
-		Output *pOut = pManager->GetOutput();
+		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("A Failed Undo attempt was made");
 		return;
 	}

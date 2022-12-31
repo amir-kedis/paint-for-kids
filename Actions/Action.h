@@ -21,10 +21,7 @@ public:
 	virtual void ReadActionParameters() = 0;
 
 	//Execute action (code depends on action type)
-	virtual void Execute() = 0;
-
-	// Used For The Ability To Play The Action without further user input
-	virtual void play();
+	virtual void Execute(bool ReadActionParams = true) = 0;
 
 	virtual void UndoAct();
 

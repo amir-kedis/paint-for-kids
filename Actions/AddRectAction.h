@@ -18,10 +18,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Add rectangle to the ApplicationManager
-	virtual void Execute();
-
-	// Used For The Ability To Play The Action without further user input
-	virtual void play();
+	virtual void Execute(bool ReadActionParams = true);
 
 	//Undo the Created Figure (delete it)
 	virtual void UndoAct();

@@ -41,7 +41,7 @@ void AddTriangleAction::ReadActionParameters()
 
 }
 
-void AddTriangleAction::Execute()
+void AddTriangleAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -49,22 +49,12 @@ void AddTriangleAction::Execute()
 		PlaySound(TEXT("sounds\\triangle.wav"), NULL, SND_ASYNC);
 	}
 
-	//This action needs to read some parameters first
-	ReadActionParameters();
-
-	//Create a triangle with the parameters read from the user
-	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);
-	SelectedFig = R;
-
-	//Add the triangle to the list of figures
-	pManager->AddFigure(R);
-}
-
-void AddTriangleAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a triangle with the parameters read from the user
 	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);

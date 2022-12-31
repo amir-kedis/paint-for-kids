@@ -5,7 +5,7 @@
 #include "..\GUI\input.h"
 #include "..\GUI\Output.h"
 
-RedoAct::RedoAct(ApplicationManager* pApp):Action(pApp)
+RedoAct::RedoAct(ApplicationManager* pApp) :Action(pApp)
 {
 }
 
@@ -13,12 +13,12 @@ void RedoAct::ReadActionParameters()
 {
 }
 
-void RedoAct::Execute()
+void RedoAct::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 
 	pOut->ClearStatusBar();
-	
+
 	//a bool variable to check if the redo action is done or not
 	bool IsDone = false;
 

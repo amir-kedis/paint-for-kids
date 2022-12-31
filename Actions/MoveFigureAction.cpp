@@ -24,7 +24,7 @@ void MoveFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void MoveFigureAction::Execute()
+void MoveFigureAction::Execute(bool ReadActionParams)
 {
 	//Get a Pointer to the Output Interface
 	Output* pOut = pManager->GetOutput();
@@ -42,30 +42,15 @@ void MoveFigureAction::Execute()
 	//Get the Center of the shape before moving it
 	PreviousCenter = SelectedFig->GetCenter();
 
-	//Read the new Center from the user
-	ReadActionParameters();
-
-	//Call MoveFigure function to move the selected figure
-	pManager->MoveFigure(SelectedFig, Center);
-
-	SelectedFig->SetSelected(false);
-}
-
-void MoveFigureAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
-	//Get a Pointer to the Output Interface
-	Output* pOut = pManager->GetOutput();
-
-	//Get a Pointer to the Selected Figure
-	CFigure* SelectedFig = pManager->GetSelectedFig();
-
-	//Check if there are no Selected Figures
-	if (SelectedFig == NULL)
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
 	{
-		pOut->PrintMessage("You Must Select A Figure");
-		return;
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
+	else
+	{
+		UI.InterfaceMode = MODE_DRAW;
 	}
 
 	//Call MoveFigure function to move the selected figure
@@ -73,6 +58,7 @@ void MoveFigureAction::play()
 
 	SelectedFig->SetSelected(false);
 }
+
 
 void MoveFigureAction::UndoAct()
 {

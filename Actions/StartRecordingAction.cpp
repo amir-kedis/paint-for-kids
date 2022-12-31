@@ -31,7 +31,7 @@ void StartRecordingAction::ReadActionParameters()
 	CanRecord = true;
 }
 
-void StartRecordingAction::Execute()
+void StartRecordingAction::Execute(bool ReadActionParams)
 {
 	// check if we can record
 	ReadActionParameters();

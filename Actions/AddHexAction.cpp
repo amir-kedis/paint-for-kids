@@ -32,7 +32,7 @@ void AddHexAction::ReadActionParameters()
 
 }
 
-void AddHexAction::Execute()
+void AddHexAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -40,21 +40,12 @@ void AddHexAction::Execute()
 		PlaySound(TEXT("sounds\\hexagon.wav"), NULL, SND_ASYNC);
 	}
 
-	//This action needs to read some parameters first
-	ReadActionParameters();
-
-	//Create a hexagon with the parameters read from the user
-	CHexagon* R = new CHexagon(P1, HexGfxInfo);
-	SelectedFig = R;
-
-	//Add the hexagon to the list of figures
-	pManager->AddFigure(R);
-}
-
-void AddHexAction::play()
-{
-	// Change The Tool Bar
-	UI.InterfaceMode = MODE_DRAW;
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a hexagon with the parameters read from the user
 	CHexagon* R = new CHexagon(P1, HexGfxInfo);
