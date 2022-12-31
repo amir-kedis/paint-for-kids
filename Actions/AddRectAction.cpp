@@ -37,7 +37,7 @@ void AddRectAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddRectAction::Execute()
+void AddRectAction::Execute(bool ReadActionParams = true)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())

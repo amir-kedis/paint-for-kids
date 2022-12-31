@@ -13,7 +13,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Draw Shapes Tool Bar
-	virtual void Execute();
+	virtual void Execute(bool ReadActionParams = true);
 
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();

@@ -15,7 +15,7 @@ void ChangeColorAction::ReadActionParameters()
 }
 
 //Change Color of the figure
-void ChangeColorAction::Execute()
+void ChangeColorAction::Execute(bool ReadActionParams = true)
 {
 	SelectedFig = pManager->GetSelectedFig();
 
@@ -93,9 +93,9 @@ void ChangeColorAction::RedoAct()
 		}
 		else if (DrawOrFill == 'F')
 		{
-				SelectedFig->ChngFillClr(Color);
-				UI.IsFilled = true;
-				UI.FillColor = Color;
+			SelectedFig->ChngFillClr(Color);
+			UI.IsFilled = true;
+			UI.FillColor = Color;
 		}
 	}
 }

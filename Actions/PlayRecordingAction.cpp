@@ -22,7 +22,7 @@ void PlayRecordingAction::ReadActionParameters()
 	CanPlayRecord = true;
 }
 
-void PlayRecordingAction::Execute()
+void PlayRecordingAction::Execute(bool ReadActionParams = true)
 {
 	// check if we can record
 	ReadActionParameters();

@@ -9,7 +9,7 @@ void ExitAction::ReadActionParameters()
 {
 }
 
-void ExitAction::Execute()
+void ExitAction::Execute(bool ReadActionParams = true)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())

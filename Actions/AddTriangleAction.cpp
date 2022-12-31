@@ -41,7 +41,7 @@ void AddTriangleAction::ReadActionParameters()
 
 }
 
-void AddTriangleAction::Execute()
+void AddTriangleAction::Execute(bool ReadActionParams = true)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())

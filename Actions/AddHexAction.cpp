@@ -32,7 +32,7 @@ void AddHexAction::ReadActionParameters()
 
 }
 
-void AddHexAction::Execute()
+void AddHexAction::Execute(bool ReadActionParams = true)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())

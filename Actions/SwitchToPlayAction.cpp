@@ -9,7 +9,7 @@ void SwitchToPlayAction::ReadActionParameters()
 {
 }
 
-void SwitchToPlayAction::Execute()
+void SwitchToPlayAction::Execute(bool ReadActionParams = true)
 {
 	if (pManager->GetSoundStatus())
 	{

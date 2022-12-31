@@ -7,19 +7,19 @@
 class DeleteFigureAction : public Action
 {
 private:
-	CFigure *SelectedFig;
+	CFigure* SelectedFig;
 
 public:
-	DeleteFigureAction(ApplicationManager *pApp);
+	DeleteFigureAction(ApplicationManager* pApp);
 
 	virtual void ReadActionParameters();
 
-	virtual void Execute();
+	virtual void Execute(bool ReadActionParams = true);
 
 	// Used For The Ability To Play The Action without further user input
 	virtual void play();
 
-	virtual void DeleteForPlay(CFigure *Fig);
+	virtual void DeleteForPlay(CFigure* Fig);
 	// Used to Undo the Delete Action
 	virtual void UndoAct();
 

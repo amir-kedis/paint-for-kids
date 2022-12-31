@@ -9,7 +9,7 @@ void SoundAction::ReadActionParameters()
 {
 }
 
-void SoundAction::Execute()
+void SoundAction::Execute(bool ReadActionParams = true)
 {
 	// prepare outputs to print msgs
 	Output* pOut = pManager->GetOutput();

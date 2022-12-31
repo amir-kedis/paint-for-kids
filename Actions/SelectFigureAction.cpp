@@ -28,7 +28,7 @@ void SelectFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SelectFigureAction::Execute()
+void SelectFigureAction::Execute(bool ReadActionParams = true)
 {
 	// get Point From User
 	ReadActionParameters();

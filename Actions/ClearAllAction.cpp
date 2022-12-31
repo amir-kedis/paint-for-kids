@@ -13,7 +13,7 @@ void ClearAllAction::ReadActionParameters()
 {
 }
 
-void ClearAllAction::Execute()
+void ClearAllAction::Execute(bool ReadActionParams = true)
 {
 	//Call ClearAll function in ApplicationManager
 	pManager->ClearAll();

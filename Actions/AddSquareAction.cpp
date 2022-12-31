@@ -31,7 +31,7 @@ void AddSquareAction::ReadActionParameters()
 
 }
 
-void AddSquareAction::Execute()
+void AddSquareAction::Execute(bool ReadActionParams = true)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())

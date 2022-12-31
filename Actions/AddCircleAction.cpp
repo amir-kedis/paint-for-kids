@@ -36,7 +36,7 @@ void AddCircleAction::ReadActionParameters()
 
 }
 
-void AddCircleAction::Execute()
+void AddCircleAction::Execute(bool ReadActionParams = true)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
