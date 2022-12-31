@@ -14,12 +14,7 @@ void AddFigureAction::ReadActionParameters()
 
 void AddFigureAction::Execute()
 {
-	//Get a Pointer to the Output Interfaces
-	Output* pOut = pManager->GetOutput();
-
-	//Draw Shapes Tool Bar
-	pOut->CreateShapesToolBar();
-
+	UI.InterfaceMode = MODE_SHAPES; // To draw shapes toolbar
 }
 
 void AddFigureAction::play()
