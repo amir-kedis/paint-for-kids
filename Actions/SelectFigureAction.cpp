@@ -74,7 +74,7 @@ void SelectFigureAction::Execute(bool ReadActionParams)
 	pManager->UnselectAll(ClickedFigure);
 }
 
-CFigure* SelectFigureAction::SelectForPlay()
+CFigure* SelectFigureAction::SelectForPlay() //it is needed for play mode, because I don't need much of Execute() 
 {
 	Input* pIn = pManager->GetInput();
 

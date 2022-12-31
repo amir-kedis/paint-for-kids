@@ -353,7 +353,7 @@ string ApplicationManager::GetRandomFig(char ShapeOrColor, int& prev) const
 		r = prev;
 	else
 	{
-		srand(time(0));
+		srand(time(0)); // to get a new random number whenver I reopen the programm
 		// get random number from 0 to Figcount-1
 		r = rand() % FigCount;
 		prev = r;

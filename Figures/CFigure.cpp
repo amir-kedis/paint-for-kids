@@ -46,19 +46,6 @@ GfxInfo CFigure::GetFigInfo() const
 	return FigGfxInfo;
 }
 
-//color CFigure::GetFillColor() const
-//{
-//	//if (FigGfxInfo.isFilled)
-//		return FigGfxInfo.FillClr;
-//	//else
-//		//return 0;
-//}
-//
-//color CFigure::GetDrawColor() const
-//{
-//	return FigGfxInfo.DrawClr;
-//}
-
 void CFigure::Save(ofstream& OutFile) const
 {}
 
@@ -77,3 +64,7 @@ bool CFigure::IsThisType(string Pick, char ShapeOrColor) const
 	return (getFillColor() == Pick);
 }
 
+CFigure::~CFigure()
+{
+
+}
