@@ -39,6 +39,8 @@ void PlayRecordingAction::Execute(bool ReadActionParams)
 		saveDraw.SaveDrawModeList();
 
 		pManager->ClearFigList();
+		pManager->ClearUndoRedoList();
+
 		pManager->PlayRecording();
 		pOut->PrintMessage("Playing has Ended (:");
 		Sleep(1000);
