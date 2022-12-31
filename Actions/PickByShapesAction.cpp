@@ -29,11 +29,11 @@ bool PickByShapesAction::Execute(bool ReadActionParams)
 	if (pManager->IsFigListEmpty())
 	{
 		pOut->PrintMessage("There is No Graph to Play With, Go Draw or Load a graph and Comeback :) ");
-		return;
+		return true;
 	}
 	else
 	{
-			Load->Execute(false);
+		Load->Execute(false);
 	}
 
 	// Update Interface to make all figures show up

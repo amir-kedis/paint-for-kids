@@ -11,9 +11,5 @@ public:
 
 	virtual bool Execute(bool ReadActionParams = true);
 
-	/////////////////////////////////////////////
-	/// Switching Between Modes Related Function
-	/////////////////////////////////////////////
-	void LoadDrawModeList();
 };
 

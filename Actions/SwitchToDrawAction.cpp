@@ -24,7 +24,7 @@ bool SwitchToDrawAction::Execute(bool ReadActionParams)
 
 	// load Draw Mode List From Saved File
 	LoadAction loadFile(pManager);
-	loadFile.LoadDrawModeList();
+	loadFile.Execute(false);
 
 	return true; // By default every action should be deleted
 }

@@ -59,7 +59,7 @@ bool PlayRecordingAction::Execute(bool ReadActionParams)
 
 		// Load Draw Mode After Recirding
 		LoadAction loadDraw(pManager);
-		loadDraw.LoadDrawModeList();
+		loadDraw.Execute(false);
 	}
 
 

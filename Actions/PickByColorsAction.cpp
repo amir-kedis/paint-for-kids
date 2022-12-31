@@ -29,7 +29,7 @@ bool PickByColorsAction::Execute(bool ReadActionParams)
 	if (pManager->IsFigListEmpty())
 	{
 		pOut->PrintMessage("There is No Graph to Play With, Go Draw or Load a graph and Comeback :) ");
-		return;
+		return true;
 	}
 	else
 	{

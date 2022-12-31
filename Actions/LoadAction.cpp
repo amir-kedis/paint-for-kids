@@ -28,7 +28,7 @@ void LoadAction::ReadActionParameters()
 
 bool LoadAction::Execute(bool ReadActionParams)
 {
-	if(ReadActionParams)
+	if (ReadActionParams)
 		ReadActionParameters(); //This action needs to read some parameters first
 	else
 		FileName = "DrawModeFigList.txt";
@@ -42,11 +42,11 @@ bool LoadAction::Execute(bool ReadActionParams)
 	if (!InputFile.is_open())
 	{
 		Output* pOut = pManager->GetOutput();
-		if(ReadActionParams)
+		if (ReadActionParams)
 			pOut->PrintMessage("Couldn't open file...");
 		else
 			pOut->PrintMessage("Couldn't Load Draw Mode Shapes...");
-		return;
+		return true;
 	}
 	string str;
 	InputFile >> str;
