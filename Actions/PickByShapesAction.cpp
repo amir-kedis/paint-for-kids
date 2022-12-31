@@ -23,25 +23,17 @@ void PickByShapesAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
-	LoadAction* Load = new LoadAction(pManager);
+	Action* Load = new LoadAction(pManager);
 
-	//Ask the user to directly load from a file in case that he didn't draw any graph in the drawing area
+	//Ask the user to draw something in case the graph is empty
 	if (pManager->IsFigListEmpty())
-		Load->Execute();
+	{
+		pOut->PrintMessage("There is No Graph to Play With, Go Draw or Load a graph and Comeback :) ");
+		return;
+	}
 	else
 	{
-		// Ask if the user want to load file or stay on same previous graph
-		pOut->PrintMessage("Do You want to keep graph to play with ? (y/n) : ");
-		string ans;
-		do
-		{
-			ans = pIn->GetSrting(pOut);
-		} while (ans != "y" && ans != "n");
-
-		if (ans == "y")
-			Load->LoadDrawModeList();
-		if (ans == "n")
-			Load->Execute();
+			Load->Execute(false);
 	}
 
 	// Update Interface to make all figures show up
