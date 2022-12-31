@@ -25,7 +25,7 @@ void StopRecordingAction::ReadActionParameters()
 	CanStopRecord = true;
 }
 
-void StopRecordingAction::Execute(bool ReadActionParams = true)
+void StopRecordingAction::Execute(bool ReadActionParams)
 {
 	// check if we can stop record
 	ReadActionParameters();

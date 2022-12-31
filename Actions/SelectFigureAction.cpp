@@ -28,10 +28,15 @@ void SelectFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SelectFigureAction::Execute(bool ReadActionParams = true)
+void SelectFigureAction::Execute(bool ReadActionParams)
 {
-	// get Point From User
-	ReadActionParameters();
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
+
 	Output* pOut = pManager->GetOutput();
 
 	CFigure* ClickedFigure = pManager->GetFigure(SelectPoint.x, SelectPoint.y);

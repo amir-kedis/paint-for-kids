@@ -15,8 +15,20 @@ void ChangeColorAction::ReadActionParameters()
 }
 
 //Change Color of the figure
-void ChangeColorAction::Execute(bool ReadActionParams = true)
+void ChangeColorAction::Execute(bool ReadActionParams)
 {
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
+	else
+	{
+		UI.InterfaceMode = MODE_COLORS;
+	}
+
+
 	SelectedFig = pManager->GetSelectedFig();
 
 	if (SelectedFig == NULL)

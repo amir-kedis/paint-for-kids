@@ -19,7 +19,7 @@ void PickByColorsAction::ReadActionParameters()
 }
 
 //Execute action
-void PickByColorsAction::Execute(bool ReadActionParams = true)
+void PickByColorsAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();

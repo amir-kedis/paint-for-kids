@@ -32,7 +32,7 @@ void AddHexAction::ReadActionParameters()
 
 }
 
-void AddHexAction::Execute(bool ReadActionParams = true)
+void AddHexAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -40,8 +40,12 @@ void AddHexAction::Execute(bool ReadActionParams = true)
 		PlaySound(TEXT("sounds\\hexagon.wav"), NULL, SND_ASYNC);
 	}
 
-	//This action needs to read some parameters first
-	ReadActionParameters();
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a hexagon with the parameters read from the user
 	CHexagon* R = new CHexagon(P1, HexGfxInfo);

@@ -19,7 +19,7 @@ void PickByBothAction::ReadActionParameters()
 }
 
 //Execute action
-void PickByBothAction::Execute(bool ReadActionParams = true)
+void PickByBothAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();

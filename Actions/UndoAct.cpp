@@ -12,7 +12,7 @@ void UndoAct::ReadActionParameters()
 {
 }
 
-void UndoAct::Execute(bool ReadActionParams = true)
+void UndoAct::Execute(bool ReadActionParams)
 {
 	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();

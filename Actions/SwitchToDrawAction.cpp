@@ -9,7 +9,7 @@ void SwitchToDrawAction::ReadActionParameters()
 {
 }
 
-void SwitchToDrawAction::Execute(bool ReadActionParams = true)
+void SwitchToDrawAction::Execute(bool ReadActionParams)
 {
 	if (pManager->GetSoundStatus())
 	{

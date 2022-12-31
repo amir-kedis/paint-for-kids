@@ -15,8 +15,20 @@ void DeleteFigureAction::ReadActionParameters()
 {
 }
 
-void DeleteFigureAction::Execute(bool ReadActionParams = true)
+void DeleteFigureAction::Execute(bool ReadActionParams)
 {
+
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
+	else
+	{
+		UI.InterfaceMode = MODE_DRAW;
+	}
+
 	Output* pOut = pManager->GetOutput();
 
 	SelectedFig = pManager->GetSelectedFig();

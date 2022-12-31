@@ -13,7 +13,7 @@ void RedoAct::ReadActionParameters()
 {
 }
 
-void RedoAct::Execute(bool ReadActionParams = true)
+void RedoAct::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 

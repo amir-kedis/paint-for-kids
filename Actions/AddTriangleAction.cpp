@@ -41,7 +41,7 @@ void AddTriangleAction::ReadActionParameters()
 
 }
 
-void AddTriangleAction::Execute(bool ReadActionParams = true)
+void AddTriangleAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -49,8 +49,12 @@ void AddTriangleAction::Execute(bool ReadActionParams = true)
 		PlaySound(TEXT("sounds\\triangle.wav"), NULL, SND_ASYNC);
 	}
 
-	//This action needs to read some parameters first
-	ReadActionParameters();
+	// TO allow excution without raeding params in case of play recording
+	if (ReadActionParams)
+	{
+		//This action needs to read some parameters first
+		ReadActionParameters();
+	}
 
 	//Create a triangle with the parameters read from the user
 	CTriangle* R = new CTriangle(P1, P2, P3, TriangleGfxInfo);
