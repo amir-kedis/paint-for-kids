@@ -41,7 +41,7 @@ private:
 	////////////////////////////////////////
 	int URActionCount;                      //Undo Redo ActionCount
 	Action* URActionList[MaxURActionCount];
-	bool IsUndo;
+	int UndoCount;                           //Number of Undo Operations Done Consecutivly
 
 	////////////////////////////////////////
 	bool IsSoundOn;			// Sound Flag
@@ -66,9 +66,10 @@ public:
 	int GetURActionCount() const;   //returns the num of URACtionCount to check if an undo action can be done or not
 	void UndoAction();
 	bool RedoAction();
-	bool IsUndoLastAct();
 	bool GetSoundStatus();
 	void SetSoundStatus(bool);
+	int GetUndoCount();
+	void SetUndoCount(int c);
 
 	// -- Figures Management Functions
 	void AddFigure(CFigure* pFig);          //Adds a new figure to the FigList

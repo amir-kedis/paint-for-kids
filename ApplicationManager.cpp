@@ -65,7 +65,7 @@ ApplicationManager::ApplicationManager()
 		URActionList[i] = NULL;
 	}
 
-	IsUndo = false;
+	UndoCount = 0;
 
 	/////////////////////////////////////////
 	IsSoundOn = true;
@@ -85,10 +85,6 @@ ActionType ApplicationManager::GetUserAction() const
 void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
-	if (ActType != REDO)
-	{
-		IsUndo = false;
-	}
 	// According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
@@ -106,7 +102,6 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 
 	case UNDO:
 		pAct = new UndoAct(this);
-		IsUndo = true;
 		break;
 
 	case REDO:
@@ -460,11 +455,6 @@ bool ApplicationManager::RedoAction()
 	return true;
 }
 
-bool ApplicationManager::IsUndoLastAct()
-{
-	return IsUndo;
-}
-
 bool ApplicationManager::GetSoundStatus()
 {
 	return IsSoundOn;
@@ -473,6 +463,17 @@ bool ApplicationManager::GetSoundStatus()
 void ApplicationManager::SetSoundStatus(bool status)
 {
 	IsSoundOn = status;
+}
+
+int ApplicationManager::GetUndoCount()
+{
+	return UndoCount;
+}
+
+void ApplicationManager::SetUndoCount(int c)
+{
+	if (c >= 0)
+		UndoCount = c;
 }
 
 
@@ -572,6 +573,8 @@ void ApplicationManager::ClearAll()
 	ClearRecording();
 
 	ClearUndoRedoList();
+
+	UndoCount = 0;
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;

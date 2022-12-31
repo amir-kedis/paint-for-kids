@@ -36,5 +36,7 @@ bool UndoAct::Execute(bool ReadActionParams)
 		shouldBeDeleted = !pManager->AddActionToRecording(this);
 	}
 
+	pManager->SetUndoCount(pManager->GetUndoCount() + 1);      //Increment the UndoCount by 1
+
 	return shouldBeDeleted; // By default every action should be deleted
 }

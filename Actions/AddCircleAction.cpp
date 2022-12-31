@@ -68,6 +68,7 @@ bool AddCircleAction::Execute(bool ReadActionParams)
 		pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
+	pManager->SetUndoCount(0);            //reset the UndoCount
 
 	return shouldBeDeleted; // By default every action should be deleted
 }
