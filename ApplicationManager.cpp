@@ -403,7 +403,6 @@ void ApplicationManager::ClearRecording()
 	{
 		delete ActionList[i];
 		ActionList[i] = NULL;
-		//RecordActionCount = 0;
 	}
 	RecordActionCount = 0;
 	IsRecording = false;
