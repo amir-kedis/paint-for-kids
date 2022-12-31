@@ -84,7 +84,7 @@ bool SelectFigureAction::Execute(bool ReadActionParams)
 	return shouldBeDeleted; // By default every action should be deleted
 }
 
-CFigure* SelectFigureAction::SelectForPlay()
+CFigure* SelectFigureAction::SelectForPlay() //it is needed for play mode, because I don't need much of Execute() 
 {
 	Input* pIn = pManager->GetInput();
 

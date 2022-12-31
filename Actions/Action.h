@@ -26,6 +26,8 @@ public:
 	virtual void UndoAct();
 
 	virtual void RedoAct();
+
+	virtual ~Action();
 };
 
 #endif
