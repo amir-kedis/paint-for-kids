@@ -64,7 +64,7 @@ public:
 	static string ColorToString(color Color);
 	bool GetRecordingStatus();
 	void SetRecordingStatus(bool status);
-	void AddActionToRecording(Action* pAct);
+	bool AddActionToRecording(Action* pAct);
 	bool IsRecordActionListEmpty(); // Determines the status of the app so that recording can start or no
 	void PlayRecording();
 	void AddToURActionList(Action* pAct); //Adds the Action to Undo Redo ActionList

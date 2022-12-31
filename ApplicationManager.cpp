@@ -403,13 +403,19 @@ void ApplicationManager::SetRecordingStatus(bool status)
 {
 	IsRecording = status;
 }
-
-void ApplicationManager::AddActionToRecording(Action* pAct)
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pAct"></param>
+/// <returns>Retruns True if added succuessfully to list</returns>
+bool ApplicationManager::AddActionToRecording(Action* pAct)
 {
 	if (RecordActionCount < MaxRecordActionCount)
 	{
 		ActionList[RecordActionCount++] = pAct;
+		return true;
 	}
+	return false;
 }
 
 bool ApplicationManager::IsRecordActionListEmpty()
