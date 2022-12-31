@@ -7,3 +7,7 @@ void Action::UndoAct()
 void Action::RedoAct()
 {
 }
+
+Action::~Action()
+{
+}
