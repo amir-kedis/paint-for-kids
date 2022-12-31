@@ -377,7 +377,7 @@ bool ApplicationManager::IsRecordActionListEmpty()
 
 void ApplicationManager::PlayRecording()
 {
-	for (int i = 1; i < RecordActionCount; i++)
+	for (int i = 0; i < RecordActionCount; i++)
 	{
 		ActionList[i]->Execute(false);
 		UpdateInterface();
@@ -399,7 +399,7 @@ void ApplicationManager::ClearUndoRedoList()
 
 void ApplicationManager::ClearRecording()
 {
-	for (int i = 1; i < RecordActionCount; i++)
+	for (int i = 0; i < RecordActionCount; i++)
 	{
 		delete ActionList[i];
 		ActionList[i] = NULL;
