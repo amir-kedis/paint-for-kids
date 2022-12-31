@@ -9,6 +9,6 @@ public:
 
 	virtual void ReadActionParameters();
 
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 };
 

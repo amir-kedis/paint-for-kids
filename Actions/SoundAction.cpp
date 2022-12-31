@@ -9,7 +9,7 @@ void SoundAction::ReadActionParameters()
 {
 }
 
-void SoundAction::Execute(bool ReadActionParams)
+bool SoundAction::Execute(bool ReadActionParams)
 {
 	// prepare outputs to print msgs
 	Output* pOut = pManager->GetOutput();
@@ -25,4 +25,6 @@ void SoundAction::Execute(bool ReadActionParams)
 		UI.IsSoundOn = true;
 		pOut->PrintMessage("Sound Is ON");
 	}
+
+	return true; // By default every action should be deleted
 }

@@ -9,7 +9,7 @@ void SwitchToDrawAction::ReadActionParameters()
 {
 }
 
-void SwitchToDrawAction::Execute(bool ReadActionParams)
+bool SwitchToDrawAction::Execute(bool ReadActionParams)
 {
 	if (pManager->GetSoundStatus())
 	{
@@ -26,4 +26,5 @@ void SwitchToDrawAction::Execute(bool ReadActionParams)
 	LoadAction loadFile(pManager);
 	loadFile.LoadDrawModeList();
 
+	return true; // By default every action should be deleted
 }

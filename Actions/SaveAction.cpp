@@ -21,7 +21,7 @@ void SaveAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SaveAction::Execute(bool ReadActionParams)
+bool SaveAction::Execute(bool ReadActionParams)
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();
@@ -35,13 +35,15 @@ void SaveAction::Execute(bool ReadActionParams)
 	{
 		Output* pOut = pManager->GetOutput();
 		pOut->PrintMessage("Couldn't open file...");
-		return;
+		return true;
 	}
 
 	//Save all figures
 	pManager->SaveAll(OutputFile);
 
 	OutputFile.close();
+
+	return true; // By default every action should be deleted
 }
 
 void SaveAction::SaveDrawModeList()

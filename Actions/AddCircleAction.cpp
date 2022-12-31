@@ -36,7 +36,7 @@ void AddCircleAction::ReadActionParameters()
 
 }
 
-void AddCircleAction::Execute(bool ReadActionParams)
+bool AddCircleAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -58,6 +58,18 @@ void AddCircleAction::Execute(bool ReadActionParams)
 
 	//Add the circle to the list of figures
 	pManager->AddFigure(R);
+
+
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void AddCircleAction::UndoAct()

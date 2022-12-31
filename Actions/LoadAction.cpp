@@ -26,7 +26,7 @@ void LoadAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void LoadAction::Execute(bool ReadActionParams)
+bool LoadAction::Execute(bool ReadActionParams)
 {
 	if(ReadActionParams)
 		ReadActionParameters(); //This action needs to read some parameters first
@@ -85,4 +85,6 @@ void LoadAction::Execute(bool ReadActionParams)
 	}
 
 	InputFile.close();
+
+	return true; // By default every action should be deleted
 }

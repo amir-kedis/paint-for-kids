@@ -24,7 +24,7 @@ void MoveFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void MoveFigureAction::Execute(bool ReadActionParams)
+bool MoveFigureAction::Execute(bool ReadActionParams)
 {
 	//Get a Pointer to the Output Interface
 	Output* pOut = pManager->GetOutput();
@@ -36,7 +36,7 @@ void MoveFigureAction::Execute(bool ReadActionParams)
 	if (SelectedFig == NULL)
 	{
 		pOut->PrintMessage("You Must Select A Figure");
-		return;
+		return true;
 	}
 
 	//Get the Center of the shape before moving it
@@ -57,6 +57,17 @@ void MoveFigureAction::Execute(bool ReadActionParams)
 	pManager->MoveFigure(SelectedFig, Center);
 
 	SelectedFig->SetSelected(false);
+
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 

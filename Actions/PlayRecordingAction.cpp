@@ -22,7 +22,7 @@ void PlayRecordingAction::ReadActionParameters()
 	CanPlayRecord = true;
 }
 
-void PlayRecordingAction::Execute(bool ReadActionParams)
+bool PlayRecordingAction::Execute(bool ReadActionParams)
 {
 	// check if we can record
 	ReadActionParameters();
@@ -38,15 +38,30 @@ void PlayRecordingAction::Execute(bool ReadActionParams)
 		SaveAction saveDraw(pManager);
 		saveDraw.SaveDrawModeList();
 
+		// clean app vars
 		pManager->ClearFigList();
 		pManager->ClearUndoRedoList();
+		bool recordingStat = pManager->GetRecordingStatus();
+		pManager->SetRecordingStatus(false);
 
+		// play recording
 		pManager->PlayRecording();
+
+		// ending msg
 		pOut->PrintMessage("Playing has Ended (:");
 		Sleep(1000);
+
+		// restore recording state
+		pManager->SetRecordingStatus(recordingStat);
+
+		// when you return the toolbar should be on draw mode
+		UI.InterfaceMode = MODE_DRAW;
 
 		// Load Draw Mode After Recirding
 		LoadAction loadDraw(pManager);
 		loadDraw.LoadDrawModeList();
 	}
+
+
+	return true; // By default every action should be deleted
 }

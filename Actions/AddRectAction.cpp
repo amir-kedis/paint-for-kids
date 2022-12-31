@@ -37,7 +37,7 @@ void AddRectAction::ReadActionParameters()
 }
 
 //Execute the action
-void AddRectAction::Execute(bool ReadActionParams)
+bool AddRectAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -58,6 +58,17 @@ void AddRectAction::Execute(bool ReadActionParams)
 
 	//Add the rectangle to the list of figures
 	pManager->AddFigure(R);
+
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void AddRectAction::UndoAct()

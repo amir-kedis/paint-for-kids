@@ -15,7 +15,7 @@ void DeleteFigureAction::ReadActionParameters()
 {
 }
 
-void DeleteFigureAction::Execute(bool ReadActionParams)
+bool DeleteFigureAction::Execute(bool ReadActionParams)
 {
 
 	// TO allow excution without raeding params in case of play recording
@@ -37,7 +37,7 @@ void DeleteFigureAction::Execute(bool ReadActionParams)
 	if (SelectedFig == NULL)
 	{
 		pOut->PrintMessage("You Must Select A Figure");
-		return;
+		return true;
 	}
 
 	// Call DeleteFigure function to delete the selected figure
@@ -46,6 +46,16 @@ void DeleteFigureAction::Execute(bool ReadActionParams)
 	// Make the figure not highlighted
 	SelectedFig->SetSelected(false);
 
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void DeleteFigureAction::DeleteForPlay(CFigure* Fig) //it is needed for play mode, because I don't need much of Execute() 

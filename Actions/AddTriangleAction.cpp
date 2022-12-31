@@ -41,7 +41,7 @@ void AddTriangleAction::ReadActionParameters()
 
 }
 
-void AddTriangleAction::Execute(bool ReadActionParams)
+bool AddTriangleAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -62,6 +62,17 @@ void AddTriangleAction::Execute(bool ReadActionParams)
 
 	//Add the triangle to the list of figures
 	pManager->AddFigure(R);
+
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void AddTriangleAction::UndoAct()

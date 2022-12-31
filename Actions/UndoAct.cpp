@@ -12,7 +12,7 @@ void UndoAct::ReadActionParameters()
 {
 }
 
-void UndoAct::Execute(bool ReadActionParams)
+bool UndoAct::Execute(bool ReadActionParams)
 {
 	//Get a Pointer to the Output Interfaces
 	Output* pOut = pManager->GetOutput();
@@ -23,8 +23,18 @@ void UndoAct::Execute(bool ReadActionParams)
 	if (pManager->GetURActionCount() == 0)
 	{
 		pOut->PrintMessage("You Must do an action first to Undo");
-		return;
+		return true;
 	}
 
 	pManager->UndoAction();
+
+	bool shouldBeDeleted = true; // this action should be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		shouldBeDeleted = !pManager->AddActionToRecording(this);
+	}
+
+	return shouldBeDeleted; // By default every action should be deleted
 }

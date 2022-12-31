@@ -25,7 +25,7 @@ void StopRecordingAction::ReadActionParameters()
 	CanStopRecord = true;
 }
 
-void StopRecordingAction::Execute(bool ReadActionParams)
+bool StopRecordingAction::Execute(bool ReadActionParams)
 {
 	// check if we can stop record
 	ReadActionParameters();
@@ -38,4 +38,7 @@ void StopRecordingAction::Execute(bool ReadActionParams)
 		pManager->SetRecordingStatus(false);
 		pOut->PrintMessage("Recording has Stoped");
 	}
+
+
+	return true; // By default every action should be deleted
 }

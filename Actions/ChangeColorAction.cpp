@@ -15,7 +15,7 @@ void ChangeColorAction::ReadActionParameters()
 }
 
 //Change Color of the figure
-void ChangeColorAction::Execute(bool ReadActionParams)
+bool ChangeColorAction::Execute(bool ReadActionParams)
 {
 	// TO allow excution without raeding params in case of play recording
 	if (ReadActionParams)
@@ -51,6 +51,17 @@ void ChangeColorAction::Execute(bool ReadActionParams)
 			UI.FillColor = Color;
 		}
 	}
+
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void ChangeColorAction::UndoAct()

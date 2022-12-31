@@ -19,7 +19,7 @@ void PickByShapesAction::ReadActionParameters()
 }
 
 //Execute action
-void PickByShapesAction::Execute(bool ReadActionParams)
+bool PickByShapesAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -73,6 +73,7 @@ void PickByShapesAction::Execute(bool ReadActionParams)
 
 	PrintScore("Well Done!   You Have Got ");
 
+	return true; // By default every action should be deleted
 }
 
 void PickByShapesAction::PrintScore(string start) const

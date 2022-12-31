@@ -13,7 +13,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Change Color of the figure
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 
 	virtual void UndoAct();
 

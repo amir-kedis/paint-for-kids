@@ -32,7 +32,7 @@ void AddHexAction::ReadActionParameters()
 
 }
 
-void AddHexAction::Execute(bool ReadActionParams)
+bool AddHexAction::Execute(bool ReadActionParams)
 {
 	// PLay sound if on
 	if (pManager->GetSoundStatus())
@@ -53,6 +53,17 @@ void AddHexAction::Execute(bool ReadActionParams)
 
 	//Add the hexagon to the list of figures
 	pManager->AddFigure(R);
+
+	bool shouldBeDeleted = false; // this action shoudn't be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		pManager->AddActionToRecording(this);
+	}
+	pManager->AddToURActionList(this);
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 void AddHexAction::UndoAct()

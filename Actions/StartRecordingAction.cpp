@@ -31,7 +31,7 @@ void StartRecordingAction::ReadActionParameters()
 	CanRecord = true;
 }
 
-void StartRecordingAction::Execute(bool ReadActionParams)
+bool StartRecordingAction::Execute(bool ReadActionParams)
 {
 	// check if we can record
 	ReadActionParameters();
@@ -44,4 +44,6 @@ void StartRecordingAction::Execute(bool ReadActionParams)
 		pManager->SetRecordingStatus(true);
 		pOut->PrintMessage("Recording has started (:");
 	}
+
+	return true; // By default every action should be deleted
 }

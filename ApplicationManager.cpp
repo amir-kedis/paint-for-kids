@@ -242,55 +242,7 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	// Execute the created action
 	if (pAct != NULL)
 	{
-		pAct->Execute(); // Execute
-		bool ShouldBeDeleted = true;
-		switch (ActType)
-		{
-		case DRAW_RECT:
-		case DRAW_HEX:
-		case DRAW_SQUARE:
-		case DRAW_CIRCLE:
-		case DRAW_TRI:
-		case DELETE_FIGURE:
-		case COLOUR_BLACK:
-		case COLOUR_YELLOW:
-		case COLOUR_ORANGE:
-		case COLOUR_RED:
-		case COLOUR_GREEN:
-		case COLOUR_BLUE:
-		case MOVE_FIGURE:
-			AddToURActionList(pAct); //Adds the Action to Undo Redo ActionList
-			ShouldBeDeleted = false;
-		default:
-			break;
-		}
-		if (IsRecording && RecordActionCount < 20)
-		{
-			switch (ActType)
-			{
-			case DRAW_RECT:
-			case DRAW_HEX:
-			case DRAW_SQUARE:
-			case DRAW_CIRCLE:
-			case DRAW_TRI:
-			case ADD_FIGURE:
-			case COLOUR_BLACK:
-			case COLOUR_YELLOW:
-			case COLOUR_ORANGE:
-			case COLOUR_RED:
-			case COLOUR_GREEN:
-			case COLOUR_BLUE:
-			case SELECT:
-			case DELETE_FIGURE:
-			case MOVE_FIGURE:
-			case UNDO:
-			case REDO:
-				AddActionToRecording(pAct);
-				ShouldBeDeleted = false;
-			default:
-				break;
-			}
-		}
+		bool ShouldBeDeleted = pAct->Execute(); // execute and and action to lists
 		if (ShouldBeDeleted) // delete the action if we are not recording
 		{
 			delete pAct;	 // You may need to change this line depending to your implementation
@@ -403,13 +355,19 @@ void ApplicationManager::SetRecordingStatus(bool status)
 {
 	IsRecording = status;
 }
-
-void ApplicationManager::AddActionToRecording(Action* pAct)
+/// <summary>
+/// 
+/// </summary>
+/// <param name="pAct"></param>
+/// <returns>Retruns True if added succuessfully to list</returns>
+bool ApplicationManager::AddActionToRecording(Action* pAct)
 {
 	if (RecordActionCount < MaxRecordActionCount)
 	{
 		ActionList[RecordActionCount++] = pAct;
+		return true;
 	}
+	return false;
 }
 
 bool ApplicationManager::IsRecordActionListEmpty()
@@ -419,7 +377,7 @@ bool ApplicationManager::IsRecordActionListEmpty()
 
 void ApplicationManager::PlayRecording()
 {
-	for (int i = 1; i < RecordActionCount; i++)
+	for (int i = 0; i < RecordActionCount; i++)
 	{
 		ActionList[i]->Execute(false);
 		UpdateInterface();
@@ -441,11 +399,10 @@ void ApplicationManager::ClearUndoRedoList()
 
 void ApplicationManager::ClearRecording()
 {
-	for (int i = 1; i < RecordActionCount; i++)
+	for (int i = 0; i < RecordActionCount; i++)
 	{
 		delete ActionList[i];
 		ActionList[i] = NULL;
-		//RecordActionCount = 0;
 	}
 	RecordActionCount = 0;
 	IsRecording = false;

@@ -28,7 +28,7 @@ void SelectFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SelectFigureAction::Execute(bool ReadActionParams)
+bool SelectFigureAction::Execute(bool ReadActionParams)
 {
 	// TO allow excution without raeding params in case of play recording
 	if (ReadActionParams)
@@ -56,7 +56,7 @@ void SelectFigureAction::Execute(bool ReadActionParams)
 	if (ClickedFigure == NULL)
 	{
 		pOut->PrintMessage("No Figure To Be Selected");
-		return;
+		return true;
 	}
 
 	// If The Figure was Selected Unselect it and if it wasn't reverse
@@ -72,6 +72,16 @@ void SelectFigureAction::Execute(bool ReadActionParams)
 		pManager->SetSelectedFig(NULL);
 	}
 	pManager->UnselectAll(ClickedFigure);
+
+	bool shouldBeDeleted = true; // this action should be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		shouldBeDeleted = !pManager->AddActionToRecording(this);
+	}
+
+	return shouldBeDeleted; // By default every action should be deleted
 }
 
 CFigure* SelectFigureAction::SelectForPlay() //it is needed for play mode, because I don't need much of Execute() 

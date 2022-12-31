@@ -19,7 +19,7 @@ void PickByColorsAction::ReadActionParameters()
 }
 
 //Execute action
-void PickByColorsAction::Execute(bool ReadActionParams)
+bool PickByColorsAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -73,6 +73,7 @@ void PickByColorsAction::Execute(bool ReadActionParams)
 
 	PrintScore("Well Done!   You Have Got ");
 
+	return true; // By default every action should be deleted
 }
 
 void PickByColorsAction::PrintScore(string start) const

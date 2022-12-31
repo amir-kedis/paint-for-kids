@@ -13,7 +13,7 @@ void RedoAct::ReadActionParameters()
 {
 }
 
-void RedoAct::Execute(bool ReadActionParams)
+bool RedoAct::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 
@@ -29,4 +29,14 @@ void RedoAct::Execute(bool ReadActionParams)
 	// To check if a redo action can be done or not
 	if (!IsDone)
 		pOut->PrintMessage("Cannot Redo");
+
+	bool shouldBeDeleted = true; // this action should be deleted by default
+
+	// add action to record and record list if recording list
+	if (pManager->GetRecordingStatus())
+	{
+		shouldBeDeleted = !pManager->AddActionToRecording(this);
+	}
+
+	return shouldBeDeleted; // By default every action should be deleted
 }

@@ -19,7 +19,7 @@ void PickByBothAction::ReadActionParameters()
 }
 
 //Execute action
-void PickByBothAction::Execute(bool ReadActionParams)
+bool PickByBothAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();
@@ -80,6 +80,7 @@ void PickByBothAction::Execute(bool ReadActionParams)
 
 	PrintScore("Well Done!   You Have Got ");
 
+	return true; // By default every action should be deleted
 }
 
 void PickByBothAction::PrintScore(string start) const

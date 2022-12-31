@@ -9,7 +9,7 @@ void SwitchToPlayAction::ReadActionParameters()
 {
 }
 
-void SwitchToPlayAction::Execute(bool ReadActionParams)
+bool SwitchToPlayAction::Execute(bool ReadActionParams)
 {
 	if (pManager->GetSoundStatus())
 	{
@@ -28,4 +28,6 @@ void SwitchToPlayAction::Execute(bool ReadActionParams)
 	// Save Current Draw Mode List
 	SaveAction saveFile(pManager);
 	saveFile.SaveDrawModeList();
+
+	return true; // By default every action should be deleted
 }
