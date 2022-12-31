@@ -28,8 +28,11 @@ void LoadAction::ReadActionParameters()
 
 void LoadAction::Execute(bool ReadActionParams)
 {
-	//This action needs to read some parameters first
-	ReadActionParameters();
+	if(ReadActionParams)
+		ReadActionParameters(); //This action needs to read some parameters first
+	else
+		FileName = "DrawModeFigList.txt";
+
 
 	pManager->ClearAll();
 
@@ -39,62 +42,10 @@ void LoadAction::Execute(bool ReadActionParams)
 	if (!InputFile.is_open())
 	{
 		Output* pOut = pManager->GetOutput();
-		pOut->PrintMessage("Couldn't open file...");
-		return;
-	}
-	string str;
-	InputFile >> str;
-
-	// Takes current draw and fill colors
-	UI.DrawColor = ApplicationManager::StringToColor(str);
-	InputFile >> str;
-	UI.FillColor = ApplicationManager::StringToColor(str);
-
-	int n, id;
-
-	// Takes number of figures
-	InputFile >> n;
-
-	// Create New figure and loop through all figures in the file 
-	// To read its parameters then load it
-	CFigure* NewFig = NULL;
-	for (int i = 0; i < n; i++)
-	{
-		InputFile >> str;
-		InputFile >> id;
-		if (str == "CIRCLE")
-			NewFig = new CCircle(id);
-		else if (str == "HEXAGON")
-			NewFig = new CHexagon(id);
-		else if (str == "RECT")
-			NewFig = new CRectangle(id);
-		else if (str == "SQUARE")
-			NewFig = new CSquare(id);
+		if(ReadActionParams)
+			pOut->PrintMessage("Couldn't open file...");
 		else
-			NewFig = new CTriangle(id);
-
-		NewFig->Load(InputFile);
-
-		pManager->AddFigure(NewFig);
-	}
-
-	InputFile.close();
-}
-
-void LoadAction::LoadDrawModeList()
-{
-	// Clear All Figers Before Loading
-	pManager->ClearFigList();
-
-
-	string LoadDrawFileName = "DrawModeFigList.txt";
-	//Create and Open file
-	ifstream InputFile;
-	InputFile.open(LoadDrawFileName, ios::in);
-	if (!InputFile.is_open())
-	{
-		Output* pOut = pManager->GetOutput();
-		pOut->PrintMessage("Couldn't Load Draw Mode Shapes...");
+			pOut->PrintMessage("Couldn't Load Draw Mode Shapes...");
 		return;
 	}
 	string str;
