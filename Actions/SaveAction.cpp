@@ -21,7 +21,7 @@ void SaveAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SaveAction::Execute(bool ReadActionParams)
+bool SaveAction::Execute(bool ReadActionParams)
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();

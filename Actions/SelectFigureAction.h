@@ -11,7 +11,7 @@ class SelectFigureAction :
 public:
 	SelectFigureAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 
 	// Used to take user pick for playing
 	CFigure* SelectForPlay();

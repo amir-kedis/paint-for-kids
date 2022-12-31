@@ -26,7 +26,7 @@ void LoadAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void LoadAction::Execute(bool ReadActionParams)
+bool LoadAction::Execute(bool ReadActionParams)
 {
 	//This action needs to read some parameters first
 	ReadActionParameters();

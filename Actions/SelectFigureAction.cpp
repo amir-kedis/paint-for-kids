@@ -28,7 +28,7 @@ void SelectFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void SelectFigureAction::Execute(bool ReadActionParams)
+bool SelectFigureAction::Execute(bool ReadActionParams)
 {
 	// TO allow excution without raeding params in case of play recording
 	if (ReadActionParams)

@@ -15,7 +15,7 @@ void DeleteFigureAction::ReadActionParameters()
 {
 }
 
-void DeleteFigureAction::Execute(bool ReadActionParams)
+bool DeleteFigureAction::Execute(bool ReadActionParams)
 {
 
 	// TO allow excution without raeding params in case of play recording

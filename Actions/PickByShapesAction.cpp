@@ -19,7 +19,7 @@ void PickByShapesAction::ReadActionParameters()
 }
 
 //Execute action
-void PickByShapesAction::Execute(bool ReadActionParams)
+bool PickByShapesAction::Execute(bool ReadActionParams)
 {
 	Output* pOut = pManager->GetOutput();
 	Input* pIn = pManager->GetInput();

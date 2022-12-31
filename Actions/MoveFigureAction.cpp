@@ -24,7 +24,7 @@ void MoveFigureAction::ReadActionParameters()
 	pOut->ClearStatusBar();
 }
 
-void MoveFigureAction::Execute(bool ReadActionParams)
+bool MoveFigureAction::Execute(bool ReadActionParams)
 {
 	//Get a Pointer to the Output Interface
 	Output* pOut = pManager->GetOutput();

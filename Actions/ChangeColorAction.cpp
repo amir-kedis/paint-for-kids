@@ -15,7 +15,7 @@ void ChangeColorAction::ReadActionParameters()
 }
 
 //Change Color of the figure
-void ChangeColorAction::Execute(bool ReadActionParams)
+bool ChangeColorAction::Execute(bool ReadActionParams)
 {
 	// TO allow excution without raeding params in case of play recording
 	if (ReadActionParams)

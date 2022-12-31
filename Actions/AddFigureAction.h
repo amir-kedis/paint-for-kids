@@ -13,7 +13,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Draw Shapes Tool Bar
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 
 };
 

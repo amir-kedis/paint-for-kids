@@ -8,6 +8,6 @@ class StartRecordingAction :
 public:
 	StartRecordingAction(ApplicationManager* pApp);
 	virtual void ReadActionParameters();
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 };
 

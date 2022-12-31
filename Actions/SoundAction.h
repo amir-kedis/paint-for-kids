@@ -11,6 +11,6 @@ public:
 	virtual void ReadActionParameters();
 
 	//Add circle to the ApplicationManager
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 };
 

@@ -15,7 +15,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Call MoveFigure function in ApplicationManager
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 
 	//Used to Undo the Delete Action
 	virtual void UndoAct();

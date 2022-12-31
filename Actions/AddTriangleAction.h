@@ -17,7 +17,7 @@ public:
 	virtual void ReadActionParameters();
 
 	//Add triangle to the ApplicationManager
-	virtual void Execute(bool ReadActionParams = true);
+	virtual bool Execute(bool ReadActionParams = true);
 
 	//Undo the Created Figure (delete it)
 	virtual void UndoAct();
