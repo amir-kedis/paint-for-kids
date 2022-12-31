@@ -8,6 +8,7 @@
 MoveFigureAction::MoveFigureAction(ApplicationManager* pApp) :Action(pApp)
 {
 	SelectedFig = NULL;
+	IsRecorded = false;
 }
 
 void MoveFigureAction::ReadActionParameters()
@@ -63,7 +64,7 @@ bool MoveFigureAction::Execute(bool ReadActionParams)
 	// add action to record and record list if recording list
 	if (pManager->GetRecordingStatus())
 	{
-		pManager->AddActionToRecording(this);
+		IsRecorded = pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
 	pManager->SetUndoCount(0);            //reset the UndoCount
@@ -87,4 +88,9 @@ void MoveFigureAction::UndoAct()
 void MoveFigureAction::RedoAct()
 {
 	pManager->MoveFigure(SelectedFig, Center);
+}
+
+bool MoveFigureAction::IsActionRecorded()
+{
+	return IsRecorded;
 }

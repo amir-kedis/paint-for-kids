@@ -27,6 +27,9 @@ public:
 
 	virtual void RedoAct();
 
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
+
 	virtual ~Action();
 };
 

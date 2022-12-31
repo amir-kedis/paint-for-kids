@@ -8,6 +8,11 @@ void Action::RedoAct()
 {
 }
 
+bool Action::IsActionRecorded()
+{
+	return false;   //By Default
+}
+
 Action::~Action()
 {
 }

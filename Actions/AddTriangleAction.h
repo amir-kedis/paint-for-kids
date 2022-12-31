@@ -10,6 +10,7 @@ private:
 	Point P1, P2, P3;   //Triangle Corners
 	GfxInfo TriangleGfxInfo;
 	CTriangle* SelectedFig;
+	bool IsRecorded;        //Boolean to check if the Action was recorded or not
 public:
 	AddTriangleAction(ApplicationManager* pApp);
 
@@ -24,6 +25,9 @@ public:
 
 	//Redo the Undo Action (make the figure again)
 	virtual void RedoAct();
+
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
 };
 
 #endif

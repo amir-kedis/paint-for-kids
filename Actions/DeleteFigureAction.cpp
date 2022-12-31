@@ -9,6 +9,7 @@
 DeleteFigureAction::DeleteFigureAction(ApplicationManager* pApp) : Action(pApp)
 {
 	SelectedFig = NULL;
+	IsRecorded = false;
 }
 
 void DeleteFigureAction::ReadActionParameters()
@@ -51,7 +52,7 @@ bool DeleteFigureAction::Execute(bool ReadActionParams)
 	// add action to record and record list if recording list
 	if (pManager->GetRecordingStatus())
 	{
-		pManager->AddActionToRecording(this);
+		IsRecorded = pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
 	pManager->SetUndoCount(0);            //reset the UndoCount
@@ -89,4 +90,15 @@ void DeleteFigureAction::RedoAct()
 		pOut->PrintMessage("A Failed Undo attempt was made");
 		return;
 	}
+}
+
+bool DeleteFigureAction::IsActionRecorded()
+{
+	return IsRecorded;
+}
+
+DeleteFigureAction::~DeleteFigureAction()
+{
+	if (SelectedFig != NULL)
+		delete SelectedFig;   //Deallocate the variable
 }

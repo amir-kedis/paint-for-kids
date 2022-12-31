@@ -7,6 +7,7 @@ ChangeColorAction::ChangeColorAction(ApplicationManager* pApp, char DOF, color C
 	DrawOrFill = DOF;
 	Color = C;
 	SelectedFig = NULL;
+	IsRecorded = false;
 }
 
 void ChangeColorAction::ReadActionParameters()
@@ -57,7 +58,7 @@ bool ChangeColorAction::Execute(bool ReadActionParams)
 	// add action to record and record list if recording list
 	if (pManager->GetRecordingStatus())
 	{
-		pManager->AddActionToRecording(this);
+		IsRecorded = pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
 	pManager->SetUndoCount(0);            //reset the UndoCount
@@ -114,4 +115,9 @@ void ChangeColorAction::RedoAct()
 			UI.FillColor = Color;
 		}
 	}
+}
+
+bool ChangeColorAction::IsActionRecorded()
+{
+	return IsRecorded;
 }

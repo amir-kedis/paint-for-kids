@@ -5,6 +5,8 @@ SelectFigureAction::SelectFigureAction(ApplicationManager* pApp)
 {
 	// initailize class figure info with info provided by user
 	SelectPoint = Point();
+
+	IsRecorded = false;
 }
 
 void SelectFigureAction::ReadActionParameters()
@@ -79,6 +81,7 @@ bool SelectFigureAction::Execute(bool ReadActionParams)
 	if (pManager->GetRecordingStatus())
 	{
 		shouldBeDeleted = !pManager->AddActionToRecording(this);
+		IsRecorded = !shouldBeDeleted;
 	}
 
 	return shouldBeDeleted; // By default every action should be deleted
@@ -95,4 +98,9 @@ CFigure* SelectFigureAction::SelectForPlay() //it is needed for play mode, becau
 
 	return ClickedFigure;
 
+}
+
+bool SelectFigureAction::IsActionRecorded()
+{
+	return IsRecorded;
 }

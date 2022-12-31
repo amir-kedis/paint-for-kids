@@ -8,6 +8,7 @@ class MoveFigureAction : public Action
 	Point Center;               //Current center of the figure
 	Point PreviousCenter;       //Previous center of the figure
 	CFigure* SelectedFig;       //Pointer to a the figure that will be moved
+	bool IsRecorded;        //Boolean to check if the Action was recorded or not
 public:
 	MoveFigureAction(ApplicationManager* pApp);
 
@@ -22,6 +23,9 @@ public:
 
 	//Redo the Undo Action (delete the figure again)
 	virtual void RedoAct();
+
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
 };
 
 #endif

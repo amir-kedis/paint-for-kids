@@ -9,6 +9,7 @@
 AddSquareAction::AddSquareAction(ApplicationManager* pApp) :Action(pApp)
 {
 	SelectedFig = NULL;
+	IsRecorded = false;
 }
 
 void AddSquareAction::ReadActionParameters()
@@ -58,7 +59,7 @@ bool AddSquareAction::Execute(bool ReadActionParams)
 	// add action to record and record list if recording list
 	if (pManager->GetRecordingStatus())
 	{
-		pManager->AddActionToRecording(this);
+		IsRecorded = pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
 	pManager->SetUndoCount(0);            //reset the UndoCount
@@ -75,4 +76,9 @@ void AddSquareAction::UndoAct()
 void AddSquareAction::RedoAct()
 {
 	pManager->AddFigure(SelectedFig);
+}
+
+bool AddSquareAction::IsActionRecorded()
+{
+	return IsRecorded;
 }
