@@ -25,8 +25,6 @@ public:
 
 	//Check if the Action was recorded or not
 	virtual bool IsActionRecorded();
-
-	~DeleteFigureAction();
 };
 
 #endif

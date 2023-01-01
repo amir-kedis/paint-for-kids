@@ -96,9 +96,3 @@ bool DeleteFigureAction::IsActionRecorded()
 {
 	return IsRecorded;
 }
-
-DeleteFigureAction::~DeleteFigureAction()
-{
-	if (SelectedFig != NULL)
-		delete SelectedFig;   //Deallocate the variable
-}
