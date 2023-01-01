@@ -9,6 +9,7 @@
 AddHexAction::AddHexAction(ApplicationManager* pApp) :Action(pApp)
 {
 	SelectedFig = NULL;
+	IsRecorded = false;
 }
 
 void AddHexAction::ReadActionParameters()
@@ -59,7 +60,7 @@ bool AddHexAction::Execute(bool ReadActionParams)
 	// add action to record and record list if recording list
 	if (pManager->GetRecordingStatus())
 	{
-		pManager->AddActionToRecording(this);
+		IsRecorded = pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
 	pManager->SetUndoCount(0);            //reset the UndoCount
@@ -76,4 +77,9 @@ void AddHexAction::UndoAct()
 void AddHexAction::RedoAct()
 {
 	pManager->AddFigure(SelectedFig);
+}
+
+bool AddHexAction::IsActionRecorded()
+{
+	return IsRecorded;
 }

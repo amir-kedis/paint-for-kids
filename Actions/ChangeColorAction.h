@@ -7,6 +7,7 @@ private:
 	color Color;
 	GfxInfo PreviousInfo;
 	CFigure* SelectedFig;
+	bool IsRecorded;        //Boolean to check if the Action was recorded or not
 public:
 	ChangeColorAction(ApplicationManager* pApp, char DOF, color C);
 
@@ -18,5 +19,8 @@ public:
 	virtual void UndoAct();
 
 	virtual void RedoAct();
+
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
 };
 

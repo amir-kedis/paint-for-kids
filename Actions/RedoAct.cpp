@@ -7,6 +7,7 @@
 
 RedoAct::RedoAct(ApplicationManager* pApp) :Action(pApp)
 {
+	IsRecorded = false;
 }
 
 void RedoAct::ReadActionParameters()
@@ -38,7 +39,13 @@ bool RedoAct::Execute(bool ReadActionParams)
 	if (pManager->GetRecordingStatus())
 	{
 		shouldBeDeleted = !pManager->AddActionToRecording(this);
+		IsRecorded = !shouldBeDeleted;
 	}
 
 	return shouldBeDeleted; // By default every action should be deleted
+}
+
+bool RedoAct::IsActionRecorded()
+{
+	return IsRecorded;
 }

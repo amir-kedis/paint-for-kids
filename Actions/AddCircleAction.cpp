@@ -9,6 +9,7 @@
 AddCircleAction::AddCircleAction(ApplicationManager* pApp) :Action(pApp)
 {
 	SelectedFig = NULL;
+	IsRecorded = false;
 }
 
 void AddCircleAction::ReadActionParameters()
@@ -65,7 +66,7 @@ bool AddCircleAction::Execute(bool ReadActionParams)
 	// add action to record and record list if recording list
 	if (pManager->GetRecordingStatus())
 	{
-		pManager->AddActionToRecording(this);
+		IsRecorded = pManager->AddActionToRecording(this);
 	}
 	pManager->AddToURActionList(this);
 	pManager->SetUndoCount(0);            //reset the UndoCount
@@ -82,5 +83,11 @@ void AddCircleAction::UndoAct()
 
 void AddCircleAction::RedoAct()
 {
+	//Call AddFigure funct to add the figure again to the figure list
 	pManager->AddFigure(SelectedFig);
+}
+
+bool AddCircleAction::IsActionRecorded()
+{
+	return IsRecorded;
 }

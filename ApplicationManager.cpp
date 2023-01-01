@@ -386,8 +386,16 @@ void ApplicationManager::ClearUndoRedoList()
 	//we change the counter so if we clear all some actions won't be cleared
 	for (int i = 0; i < MaxURActionCount; i++)
 	{
-		//just make the pointers equal null without deleting the actions as they are deleted in ClearRecording
-		URActionList[i] = NULL;
+		if (URActionList[i] != NULL)
+		{
+			if (URActionList[i]->IsActionRecorded())
+				URActionList[i] = NULL;
+			else
+			{
+				delete URActionList[i];
+				URActionList[i] = NULL;
+			}
+		}
 	}
 	URActionCount = 0;
 }
@@ -421,6 +429,10 @@ void ApplicationManager::AddToURActionList(Action* pAct)
 	}
 	else
 	{
+		if (!URActionList[0]->IsActionRecorded())
+		{
+			delete URActionList[0];
+		}
 		for (int i = 1; i < MaxURActionCount; i++)
 		{
 			URActionList[i - 1] = URActionList[i];
@@ -537,7 +549,7 @@ void ApplicationManager::DeleteFigure(CFigure* SelectedFigure)
 			//Change the SelectedFig data member to NULL
 			SelectedFig = NULL;
 
-			FigList[i] = FigList[--FigCount];
+			FigList[i] = FigList[--FigCount];     //Make the Pointer of i point at the last figure's address
 			FigList[FigCount] = NULL;
 			return;
 		}
@@ -570,11 +582,13 @@ void ApplicationManager::ClearAll()
 {
 	ClearFigList();
 
-	ClearRecording();
-
 	ClearUndoRedoList();
 
-	UndoCount = 0;
+	ClearRecording();
+
+	UndoCount = 0;          //Reset the counter
+	UI.IsFilled = false;    //Make the newly drawen figures unfilled
+	UI.DrawColor = BLUE;    //Make the newly drawen figure have the default color (blue)
 
 	//Make the SelectedFig point to NULL
 	SelectedFig = NULL;

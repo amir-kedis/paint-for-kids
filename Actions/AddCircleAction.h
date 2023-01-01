@@ -10,6 +10,7 @@ private:
 	Point P1, P2;
 	GfxInfo CircleGfxInfo;
 	CCircle* SelectedFig;
+	bool IsRecorded;        //Boolean to check if the Action was recorded or not
 public:
 	AddCircleAction(ApplicationManager* pApp);
 
@@ -24,6 +25,9 @@ public:
 
 	//Redo the Action of undo (make the figure again)
 	virtual void RedoAct();
+
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
 };
 
 #endif

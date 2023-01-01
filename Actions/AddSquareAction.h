@@ -10,6 +10,7 @@ private:
 	Point P1; //Square Center
 	GfxInfo SquareGfxInfo;
 	CSquare* SelectedFig;
+	bool IsRecorded;        //Boolean to check if the Action was recorded or not
 public:
 	AddSquareAction(ApplicationManager* pApp);
 
@@ -24,6 +25,9 @@ public:
 
 	//Redo the Undo Action (make the figure again)
 	virtual void RedoAct();
+
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
 };
 
 #endif

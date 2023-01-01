@@ -8,7 +8,7 @@ class DeleteFigureAction : public Action
 {
 private:
 	CFigure* SelectedFig;
-
+	bool IsRecorded;        //Boolean to check if the Action was recorded or not
 public:
 	DeleteFigureAction(ApplicationManager* pApp);
 
@@ -22,6 +22,9 @@ public:
 
 	// Redo the Undo Action (delete the figure again)
 	virtual void RedoAct();
+
+	//Check if the Action was recorded or not
+	virtual bool IsActionRecorded();
 };
 
 #endif
