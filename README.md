@@ -8,7 +8,7 @@ Made as a Project for Programming techniqes course in CMP first year cairo Unive
 ## 😀 ScreenShots
 
 ![graph-1](./testGraph.png)
-![graph-2](./testSaveMode-screenshoot.png.png)
+![graph-2](./testSaveMode-screenshoot.png)
 ![graph-3](./testGraph3.png)
 ![graph-4](./playModeShapes.png)
 
