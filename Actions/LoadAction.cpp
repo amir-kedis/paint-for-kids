@@ -29,12 +29,18 @@ void LoadAction::ReadActionParameters()
 bool LoadAction::Execute(bool ReadActionParams)
 {
 	if (ReadActionParams)
+	{
 		ReadActionParameters(); //This action needs to read some parameters first
+		pManager->ClearAll();
+	}
 	else
+	{
 		FileName = "DrawModeFigList.txt";
+		pManager->ClearFigList();
+		pManager->ClearUndoRedoList();
+	}
 
 
-	pManager->ClearAll();
 
 	//Create and Open file
 	ifstream InputFile;
