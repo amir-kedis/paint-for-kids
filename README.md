@@ -10,6 +10,14 @@ Made as a project for Programming Techniques course in the Computer Engineering 
 - Paint for kids is an application made to teach kids shapes in a colorful and playful way.
 - It provides a playing mode that teaches kids to differentiate figure types and colors.
 
+---
+
+## 🎥 Demo
+
+[![Project Demo](./demo-thump.png)](./paint-for-kids-demo.mp4 "Project Demo")
+
+---
+
 ## 😀 Screenshots
 
 #### Draw mode screenshot
