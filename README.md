@@ -41,7 +41,7 @@ Made as a project for Programming Techniques course in the Computer Engineering 
 ## 🫡 Our team
 
 - [Akram Hany](https://github.com/akramhany)
-- [Ahemd Hamed](https://github.com/AhmedHamed3699)
+- [Ahmed Hamed](https://github.com/AhmedHamed3699)
 - [Amir Kedis](https://github.com/amir-kedis)
 
 ---
