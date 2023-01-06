@@ -128,6 +128,31 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Actions\Action.cpp" />
+    <ClCompile Include="Actions\AddCircleAction.cpp" />
+    <ClCompile Include="Actions\AddFigureAction.cpp" />
+    <ClCompile Include="Actions\AddHexAction.cpp" />
+    <ClCompile Include="Actions\AddSquareAction.cpp" />
+    <ClCompile Include="Actions\AddTriangleAction.cpp" />
+    <ClCompile Include="Actions\ChangeColorAction.cpp" />
+    <ClCompile Include="Actions\ClearAllAction.cpp" />
+    <ClCompile Include="Actions\DeleteFigureAction.cpp" />
+    <ClCompile Include="Actions\ExitAction.cpp" />
+    <ClCompile Include="Actions\LoadAction.cpp" />
+    <ClCompile Include="Actions\PickByBothAction.cpp" />
+    <ClCompile Include="Actions\PickByColorsAction.cpp" />
+    <ClCompile Include="Actions\PickByShapesAction.cpp" />
+    <ClCompile Include="Actions\PlayRecordingAction.cpp" />
+    <ClCompile Include="Actions\MoveFigureAction.cpp" />
+    <ClCompile Include="Actions\RedoAct.cpp" />
+    <ClCompile Include="Actions\SaveAction.cpp" />
+    <ClCompile Include="Actions\SelectFigureAction.cpp" />
+    <ClCompile Include="Actions\SoundAction.cpp" />
+    <ClCompile Include="Actions\StartRecordingAction.cpp" />
+    <ClCompile Include="Actions\StopRecordingAction.cpp" />
+    <ClCompile Include="Actions\SwitchToDrawAction.cpp" />
+    <ClCompile Include="Actions\SwitchToPlayAction.cpp" />
+    <ClCompile Include="Actions\UndoAct.cpp" />
     <ClCompile Include="CMUgraphicsLib\auxil.cpp" />
     <ClCompile Include="CMUgraphicsLib\CMUgraphics.cpp" />
     <ClCompile Include="CMUgraphicsLib\colors.cpp" />
@@ -164,11 +189,43 @@
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant1.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jquant2.c" />
     <ClCompile Include="CMUgraphicsLib\jpeg\jutils.c" />
+    <ClCompile Include="Figures\CCircle.cpp" />
+    <ClCompile Include="Figures\CFigure.cpp" />
+    <ClCompile Include="Figures\CHexagon.cpp" />
+    <ClCompile Include="Figures\CRectangle.cpp" />
+    <ClCompile Include="Actions\AddRectAction.cpp" />
+    <ClCompile Include="Figures\CSquare.cpp" />
+    <ClCompile Include="Figures\CTriangle.cpp" />
     <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
-    <ClCompile Include="TestCode.cpp" />
+    <ClCompile Include="ApplicationManager.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actions\AddCircleAction.h" />
+    <ClInclude Include="Actions\AddFigureAction.h" />
+    <ClInclude Include="Actions\AddHexAction.h" />
+    <ClInclude Include="Actions\AddSquareAction.h" />
+    <ClInclude Include="Actions\AddTriangleAction.h" />
+    <ClInclude Include="Actions\ChangeColorAction.h" />
+    <ClInclude Include="Actions\ClearAllAction.h" />
+    <ClInclude Include="Actions\DeleteFigureAction.h" />
+    <ClInclude Include="Actions\ExitAction.h" />
+    <ClInclude Include="Actions\LoadAction.h" />
+    <ClInclude Include="Actions\PickByBothAction.h" />
+    <ClInclude Include="Actions\PickByColorsAction.h" />
+    <ClInclude Include="Actions\PickByShapesAction.h" />
+    <ClInclude Include="Actions\PlayRecordingAction.h" />
+    <ClInclude Include="Actions\MoveFigureAction.h" />
+    <ClInclude Include="Actions\RedoAct.h" />
+    <ClInclude Include="Actions\SaveAction.h" />
+    <ClInclude Include="Actions\SelectFigureAction.h" />
+    <ClInclude Include="Actions\SoundAction.h" />
+    <ClInclude Include="Actions\StartRecordingAction.h" />
+    <ClInclude Include="Actions\StopRecordingAction.h" />
+    <ClInclude Include="Actions\SwitchToDrawAction.h" />
+    <ClInclude Include="Actions\SwitchToPlayAction.h" />
+    <ClInclude Include="Actions\UndoAct.h" />
     <ClInclude Include="CMUgraphicsLib\auxil.h" />
     <ClInclude Include="CMUgraphicsLib\CMUgraphics.h" />
     <ClInclude Include="CMUgraphicsLib\colors.h" />
@@ -189,10 +246,22 @@
     <ClInclude Include="CMUgraphicsLib\jpeg\jpegint.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jpeglib.h" />
     <ClInclude Include="CMUgraphicsLib\jpeg\jversion.h" />
+    <ClInclude Include="Figures\CCircle.h" />
+    <ClInclude Include="Figures\CFigure.h" />
+    <ClInclude Include="Figures\CHexagon.h" />
+    <ClInclude Include="Figures\CRectangle.h" />
+    <ClInclude Include="Actions\Action.h" />
+    <ClInclude Include="Actions\AddRectAction.h" />
+    <ClInclude Include="Figures\CSquare.h" />
+    <ClInclude Include="Figures\CTriangle.h" />
     <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="GUI\UI_Info.h" />
+    <ClInclude Include="ApplicationManager.h" />
     <ClInclude Include="DEFS.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

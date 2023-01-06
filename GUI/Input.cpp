@@ -54,7 +54,7 @@ ActionType Input::GetUserAction() const
 			case ITM_EXIT:			  return EXIT;
 			case ITM_ADD_FIGURE:	  return ADD_FIGURE;
 			case ITM_SELECT_ONE:	  return SELECT;
-			case ITM_DRAWING_COLOR:   return CHOOSE_DRAWING_COLOR;
+			case ITM_DRAWING_COLOR:   return CHANGE_DRAWING_COLOR;
 			case ITM_FILL_COLOR:      return CHANGE_FILL_COLOR;
 			case ITM_DELETE_FIGURE:   return DELETE_FIGURE;
 			case ITM_MOVE_FIGURE:	  return MOVE_FIGURE;
@@ -67,6 +67,7 @@ ActionType Input::GetUserAction() const
 			case ITM_SAVE:			  return SAVE;
 			case ITM_LOAD:			  return LOAD;
 			case ITM_SWITCH:		  return TO_PLAY;
+			case ITM_SOUND:			  return SOUND;
 			default: return EMPTY;	//A click on empty place in desgin toolbar
 			}
 		}

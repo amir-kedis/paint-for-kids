@@ -24,6 +24,7 @@ Output::Output()
 	UI.StatusBarColor = color(251, 192, 147); // status Bar color
 	UI.ToolBarColor = WHITE; // status Bar color
 	UI.PenWidth = 3;	//width of the figures frames
+	UI.IsSoundOn = true; // sound Is On by Default
 
 
 	//Create the output window
@@ -105,9 +106,19 @@ void Output::CreateDrawToolBar() const
 	MenuItemImages[ITM_SAVE] = "images\\MenuItems\\save.jpg";
 	MenuItemImages[ITM_LOAD] = "images\\MenuItems\\load.jpg";
 	MenuItemImages[ITM_SWITCH] = "images\\MenuItems\\game-mode.jpg";
+
+	if (UI.IsSoundOn)
+	{
+		MenuItemImages[ITM_SOUND] = "images\\MenuItems\\mute.jpg";
+	}
+	else {
+
+		MenuItemImages[ITM_SOUND] = "images\\MenuItems\\sound.jpg";
+	}
+
 	MenuItemImages[ITM_EXIT] = "images\\MenuItems\\exit.jpg";
 
-	//TODO: Prepare images for each menu item and add it to the list
+
 
 	//Draw menu item one image at a time
 	for (int i = 0; i < DRAW_ITM_COUNT; i++)

@@ -12,14 +12,14 @@ enum ActionType //The actions supported (you can add more if needed)
 	DRAW_CIRCLE,			//Draw Circle
 	DRAW_TRI,				//Draw Triangle
 	ADD_FIGURE,				//Switch interface to Shapes mode
-	CHOOSE_DRAWING_COLOR,	//Switch interface to Colors mode
+	CHANGE_DRAWING_COLOR,	//Switch interface to Colors mode to change drawing color
+	CHANGE_FILL_COLOR,		//Switch interface to Colors mode to change filling color
 	COLOUR_BLACK,			//Choose Black color
 	COLOUR_YELLOW,			//Choose Yellow color	
 	COLOUR_ORANGE,			//Choose Orange color
 	COLOUR_RED,				//Choose Red color
 	COLOUR_GREEN,			//Choose Green color
 	COLOUR_BLUE,			//Choose Blue color
-	CHANGE_FILL_COLOR,		//Change filling color
 	SELECT,					//Select a figure
 	DELETE_FIGURE,			//Delete a figure 
 	MOVE_FIGURE,			//Move a figure
@@ -39,11 +39,14 @@ enum ActionType //The actions supported (you can add more if needed)
 	TO_PLAY,				//Switch interface to Play mode
 	EMPTY,					//A click on empty place in the toolbar
 	DRAWING_AREA,			//A click on the drawing area
+	SOUND,					//A click on the sound btn
 	STATUS					//A click on the status bar
 };
 
 struct Point	//To be used for figures points
-{ int x,y; };
+{
+	int x, y;
+};
 
 struct GfxInfo	//Graphical info of each figure (you may add more members)
 {

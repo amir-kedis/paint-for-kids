@@ -9,10 +9,10 @@
 
 enum GUI_MODE	//Graphical user interface mode
 {
-	MODE_DRAW,	 //Drawing mode (startup mode)
-	MODE_SHAPES, //Shapes Mode To choose shapes from 
-	MODE_COLORS, //Colors Mode To change color from
-	MODE_PLAY	 //Playing mode
+	MODE_DRAW,		//Drawing mode (startup mode)
+	MODE_SHAPES,	//Shapes Mode To choose shapes from 
+	MODE_COLORS,	//Colors Mode To change color from
+	MODE_PLAY		//Playing mode
 };
 
 enum DrawMenuItem //The items of the Draw menu (you should add more items)
@@ -34,11 +34,12 @@ enum DrawMenuItem //The items of the Draw menu (you should add more items)
 	ITM_SAVE,             //Save Graph item in menu
 	ITM_LOAD,             //Load Saved Graph item in menu
 	ITM_SWITCH,           //Switch to Play Mode item in menu
+	ITM_SOUND,			  //Icon To turn sound on or off
 
 	ITM_EXIT,		//Exit item
-	
+
 	DRAW_ITM_COUNT		//no. of menu items ==> This should be the last line in this enum
-	
+
 };
 
 enum ShapesMenuItem //The items of the Shapes menu
@@ -74,7 +75,7 @@ enum PlayMenuItem //The items of the Play menu (you should add more items)
 {
 	//Note: Items are **(ordered)** here as they appear in menu
 	//If you want to change the menu items order, change the order here
-	
+
 	ITM_PICK_BY_SHAPES,
 	ITM_PICK_BY_COLORS,
 	ITM_PICK_BY_BOTH,
@@ -93,14 +94,14 @@ __declspec(selectany) //This line to prevent "redefinition error"
 struct UI_Info	//User Interface Info.
 {
 	GUI_MODE InterfaceMode;
-	
+
 	int	width, height,	    //Window width and height
-		wx , wy,			//Window starting coordinates
+		wx, wy,			//Window starting coordinates
 		StatusBarHeight,	//Status Bar Height
 		ToolBarHeight,		//Tool Bar Height (distance from top of window to bottom line of toolbar)
 		MenuItemWidth;		//Width of each item in toolbar menu
-	
 
+	bool IsFilled;
 	color DrawColor;		//Drawing color
 	color FillColor;		//Filling color
 	color HighlightColor;	//Highlighting color
@@ -111,7 +112,8 @@ struct UI_Info	//User Interface Info.
 	int PenWidth;			//width of the pen that draws shapes
 
 	/// Add more members if needed
-	
+	bool IsSoundOn;
+
 }UI;	//create a global object UI
 
 #endif
