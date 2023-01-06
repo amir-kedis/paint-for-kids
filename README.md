@@ -1,18 +1,44 @@
 # 🎨 Paint For Kids CPP APP
 
-A application to let kids draw and play with shapes.
-Made as a Project for Programming techniqes course in CMP first year cairo University Egypt.
+An application to let kids draw and play with shapes.
+Made as a project for Programming Techniques course in the Computer Engineering Department first-year Cairo University Egypt.
 
 ---
 
-## 😀 ScreenShots
+## 🔥 Abstract
+
+- Paint for kids is an application made to teach kids shapes in a colorful and playful way.
+- It provides a playing mode that teaches kids to differentiate figure types and colors.
+
+## 😀 Screenshots
+
+#### Draw mode screenshot
 
 ![graph-1](./testGraph.png)
+
+#### Save and load Graph screenshot
+
 ![graph-2](./testSaveMode-screenshoot.png)
+
+#### Record screenshot
+
 ![graph-3](./testGraph3.png)
+
+#### Play Mode screenshot
+
 ![graph-4](./playModeShapes.png)
 
-## Conventions and Team guide lines.
+---
+
+## 🫡 Our team
+
+- [Akram Hany](https://github.com/akramhany)
+- [Ahemd Hamed](https://github.com/AhmedHamed3699)
+- [Amir Kedis](https://github.com/amir-kedis)
+
+---
+
+## Conventions and team guidelines.
 
 ---
 
@@ -26,7 +52,7 @@ int nmbr = 5; ❌
 int number = 5; ✅
 ```
 
-- Vaiables should be written in "camelCase"
+- Variables should be written in "camelCase"
 
 ```cpp
 int Important-VaRiable = 5; ❌
@@ -105,10 +131,10 @@ bool IsValidAge(int age);
 /// <returns></returns>
 ```
 
-_To Toggle this comment on, Go to line before declration and press <kbd>Ctrl</kbd> + <kbd>/</kbd>_
+_To Toggle this comment on, Go to the line before declaration and press <kbd>Ctrl</kbd> + <kbd>/</kbd>_
 
 - TODO comments should be used like this
 
 ```cpp
-/// TODO: (To Do Item)
+/// TODO: (To-Do Item)
 ```
